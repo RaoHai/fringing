@@ -1,0 +1,66 @@
+{
+  "name": "@ali/rc-flow",
+  "version": "0.0.2",
+  "description": "flow ui component for react",
+  "keywords": [
+    "react",
+    "react-component",
+    "react-flow",
+    "flow"
+  ],
+  "homepage": "https://github.com/react-component/flow",
+  "author": "surgesoft@gmail.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/react-component/flow.git"
+  },
+  "bugs": {
+    "url": "https://github.com/react-component/flow/issues"
+  },
+  "files": [
+    "lib",
+    "assets/*.css"
+  ],
+  "licenses": "MIT",
+  "main": "./lib/index",
+  "config": {
+    "port": 8001
+  },
+  "scripts": {
+    "build": "rc-tools run build",
+    "gh-pages": "rc-tools run gh-pages",
+    "start": "rc-tools run server",
+    "pub": "rc-tools run pub",
+    "lint": "rc-tools run lint",
+    "karma": "rc-tools run karma",
+    "saucelabs": "rc-tools run saucelabs",
+    "test": "rc-tools run test",
+    "chrome-test": "rc-tools run chrome-test",
+    "coverage": "rc-tools run coverage"
+  },
+  "devDependencies": {
+    "expect.js": "0.3.x",
+    "pre-commit": "1.x",
+    "rc-tools": "5.x",
+    "react": "0.14.x",
+    "react-addons-test-utils": "0.14.x",
+    "react-dom": "0.14.x"
+  },
+  "pre-commit": [
+    "lint"
+  ],
+  "dependencies": {
+    "classnames": "^2.2.5",
+    "dva": "0.0.11",
+    "immutable": "^3.8.1",
+    "lodash": "^4.14.1",
+    "react-art": "^0.15.1",
+    "react-dnd": "^2.1.4",
+    "react-dnd-html5-backend": "^2.1.2",
+    "react-redux": "^4.4.5",
+    "redux": "^3.5.2"
+  },
+  "publishConfig": {
+    "registry": "http://registry.npm.alibaba-inc.com"
+  }
+}
