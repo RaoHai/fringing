@@ -7,7 +7,10 @@ import ItemTypes from '../../definitions/itemTypes';
 import ControllerPoint from './ControllderPoint';
 import BaryCentre from './BaryCentre';
 
-import { UPDATE_ACTIVE_NODE, UPDATE_TARGET_NODE, CLEAR_TARGET_NODE, ADD_CONNECTION } from '../../actions';
+import {
+  UPDATE_ACTIVE_NODE, UPDATE_TARGET_NODE, CLEAR_TARGET_NODE, ADD_CONNECTION,
+  CLEAR_ACTIVE_NODE
+} from '../../actions';
 
 const nodeSource = {
   beginDrag(props) {
@@ -50,6 +53,12 @@ class Node extends React.Component<any, any> {
       type: ADD_CONNECTION,
       source,
       target,
+    });
+    dispatch({
+      type: CLEAR_TARGET_NODE,
+    });
+    dispatch({
+      type: CLEAR_ACTIVE_NODE,
     });
   }
 
