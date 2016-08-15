@@ -13,5 +13,19 @@ type Node = {
 
 type Tree = Node;
 
+export interface FriningDataNode {
+  id: number;
+}
+
+export interface FriningConfig {
+  width: number; // width of Canvas
+  height: number; // height of Canvas
+  nodes: Array<FriningDataNode>;
+  onNodeChange?: Function;
+}
+
+export interface ContainerProps {
+  configs: FriningConfig;
+}
 
 

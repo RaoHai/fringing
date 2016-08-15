@@ -1,8 +1,90 @@
+.fringing-provider {
+  position: relative;
+}
+
+.fringing-dom-container {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.active .controller-point {
+  display: inline-block;
+}
+.controller-point {
+  display: none;
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border: 1px solid black;
+
+  &.tl {
+    top: 0;
+    left: 0;
+  }
+
+  &.t {
+    top: 0;
+    left: 50%;
+    margin-left: -2.5px;
+  }
+
+  &.tr {
+    right: 0;
+    top: 0;
+  }
+
+  &.l {
+    left: 0;
+    top: 50%;
+    margin-top: -3.5px;
+  }
+
+  &.r {
+    right: 0;
+    top: 50%;
+    margin-top: -3.5px;
+  }
+
+  &.bl {
+    left: 0;
+    bottom: 0;
+  }
+
+  &.b {
+    left: 50%;
+    bottom: 0;
+    margin-left: -2.5px;
+  }
+
+  &.br {
+    right: 0;
+    bottom: 0;
+  }
+
+  &.tl, &.br {
+    cursor: nwse-resize;
+  }
+  &t, &b {
+    cursor: ns-resize;
+  }
+  &.tr, &.bl {
+    cursor: nesw-resize;
+  }
+  &.l, &.r {
+    cursor: ew-resize;
+  }
+
+
+}
+
 .flow {
   position: relative;
 }
+
 .node-wrapper {
   position: absolute;
+  padding: 2.5px;
 }
 
 .node-placeholder {
@@ -32,7 +114,6 @@
   color: #666;
   font-size: 12px;
   line-height: 32px;
-  overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   background-color: white;

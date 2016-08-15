@@ -13,5 +13,5 @@ export default function getPath(link, projection = defaultProjection) {
   };
   const mid = (p0.y + p3.y) / 2;
   const points = [p0, { x: p0.x, y: mid }, { x: p3.x, y: mid }, p3].map(projection);
-  return `M${points[0]}L${points[1]} ${points[2]} ${points[3]}`;
+  return `M${points[0]}C${points[1]} ${points[2]} ${points[3]}`;
 }
