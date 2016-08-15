@@ -11,11 +11,14 @@ import { ContainerProps } from '../definitions';
 
 
 export interface CanvasProps extends ContainerProps {
-
+  connections: Array<any>;
+  configs: any;
+  activeNode: any;
+  targetNode: any;
 }
 
 class CanvasContainer extends React.Component<CanvasProps, any> {
-  private refs: any;
+  public refs: any;
 
   renderLink = (data, index) => {
     return <Link data={data} key={`link-${index}`} />;

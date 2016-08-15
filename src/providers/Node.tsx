@@ -4,7 +4,7 @@ import { createConnector } from '../functions';
 import Node from '../components/Node/Node';
 import { connect } from 'react-redux';
 
-type CollectFunction = (collectFunction: any) => {};
+export type CollectFunction = (collectFunction: any) => {};
 
 export default function nodeDecorator(_collect: CollectFunction = (any) => {}) {
   // if direct NodeProvider(node)(Element) to bind data...

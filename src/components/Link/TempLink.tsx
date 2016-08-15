@@ -6,6 +6,7 @@ import { getControllerPosition, getPath } from '../../functions';
 export interface TempLinkProps {
   addEventListener: Function;
   dispatch: any;
+  activeNode: any;
 }
 
 class TempLink extends React.Component<TempLinkProps, any> {
@@ -23,7 +24,7 @@ class TempLink extends React.Component<TempLinkProps, any> {
       this.setState({
         drawing: true,
         startPosition: getControllerPosition(activeNode),
-      }, this.enableEventListeners());
+      }, this.enableEventListeners);
     }
   }
 

@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 import { createStore, applyMiddleware } from 'redux';
-import friningApp from '../reducers';
+import  friningApp from '../reducers';
 
 import CanvasContainer from '../containers/CanvasContainer';
 import DOMContainer from '../containers/DomContainer';

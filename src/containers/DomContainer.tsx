@@ -15,9 +15,13 @@ import { DataStructureManager } from '../functions';
 import {CLEAR_ACTIVE_NODE, CLEAR_TARGET_NODE} from '../actions';
 
 export interface DomContainerProps extends ContainerProps {
+  connections: Array<any>;
+  configs: any;
+  activeNode: any;
+  targetNode: any;
+  eventListeners: any;
   onNodeChange?: Function;
 }
-
 const nodeTarget = {
   drop(props, monitor, component) {
     const item = monitor.getItem();

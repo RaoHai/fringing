@@ -1,4 +1,5 @@
-import { combineReducers } from 'redux';
+import * as Redux from 'redux';
+const { combineReducers } = Redux;
 import {
   SET_CONFIG,
 
@@ -10,7 +11,6 @@ import {
 
   ADD_CONNECTION,
 } from '../actions';
-import { Map } from 'immutable';
 
 class Node {
   public x: number;
@@ -90,12 +90,10 @@ function connections(state = [], actions) {
     }
 }
 
-const flowApp = combineReducers({
+export default combineReducers({
   connections,
   configs,
   activeNode,
   targetNode,
   eventListeners,
 });
-
-export default flowApp;

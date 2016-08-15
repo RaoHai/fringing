@@ -1,6 +1,6 @@
 {
   "name": "rc-fringing",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "flow ui component for react",
   "keywords": [
     "react",
@@ -12,10 +12,10 @@
   "author": "surgesoft@gmail.com",
   "repository": {
     "type": "git",
-    "url": "https://github.com/react-component/flow.git"
+    "url": "https://github.com/RaoHai/fringing.git"
   },
   "bugs": {
-    "url": "https://github.com/react-component/flow/issues"
+    "url": "https://github.com/RaoHai/fringing"
   },
   "files": [
     "lib",
@@ -60,8 +60,5 @@
     "react-dnd-html5-backend": "^2.1.2",
     "react-redux": "^4.4.5",
     "redux": "^3.5.2"
-  },
-  "publishConfig": {
-    "registry": "http://registry.npm.alibaba-inc.com"
   }
 }

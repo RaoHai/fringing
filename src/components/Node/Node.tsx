@@ -29,15 +29,24 @@ for (let i = 0; i < 8; i ++) {
   controllerPoints.push(<ControllerPoint key={i} type={controllerPointsMap[i]} />);
 }
 
+
+export interface NodeProps {
+  dispatch: any;
+  hooks: any;
+  activeNode: any;
+  targetNode: any;
+  isDragging: boolean;
+  connectDragSource: Function;
+}
 @DragSource(ItemTypes.NODE, nodeSource, (connect, monitor) => ({
   connectDragSource: connect.dragSource(),
   isDragging: monitor.isDragging()
 }))
-class Node extends React.Component<any, any> {
+class Node extends React.Component<NodeProps, any> {
   constructor() {
     super();
   }
-  private refs: any;
+  public refs: any;
 
   activeNode(data) {
     const { dispatch } = this.props;
