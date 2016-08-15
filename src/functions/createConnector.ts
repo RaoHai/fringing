@@ -1,14 +1,14 @@
 import { SET_CONFIG, INSERT_NODE, UPDATE_NODE } from '../actions';
-export default function createSourceConnector({ container , collect }) {
+export default function createSourceConnector({ container , collect, props }) {
   const collectResult = collect();
   const { getNodeData } = collectResult;
-  const nodeData = getNodeData();
+  const nodeData = getNodeData(props);
   container.addNode(nodeData);
   // container.addNode()
   console.log('>> createSourceConnector', container);
   const hooks = {
     getNode() {
-      const { id } = getNodeData();
+      const { id } = getNodeData(props);
       return container.getNode(id);
     },
     getPosition() {

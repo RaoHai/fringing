@@ -4,10 +4,14 @@ class Node {
   public x: number;
   public y: number;
   public id: number;
+  public activeControllerId: number;
+  public width: number;
+  public height: number;
   constructor(data) {
     Object.assign(this, data);
     this.x = data.x || 0;
     this.y = data.y || 0;
+    this.activeControllerId = null;
   }
 }
 export default class DataStructureManager {
@@ -16,6 +20,7 @@ export default class DataStructureManager {
   private _activeNode: number;
 
   constructor() {
+    console.log('>> DataStructureManager custructor');
     this.nodes = new Map([]);
   }
 

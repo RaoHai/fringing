@@ -44,7 +44,7 @@ export default function providerFunction(configs: FriningConfig = defaultConfig)
       static WrappedComponent: Element;
 
       static childContextTypes = {
-        container: Object,
+        container: React.PropTypes.object,
       };
 
       getChildContext() {
@@ -57,8 +57,8 @@ export default function providerFunction(configs: FriningConfig = defaultConfig)
             <CanvasContainer />
             <DOMContainer>
               <WrappedComponent />
+              <DecoratorsContainer />
             </DOMContainer>
-            <DecoratorsContainer />
           </div>
         </Provider>);
       }

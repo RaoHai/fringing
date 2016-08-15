@@ -18,6 +18,10 @@
   height: 5px;
   border: 1px solid black;
 
+  &.active {
+    background-color: #2db7f5;
+  }
+
   &.tl {
     top: 0;
     left: 0;
@@ -74,8 +78,24 @@
   &.l, &.r {
     cursor: ew-resize;
   }
+}
 
-
+.active .bary-center {
+  display: inline-block;
+}
+.bary-center {
+  display: none;
+  width: 5px;
+  height: 5px;
+  border: 1px solid #2db7f5;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-top: -2.5px;
+  margin-left: -2.5px;
+  border-radius: 5px;
+  background-color: white;
+  box-shadow: 0 0 2px 2px rgba(45, 183, 245, .5);
 }
 
 .flow {

@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as hoistStatics from 'hoist-non-react-statics';
 import { createConnector } from '../functions';
 import Node from '../components/Node/Node';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 
 type CollectFunction = (collectFunction: any) => {};
 
@@ -30,14 +30,15 @@ export default function nodeDecorator(_collect: CollectFunction = (any) => {}) {
 
       private context: any;
       static contextTypes = {
-        container: Object,
+        container: React.PropTypes.object,
       };
 
       constructor(props, context) {
         super(props, context);
+        console.log('>> node Provider', props);
 
         this.container = this.context.container;
-        this.handlerConnector = createConnector({ container: this.container, collect });
+        this.handlerConnector = createConnector({ container: this.container, collect, props });
         this.state = this.handlerConnector;
       }
 

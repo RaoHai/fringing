@@ -1,5 +1,4 @@
 import parseData from './parseData';
-import renderLinks from './renderLinks';
 import hierarchyVisitAfter from './hierarchyVisitAfter';
 import getNodes from './getNodes';
 import getLinks from './getLinks';
@@ -9,14 +8,16 @@ import normalize from './normalize';
 import createConnector from './createConnector';
 import DataStructureManager from './DataStructureManager';
 
+import getControllerPosition from './getControllerPosition';
+
 export {
   parseData,
-  renderLinks,
   hierarchyVisitAfter,
   getNodes,
   getLinks,
   getPath,
   normalize,
+  getControllerPosition,
   createConnector,
   DataStructureManager,
 }
