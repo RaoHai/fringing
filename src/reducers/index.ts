@@ -1,9 +1,10 @@
 import * as Redux from 'redux';
+import { Map } from 'immutable';
 const { combineReducers } = Redux;
 import {
   SET_CONFIG,
 
-  INSERT_NODE, UPDATE_NODE,
+  INSERT_NODE, UPDATE_NODE, UPDATE_NODE_POSITION,
 
   UPDATE_ACTIVE_NODE, CLEAR_ACTIVE_NODE,
 
@@ -23,6 +24,19 @@ class Node {
   }
   update(data) {
     Object.assign(this, data);
+  }
+}
+
+function nodes(state = Map([]), actions) {
+  switch (actions.type) {
+    case INSERT_NODE:
+      return state.set(actions.data.id, actions.data);
+    case UPDATE_NODE_POSITION:
+      const { id, x, y } = actions;
+      const node = state.get(id);
+      return state.set(id, Object.assign({}, node, { x, y}));
+    default:
+      return state;
   }
 }
 
@@ -92,6 +106,7 @@ function connections(state = [], actions) {
 }
 
 export default combineReducers({
+  nodes,
   connections,
   configs,
   activeNode,

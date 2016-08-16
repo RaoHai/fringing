@@ -45,7 +45,7 @@ export default function providerFunction(configs = defaultConfig) {
     const connectDisplayName = `FriningProvider(${getDisplayName(WrappedComponent)})`;
 
     const childContext = {
-      container: new DataStructureManager(),
+      store,
     };
 
     @DragDropContext(HTML5Backend)
@@ -54,7 +54,7 @@ export default function providerFunction(configs = defaultConfig) {
       static WrappedComponent: Element;
 
       static childContextTypes = {
-        container: React.PropTypes.instanceOf(DataStructureManager),
+        store: React.PropTypes.any,
       };
 
       getChildContext() {

@@ -26,19 +26,19 @@ export default function nodeDecorator(_collect: CollectFunction = (any: any) => 
       static displayName: string;
 
       private handlerConnector: Object;
-      private container: any;
+      private store: any;
 
       private context: any;
       static contextTypes = {
-        container: React.PropTypes.object,
+        store: React.PropTypes.any,
       };
 
       constructor(props, context) {
         super(props, context);
         console.log('>> node Provider', props);
 
-        this.container = this.context.container;
-        this.handlerConnector = createConnector({ container: this.container, collect, props });
+        this.store = this.context.store;
+        this.handlerConnector = createConnector({ store: this.store, collect, props });
         this.state = this.handlerConnector;
       }
 

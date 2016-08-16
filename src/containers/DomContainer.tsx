@@ -6,21 +6,22 @@ import { connect } from 'react-redux';
 
 // definitions
 import ItemTypes from '../definitions/itemTypes';
-import { ContainerProps } from '../definitions';
 
 // function
 import { DataStructureManager } from '../functions';
 
 // actions
-import {CLEAR_ACTIVE_NODE, CLEAR_TARGET_NODE} from '../actions';
+import {CLEAR_ACTIVE_NODE, CLEAR_TARGET_NODE, UPDATE_NODE_POSITION} from '../actions';
 
-export interface DomContainerProps extends ContainerProps {
+
+export interface DomContainerProps{
   connections: Array<any>;
   configs: any;
   activeNode: any;
   targetNode: any;
   eventListeners: any;
   onNodeChange?: Function;
+  dispatch: any;
 }
 const nodeTarget = {
   drop(props, monitor, component) {
@@ -101,7 +102,12 @@ class DomContainer extends React.Component<DomContainerProps, any> {
   }
 
   moveNode(id, x, y) {
-    this.context.container.updateNodePosition(id, { x, y });
+    this.props.dispatch({
+      type: UPDATE_NODE_POSITION,
+      id,
+      x,
+      y
+    });
     if (this.props.configs.onNodeChange) {
       this.props.configs.onNodeChange(id, { x, y});
     }

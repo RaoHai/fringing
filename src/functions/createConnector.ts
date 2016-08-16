@@ -1,30 +1,35 @@
-import { SET_CONFIG, INSERT_NODE, UPDATE_NODE } from '../actions';
-export default function createSourceConnector({ container , collect, props }) {
+import { INSERT_NODE } from '../actions';
+
+class Node {
+  public x: number;
+  public y: number;
+  public id: number;
+  public activeControllerId: number;
+  public width: number;
+  public height: number;
+  constructor(data) {
+    Object.assign(this, data);
+    this.x = data.x || 0;
+    this.y = data.y || 0;
+    this.activeControllerId = null;
+  }
+}
+
+export default function createSourceConnector({ store , collect, props }) {
   const collectResult = collect();
   const { getNodeData } = collectResult;
   const nodeData = getNodeData(props);
-  container.addNode(nodeData);
-  // container.addNode()
-  console.log('>> createSourceConnector', container);
+
+  console.log('>>createSourceConnector', store, props);
+  store.dispatch({
+    type: INSERT_NODE,
+    data: new Node(nodeData)
+  });
+
   const hooks = {
     getNode() {
       const { id } = getNodeData(props);
-      return container.getNode(id);
-    },
-    getPosition() {
-
-    },
-    updatePosition() {
-
-    },
-
-    activeNode(id) {
-      console.log('>> activeNode', container);
-      container.activeNode(id);
-    },
-
-    isActive(id) {
-      return container.isActive(id);
+      return store.getState().nodes.get(id);
     },
   };
   return {

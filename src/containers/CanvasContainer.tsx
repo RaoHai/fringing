@@ -19,12 +19,8 @@ class CanvasContainer extends React.Component<CanvasProps, any> {
   public refs: any;
   private context: any;
 
-  static contextTypes = {
-    container: React.PropTypes.object,
-  };
-
   getNodeData(data) {
-    const { nodes } = this.context.container;
+    const { nodes } = this.props;
     const node = nodes.get(data.id);
     return Object.assign({}, {
       x: node.x,
@@ -52,6 +48,7 @@ class CanvasContainer extends React.Component<CanvasProps, any> {
 }
 
 export default connect(props => ({
+  nodes: props.nodes,
   configs: props.configs,
   activeNode: props.activeNode,
   targetNode: props.targetNode,
