@@ -1,9 +1,2 @@
-import Container from './providers/Container';
-import NodeProvider from './providers/Node';
-
-const FringingPublic = {
-  Container,
-  NodeProvider,
-};
-
-export default FringingPublic;
+export { default as createContainer } from './providers/Container';
+export { default as createNode } from './providers/Node';
