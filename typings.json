@@ -5,6 +5,7 @@
     "react": "registry:dt/react#0.14.0+20160720060442",
     "react-dnd": "registry:dt/react-dnd#2.0.2+20160725191453",
     "react-dnd-html5-backend": "registry:dt/react-dnd-html5-backend#2.1.2+20160704104003",
-    "react-redux": "registry:dt/react-redux#4.4.0+20160724070751"
+    "react-redux": "registry:dt/react-redux#4.4.0+20160724070751",
+    "redux": "registry:dt/redux#3.5.2+20160703092728"
   }
 }

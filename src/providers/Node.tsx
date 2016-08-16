@@ -1,12 +1,12 @@
 import * as React from 'react';
 import hoistStatics from 'hoist-non-react-statics';
-import { createConnector } from '../functions';
+import { createConnector } from '../functions/index';
 import Node from '../components/Node/Node';
 import { connect } from 'react-redux';
 
-export type CollectFunction = (collectFunction: any) => {};
+export type CollectFunction = (collectFunction: any) => void;
 
-export default function nodeDecorator(_collect: CollectFunction = (any) => {}) {
+export default function nodeDecorator(_collect: CollectFunction = (any: any) => {} ) {
   // if direct NodeProvider(node)(Element) to bind data...
   let collect;
   if (typeof _collect === 'object') {

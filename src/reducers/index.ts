@@ -10,7 +10,7 @@ import {
   UPDATE_TARGET_NODE, CLEAR_TARGET_NODE,
 
   ADD_CONNECTION,
-} from '../actions';
+} from '../actions/index';
 
 class Node {
   public x: number;

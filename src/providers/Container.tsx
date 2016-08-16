@@ -4,15 +4,13 @@ import { Provider } from 'react-redux';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 import { createStore, applyMiddleware } from 'redux';
-import  friningApp from '../reducers';
+import  friningApp from '../reducers/index';
 
 import CanvasContainer from '../containers/CanvasContainer';
 import DOMContainer from '../containers/DomContainer';
 import DecoratorsContainer from '../containers/DecoratorsContainer';
 
-import { normalize, DataStructureManager } from '../functions';
-
-import { FriningConfig } from '../definitions/index';
+import { normalize, DataStructureManager } from '../functions/index';
 
 const defaultConfig = {
   width: window.innerWidth,
@@ -24,7 +22,10 @@ function getDisplayName(WrappedComponent) {
   return WrappedComponent.displayName || WrappedComponent.name || 'Component';
 }
 
-export default function providerFunction(configs: FriningConfig = defaultConfig) {
+export interface FringingProviderProps {
+
+}
+export default function providerFunction(configs = defaultConfig) {
   const store = createStore(
     friningApp,
     { configs: normalize(configs) }
@@ -39,7 +40,7 @@ export default function providerFunction(configs: FriningConfig = defaultConfig)
 
 
     @DragDropContext(HTML5Backend)
-    class FringingProviderClass extends React.Component<FriningConfig, any> {
+    class FringingProviderClass extends React.Component<FringingProviderProps, any> {
       static displayName: string;
       static WrappedComponent: Element;
 

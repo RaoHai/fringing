@@ -6,5 +6,8 @@
   },
   "exclude": [
     "node_modules"
+  ],
+  "files": [
+    "src/definitions/index.d.ts"
   ]
 }
