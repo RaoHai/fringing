@@ -19,7 +19,7 @@
 import Container from './providers/Container';
 import NodeProvider from './providers/Node';
 
-export {
+export default {
+  NodeProvider,
   Container,
-  NodeProvider
 };

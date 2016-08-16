@@ -1,6 +1,5 @@
 import * as React from 'react';
-import * as classnames from 'classnames';
-
+import classnames from 'classnames';
 
 export default function ControllerPoint(props) {
   const { type, className } = props;

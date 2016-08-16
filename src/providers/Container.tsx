@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as hoistStatics from 'hoist-non-react-statics';
+import hoistStatics from 'hoist-non-react-statics';
 import { Provider } from 'react-redux';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';

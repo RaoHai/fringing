@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DragSource } from 'react-dnd';
 import { connect } from 'react-redux';
-import * as classnames from 'classnames';
+import classnames from 'classnames';
 
 import ItemTypes from '../../definitions/itemTypes';
 import ControllerPoint from './ControllderPoint';

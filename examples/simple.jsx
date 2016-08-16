@@ -10,6 +10,7 @@ function Node(props) {
   return <div> Node [{props.data.id}] </div>
 }
 
+console.log('>> NodeProvider', NodeProvider);
 
 const WrappedNode = NodeProvider(collect => ({
   getNodeData: (props) => props.data,

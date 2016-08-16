@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as hoistStatics from 'hoist-non-react-statics';
+import hoistStatics from 'hoist-non-react-statics';
 import { createConnector } from '../functions';
 import Node from '../components/Node/Node';
 import { connect } from 'react-redux';
