@@ -8,7 +8,8 @@ export default class Link extends React.Component<any, any> {
     const { data } = this.props;
     const { source, target } = data;
     const pathId = `link-path-${source.id}-${target.id}`;
+
     const path = getPath(getControllerPosition(source), getControllerPosition(target));
-    return <Shape d={path} stroke="#d9d9d9" strokeWidth={1} />;
+    return <Shape key={pathId} d={path} stroke="#d9d9d9" strokeWidth={1} />;
   }
 }

@@ -23,12 +23,22 @@ function getDisplayName(WrappedComponent) {
 }
 
 export interface FringingProviderProps {
-
+  children: any;
 }
+
+
 export default function providerFunction(configs = defaultConfig) {
+  const initialStore = {
+    connections: [],
+    configs: normalize(configs),
+    activeNode: null,
+    targetNode: null,
+    eventListeners: [],
+  };
+
   const store = createStore(
     friningApp,
-    { configs: normalize(configs) }
+    initialStore
   );
 
   return function wrapWithPrivider(WrappedComponent) {
@@ -38,14 +48,13 @@ export default function providerFunction(configs = defaultConfig) {
       container: new DataStructureManager(),
     };
 
-
     @DragDropContext(HTML5Backend)
     class FringingProviderClass extends React.Component<FringingProviderProps, any> {
       static displayName: string;
       static WrappedComponent: Element;
 
       static childContextTypes = {
-        container: React.PropTypes.object,
+        container: React.PropTypes.instanceOf(DataStructureManager),
       };
 
       getChildContext() {
@@ -54,10 +63,10 @@ export default function providerFunction(configs = defaultConfig) {
 
       render() {
         return (<Provider store={store}>
-          <div className="fringing-provider" {...this.props}>
+          <div className="fringing-provider">
             <CanvasContainer />
             <DOMContainer>
-              <WrappedComponent />
+              <WrappedComponent {...this.props} />
               <DecoratorsContainer />
             </DOMContainer>
           </div>

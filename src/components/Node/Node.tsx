@@ -23,6 +23,16 @@ const nodeSource = {
   }
 };
 
+
+
+function getActiveControllerId(source, target) {
+  if (target.x > source.x) {
+    return 3;
+  } else {
+    return 4;
+  }
+}
+
 const controllerPointsMap = ['tl', 't', 'tr', 'l', 'r', 'bl', 'b', 'br'];
 const controllerPoints = [];
 for (let i = 0; i < 8; i ++) {
@@ -57,6 +67,7 @@ class Node extends React.Component<NodeProps, any> {
   }
 
   connectNode(source, target) {
+    console.log('>> connectNode', source, target);
     const { dispatch } = this.props;
     dispatch({
       type: ADD_CONNECTION,
@@ -109,7 +120,7 @@ class Node extends React.Component<NodeProps, any> {
     const data = hooks.getNode();
     const width = this.refs.element.clientWidth;
     const height = this.refs.element.clientHeight;
-    return Object.assign(data, {
+    return Object.assign({}, data, {
       width,
       height,
     }, assignProps);
@@ -124,22 +135,28 @@ class Node extends React.Component<NodeProps, any> {
   }
   mouseDown = (ev) => {
     const data = this.getCurrentNode();
-    const { activeNode, targetNode } = this.props;
+    const {activeNode, targetNode} = this.props;
 
-    if (!activeNode) {
-      return this.activeNode(data);
-    }
-    if (activeNode && targetNode && targetNode.id === data.id) {
+    if (activeNode && activeNode.activeControllerId !== null
+      && targetNode // && targetNode.activeControllerId !== null
+      && targetNode.id === data.id) {
       return this.connectNode(activeNode, targetNode);
+    }
+    if (!activeNode || activeNode.id !== data.id) {
+      return this.activeNode(data);
     }
   }
   mouseEnter = (ev) => {
-    const { dispatch } = this.props;
-    const data = this.getCurrentNode();
-    dispatch({
-      type: UPDATE_TARGET_NODE,
-      data,
-    });
+    const { dispatch, activeNode } = this.props;
+    if (activeNode) {
+      const data = this.getCurrentNode();
+      const activeControllerId = getActiveControllerId(activeNode, ev.nativeEvent);
+      data.activeControllerId = activeControllerId;
+      dispatch({
+        type: UPDATE_TARGET_NODE,
+        data,
+      });
+    }
   }
   mouseLeave = (ev) => {
     const { dispatch } = this.props;
