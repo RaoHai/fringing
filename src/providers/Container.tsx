@@ -10,7 +10,7 @@ import CanvasContainer from '../containers/CanvasContainer';
 import DOMContainer from '../containers/DomContainer';
 import DecoratorsContainer from '../containers/DecoratorsContainer';
 
-import { normalize, DataStructureManager } from '../functions/index';
+import { normalize } from '../functions/index';
 
 const defaultConfig = {
   width: window.innerWidth,

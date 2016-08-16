@@ -6,7 +6,6 @@ import getPath from './getPath';
 import normalize from './normalize';
 
 import createConnector from './createConnector';
-import DataStructureManager from './DataStructureManager';
 
 import getControllerPosition from './getControllerPosition';
 
@@ -19,5 +18,4 @@ export {
   normalize,
   getControllerPosition,
   createConnector,
-  DataStructureManager,
 }
