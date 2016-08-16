@@ -1,4 +1,4 @@
-import { Container } from 'rc-fringing';
+import { createContainer } from 'rc-fringing';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
@@ -10,7 +10,7 @@ let App = React.createClass({
   }
 });
 
-App = Container({ width: 800, height: 600})(App);
+App = createContainer({ width: 800, height: 600})(App);
 
 
 ReactDOM.render(<App />, document.getElementById('__react-content'));

@@ -1,3 +1,3 @@
 // export this package's api
-import Flow from './src/';
+import * as Flow from './src/';
 export default Flow;

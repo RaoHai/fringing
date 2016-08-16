@@ -1,4 +1,4 @@
-import { Container, NodeProvider } from 'rc-fringing';
+import { createContainer, createNode } from 'rc-fringing';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore } from 'redux';
@@ -12,7 +12,7 @@ function Node(props) {
   return <div> Node [{props.data.id}] </div>
 }
 
-const WrappedNode = NodeProvider(collect => ({
+const WrappedNode = createNode(collect => ({
   getNodeData: (props) => props.data,
 }))(Node);
 
@@ -25,7 +25,7 @@ class App extends React.Component {
   }
 }
 
-let Canvas = Container({
+let Canvas = createContainer({
   width: 800,
   height: 600,
   onNodeChange: (id, data) => console.log('>> onNodeChange', id, data),

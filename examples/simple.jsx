@@ -1,4 +1,4 @@
-import { Container, NodeProvider } from 'rc-fringing';
+import { createContainer, createNode } from 'rc-fringing';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
@@ -10,9 +10,9 @@ function Node(props) {
   return <div> Node [{props.data.id}] </div>
 }
 
-console.log('>> NodeProvider', NodeProvider);
+console.log('>> NodeProvider', createNode);
 
-const WrappedNode = NodeProvider(collect => ({
+const WrappedNode = createNode(collect => ({
   getNodeData: (props) => props.data,
 }))(Node);
 
@@ -24,7 +24,7 @@ class App extends React.Component {
   }
 }
 
-const SimpleApp = Container({
+const SimpleApp = createContainer({
   width: 800,
   height: 600,
   onNodeChange: (id, data) => console.log('>> onNodeChange', id, data),
