@@ -1,4 +1,4 @@
-import { createContainer, createNode } from 'rc-fringing';
+import { createContainer, createNode, createConnects } from 'rc-fringing';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
@@ -28,7 +28,8 @@ const SimpleApp = createContainer({
   width: 800,
   height: 600,
   onNodeChange: (id, data) => console.log('>> onNodeChange', id, data),
-  connects: [{ from: 1, to: 2}]
+  connects: [{ from: 1, to: 2}],
+  groups: [[1, 2], [2, 3]]
 })(App);
 
 

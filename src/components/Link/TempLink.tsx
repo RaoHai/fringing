@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { Group, Shape } from 'react-art';
+// import { Group, Shape } from 'react-art';
 import { getControllerPosition, getPath } from '../../functions';
+import { Group, Line } from 'react-konva';
 
 export interface TempLinkProps {
   addEventListener: Function;
@@ -52,9 +53,9 @@ class TempLink extends React.Component<TempLinkProps, any> {
       return <Group/>;
     }
     if (startPosition && endPosition) {
-      const path = getPath(startPosition, endPosition);
+      // const path = getPath(startPosition, endPosition);
       return <Group>
-        <Shape d={path} stroke="#d9d9d9" strokeWidth={1} />
+        <Line points={[startPosition.x, startPosition.y, endPosition.x, endPosition.y]} stroke="#d9d9d9" strokeWidth={2} />
       </Group>;
     }
     return <Group />;

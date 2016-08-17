@@ -4,10 +4,12 @@ import { Map } from 'immutable';
 
 import { Surface } from 'react-art';
 import { connect } from 'react-redux';
+import { Stage, Layer } from 'react-konva';
 
 import TempLink from '../components/Link/TempLink';
 import Link from '../components/Link/Link';
 
+import { REGISTER_CANVAS_CONTAINER } from '../actions';
 
 export interface CanvasProps {
   connections: Array<any>;
@@ -15,6 +17,7 @@ export interface CanvasProps {
   configs: any;
   activeNode: any;
   targetNode: any;
+  dispatch: any;
 }
 
 class CanvasContainer extends React.Component<CanvasProps, any> {
@@ -42,14 +45,22 @@ class CanvasContainer extends React.Component<CanvasProps, any> {
       .filter( connect => connect.source && connect.target )
       .map( (data, index) => <Link data={data} key={`link-${index}`} /> );
   }
+  componentDidMount() {
+    this.props.dispatch({
+      type: REGISTER_CANVAS_CONTAINER,
+      container: this.refs.layer.canvas._canvas,
+    });
+    console.log('>> stage', this.refs.layer);
+  }
   render() {
     const { connections } = this.props;
-    console.log('>> renderConnections', connections);
     const { width, height } = this.props.configs;
-    return (<Surface width={width} height={height} >
-      <TempLink />
-      {this.renderLink(connections)}
-    </Surface>);
+    return (<Stage width={width} height={height} ref="stage">
+      <Layer ref="layer">
+        <TempLink />
+        {this.renderLink(connections)}
+      </Layer>
+    </Stage>);
   }
 }
 
@@ -59,4 +70,5 @@ export default connect(props => ({
   activeNode: props.activeNode,
   targetNode: props.targetNode,
   connections: props.connections,
+  eventProxy: props.eventProxy,
 }))(CanvasContainer);

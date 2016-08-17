@@ -1,8 +1,7 @@
 import * as React from 'react';
 import hoistStatics from 'hoist-non-react-statics';
 import { Provider } from 'react-redux';
-import { DragDropContext } from 'react-dnd';
-import HTML5Backend from 'react-dnd-html5-backend';
+
 import { createStore, applyMiddleware } from 'redux';
 import  friningApp from '../reducers/index';
 
@@ -62,7 +61,6 @@ export default function providerFunction(configs: ProviderConfig = defaultConfig
       store,
     };
 
-    @DragDropContext(HTML5Backend)
     class FringingProviderClass extends React.Component<FringingProviderProps, any> {
       static displayName: string;
       static WrappedComponent: Element;
@@ -78,14 +76,15 @@ export default function providerFunction(configs: ProviderConfig = defaultConfig
       constructor(props, context) {
         super(props, context);
       }
+
       render() {
         return (<Provider store={store}>
           <div className="fringing-provider">
-            <CanvasContainer />
             <DOMContainer>
               <WrappedComponent {...this.props} />
               <DecoratorsContainer />
             </DOMContainer>
+            <CanvasContainer />
           </div>
         </Provider>);
       }

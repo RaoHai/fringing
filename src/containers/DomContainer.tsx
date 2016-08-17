@@ -1,15 +1,14 @@
 import '../definitions/reactART';
 // dependencies
 import * as React from 'react';
-import { DropTarget } from 'react-dnd';
+import { DropTarget, DragDropContext } from 'react-dnd';
 import { connect } from 'react-redux';
-
+import HTML5Backend from 'react-dnd-html5-backend';
 // definitions
 import ItemTypes from '../definitions/itemTypes';
 
-// function
-import { DataStructureManager } from '../functions';
-
+//functions
+import { triggerEvent } from '../functions';
 // actions
 import {CLEAR_ACTIVE_NODE, CLEAR_TARGET_NODE, UPDATE_NODE_POSITION} from '../actions';
 
@@ -22,6 +21,9 @@ export interface DomContainerProps{
   eventListeners: any;
   onNodeChange?: Function;
   dispatch: any;
+  eventProxy: {
+    canvasContainer: any;
+  };
 }
 const nodeTarget = {
   drop(props, monitor, component) {
@@ -34,14 +36,16 @@ const nodeTarget = {
   }
 };
 
+const proxyEvents = ['click', 'mousemove', 'mouseover', 'mouseout', 'mouseup', 'mousedown'];
 
-
+@DragDropContext(HTML5Backend)
 @DropTarget(ItemTypes.NODE, nodeTarget, connect => ({
   connectDropTarget: connect.dropTarget()
 }))
 class DomContainer extends React.Component<DomContainerProps, any> {
   private context: any;
   private refs: any;
+  private _didProxy: boolean = false;
 
   static childContextTypes = {
     container: React.PropTypes.object,
@@ -62,6 +66,7 @@ class DomContainer extends React.Component<DomContainerProps, any> {
         this.clearTargetNode();
       }
     });
+
   }
   componentDidUpdate() {
     // console.log('>> canvas', this.refs.canvas);
@@ -86,6 +91,17 @@ class DomContainer extends React.Component<DomContainerProps, any> {
         });
       }
     }
+
+    if (this.props.eventProxy.canvasContainer && !this._didProxy) {
+      // proxy events
+      proxyEvents.forEach(event => {
+        this.refs.eventHelper.addEventListener(event, (ev) => {
+          triggerEvent(this.props.eventProxy.canvasContainer, ev);
+        });
+      });
+      this._didProxy = true;
+    }
+
   }
 
   clearActiveNode = () => {

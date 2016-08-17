@@ -9,6 +9,8 @@ import createConnector from './createConnector';
 
 import getControllerPosition from './getControllerPosition';
 
+import triggerEvent from './triggerEvent';
+
 export {
   parseData,
   hierarchyVisitAfter,
@@ -18,4 +20,5 @@ export {
   normalize,
   getControllerPosition,
   createConnector,
+  triggerEvent,
 }

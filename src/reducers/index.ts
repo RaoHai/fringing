@@ -11,6 +11,8 @@ import {
   UPDATE_TARGET_NODE, CLEAR_TARGET_NODE,
 
   ADD_CONNECTION,
+
+  REGISTER_CANVAS_CONTAINER,
 } from '../actions/index';
 
 
@@ -96,6 +98,15 @@ function connections(state = [], actions) {
     }
 }
 
+function eventProxy(state = {domContainer : null, canvasContainer: null}, actions) {
+  switch (actions.type) {
+    case REGISTER_CANVAS_CONTAINER:
+      return Object.assign({}, state, {canvasContainer: actions.container });
+    default:
+      return state;
+  }
+}
+
 export default combineReducers({
   nodes,
   connections,
@@ -103,4 +114,5 @@ export default combineReducers({
   activeNode,
   targetNode,
   eventListeners,
+  eventProxy,
 });

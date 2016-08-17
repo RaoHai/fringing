@@ -5,4 +5,5 @@ declare module 'react-art' {
     interface Text {}
     class Surface extends React.Component<any, any> {}
     class Group extends React.Component<any, any> {}
+    function Path() {}
 }
