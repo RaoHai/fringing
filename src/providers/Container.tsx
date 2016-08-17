@@ -26,10 +26,24 @@ export interface FringingProviderProps {
   children: any;
 }
 
+export interface ProviderConfig {
+  connects?: Array<any>;
+}
 
-export default function providerFunction(configs = defaultConfig) {
+function initialConnectionsByConfig(connects: Array<any>) {
+  if (!connects || !connects.length) {
+    return [];
+  }
+  return connects.map(connect => ({
+    source: { id: connect.from, },
+    target: { id: connect.to, },
+  }));
+}
+
+export default function providerFunction(configs: ProviderConfig = defaultConfig) {
+
   const initialStore = {
-    connections: [],
+    connections: initialConnectionsByConfig(configs.connects),
     configs: normalize(configs),
     activeNode: null,
     targetNode: null,
@@ -61,6 +75,9 @@ export default function providerFunction(configs = defaultConfig) {
         return childContext;
       }
 
+      constructor(props, context) {
+        super(props, context);
+      }
       render() {
         return (<Provider store={store}>
           <div className="fringing-provider">

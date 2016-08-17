@@ -1,5 +1,6 @@
 import '../definitions/reactART';
 import * as React from 'react';
+import { Map } from 'immutable';
 
 import { Surface } from 'react-art';
 import { connect } from 'react-redux';
@@ -10,6 +11,7 @@ import Link from '../components/Link/Link';
 
 export interface CanvasProps {
   connections: Array<any>;
+  nodes: Map;
   configs: any;
   activeNode: any;
   targetNode: any;
@@ -31,18 +33,22 @@ class CanvasContainer extends React.Component<CanvasProps, any> {
       height: data.height,
     });
   }
-  renderLink = (data, index) => {
-    return <Link data={{
-      source: this.getNodeData(data.source),
-      target: this.getNodeData(data.target)
-    }} key={`link-${index}`} />;
+  renderLink = (connections) => {
+    return connections
+      .map( connect => ({
+        source: this.props.nodes.get(connect.source.id),
+        target: this.props.nodes.get(connect.target.id),
+      }))
+      .filter( connect => connect.source && connect.target )
+      .map( (data, index) => <Link data={data} key={`link-${index}`} /> );
   }
   render() {
     const { connections } = this.props;
+    console.log('>> renderConnections', connections);
     const { width, height } = this.props.configs;
     return (<Surface width={width} height={height} >
       <TempLink />
-      {connections.map(this.renderLink)}
+      {this.renderLink(connections)}
     </Surface>);
   }
 }

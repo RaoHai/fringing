@@ -13,19 +13,6 @@ import {
   ADD_CONNECTION,
 } from '../actions/index';
 
-class Node {
-  public x: number;
-  public y: number;
-  public id: number;
-  constructor(data) {
-    Object.assign(this, data);
-    this.x = data.x || 0;
-    this.y = data.y || 0;
-  }
-  update(data) {
-    Object.assign(this, data);
-  }
-}
 
 function nodes(state = Map([]), actions) {
   switch (actions.type) {
@@ -95,6 +82,10 @@ function eventListeners(state = {}, actions) {
 function connections(state = [], actions) {
     switch (actions.type) {
       case ADD_CONNECTION:
+        // 如果 A 和 B 之间已存在连线, 则不做任何处理
+        if (state.find( item => item.source.id === actions.source.id) && state.find( item => item.target.id === actions.target.id) ) {
+          return state;
+        }
         state.push({
           source: actions.source,
           target: actions.target
