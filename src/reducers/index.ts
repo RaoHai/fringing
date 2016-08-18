@@ -4,7 +4,7 @@ const { combineReducers } = Redux;
 import {
   SET_CONFIG,
 
-  INSERT_NODE, UPDATE_NODE, UPDATE_NODE_POSITION,
+  INSERT_NODE, UPDATE_NODE, UPDATE_NODE_POSITION, ADD_NODE_REF,
 
   UPDATE_ACTIVE_NODE, CLEAR_ACTIVE_NODE,
 
@@ -16,14 +16,16 @@ import {
 } from '../actions/index';
 
 
-function nodes(state = Map([]), actions) {
-  switch (actions.type) {
+function nodes(state = Map([]), {type, payload = {}}) {
+  const { id, x, y, element, data, height, width } = payload;
+  const node = state.get(id);
+  switch (type) {
     case INSERT_NODE:
-      return state.set(actions.data.id, actions.data);
+      return state.set(id, data);
     case UPDATE_NODE_POSITION:
-      const { id, x, y } = actions;
-      const node = state.get(id);
       return state.set(id, Object.assign({}, node, { x, y}));
+    case ADD_NODE_REF:
+      return state.set(id, Object.assign({}, node, { element, height, width }));
     default:
       return state;
   }

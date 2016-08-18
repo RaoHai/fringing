@@ -27,22 +27,25 @@ class CanvasContainer extends React.Component<CanvasProps, any> {
   getNodeData(data) {
     const { nodes } = this.props;
     const node = nodes.get(data.id);
+    if (!node) {
+      return null;
+    }
     return Object.assign({}, {
       x: node.x,
       y: node.y,
+      width: node.width,
+      height: node.height,
     }, {
       activeControllerId: data.activeControllerId,
-      width: data.width,
-      height: data.height,
     });
   }
   renderLink = (connections) => {
     return connections
       .map( connect => ({
-        source: this.props.nodes.get(connect.source.id),
-        target: this.props.nodes.get(connect.target.id),
+        source: this.getNodeData(connect.source),
+        target: this.getNodeData(connect.target),
       }))
-      .filter( connect => connect.source && connect.target )
+      .filter( connect =>  connect.source && connect.target )
       .map( (data, index) => <Link data={data} key={`link-${index}`} /> );
   }
   componentDidMount() {
@@ -50,7 +53,6 @@ class CanvasContainer extends React.Component<CanvasProps, any> {
       type: REGISTER_CANVAS_CONTAINER,
       container: this.refs.layer.canvas._canvas,
     });
-    console.log('>> stage', this.refs.layer);
   }
   render() {
     const { connections } = this.props;

@@ -120,9 +120,11 @@ class DomContainer extends React.Component<DomContainerProps, any> {
   moveNode(id, x, y) {
     this.props.dispatch({
       type: UPDATE_NODE_POSITION,
-      id,
-      x,
-      y
+      payload: {
+        id,
+        x,
+        y
+      },
     });
     if (this.props.configs.onNodeChange) {
       this.props.configs.onNodeChange(id, { x, y});

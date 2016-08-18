@@ -2,9 +2,8 @@ import '../../definitions/reactART';
 import * as React from 'react';
 // import { Group, Text, Shape, Path } from 'react-art';
 import { getPath, getControllerPosition } from '../../functions';
-var RING_THREE_PATH = "M84,121 C130.391921,121 168,106.673113 168,89 C168,71.3268871 130.391921,57 84,57 C37.6080787,57 0,71.3268871 0,89 C0,106.673113 37.6080787,121 84,121 Z M84,121";
 
-import { Group, Path } from 'react-konva';
+import { Group, Path, Arrow } from 'react-konva';
 
 function box(x1, y1, x2, y2) {
   var minX = Math.min(x1, x2);
@@ -46,14 +45,18 @@ export default class Link extends React.Component<any, any> {
 
     const start = getControllerPosition(source);
     const end =  getControllerPosition(target);
-    const path = getPath(start, end);
+    // const path = getPath(start, end);
+    const mid = (start.y + start.y) / 2;
 
     return <Group>
-      <Path
-        data={path}
+      <Arrow
+        points={[start.x, start.y, end.x, end.y]}
         key={pathId}
         stroke="#d9d9d9"
-        strokeWidth={this.state.hover ? 5 : 3}
+        fill="#d9d9d9"
+        pointerLength="5"
+        pointerWidth="5"
+        strokeWidth={this.state.hover ? 4 : 2}
         onMouseOver={this.mouseMove}
         onMouseOut={this.mouseOut}
       />

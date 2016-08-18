@@ -9,7 +9,7 @@ import BaryCentre from './BaryCentre';
 
 import {
   UPDATE_ACTIVE_NODE, UPDATE_TARGET_NODE, CLEAR_TARGET_NODE, ADD_CONNECTION,
-  CLEAR_ACTIVE_NODE
+  CLEAR_ACTIVE_NODE, ADD_NODE_REF
 } from '../../actions';
 
 const nodeSource = {
@@ -83,23 +83,32 @@ class Node extends React.Component<NodeProps, any> {
   }
 
   componentDidMount() {
-    this.updatePosition();
+    // this.updatePosition();
+    this.props.dispatch({
+      type: ADD_NODE_REF,
+      payload: {
+        id:  this.getCurrentNode().id,
+        element: this.refs.element,
+        width: this.refs.element.clientWidth,
+        height: this.refs.element.clientHeight,
+      },
+    });
   }
 
-  componentDidUpdate() {
-    this.updatePosition();
-  }
-
-  updatePosition() {
-    const { hooks } = this.props;
-    const data = hooks.getNode();
-
-    const width = this.refs.element.clientWidth;
-    const height = this.refs.element.clientHeight;
-
-    this.refs.element.style.left = data.x - width / 2 + 'px';
-    this.refs.element.style.top = data.y - height / 2 + 'px';
-  }
+  // componentDidUpdate() {
+  //   this.updatePosition();
+  // }
+  //
+  // updatePosition() {
+  //   const { hooks } = this.props;
+  //   const data = hooks.getNode();
+  //
+  //   const width = this.refs.element.clientWidth;
+  //   const height = this.refs.element.clientHeight;
+  //
+  //   this.refs.element.style.left = data.x - width / 2 + 'px';
+  //   this.refs.element.style.top = data.y - height / 2 + 'px';
+  // }
 
   renderControllerPoint = (child, index) => {
     const { activeNode, hooks } = this.props;
@@ -170,6 +179,8 @@ class Node extends React.Component<NodeProps, any> {
     const data = getNode();
     const style = {
       opacity: isDragging ? .6 : 1,
+      left: data.x,
+      top: data.y,
     };
     const cls = classnames({
       ['node-wrapper']: true,

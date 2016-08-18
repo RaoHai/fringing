@@ -23,7 +23,10 @@ export default function createSourceConnector({ store , collect, props }) {
   console.log('>>createSourceConnector', store, props);
   store.dispatch({
     type: INSERT_NODE,
-    data: new Node(nodeData)
+    payload: {
+      id: nodeData.id,
+      data: new Node(nodeData),
+    }
   });
 
   const hooks = {

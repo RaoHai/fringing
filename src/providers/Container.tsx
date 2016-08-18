@@ -29,13 +29,31 @@ export interface ProviderConfig {
   connects?: Array<any>;
 }
 
+const pointMap = {
+  't': 1,
+  'l': 3,
+  'r': 4,
+  'b': 6,
+}
+
+function getConnect(connect) {
+  if (typeof connect === 'object') {
+    return {
+      id: connect.id,
+      activeControllerId: pointMap[connect.point]
+    };
+  }
+  return {
+    id: connect
+  };
+}
 function initialConnectionsByConfig(connects: Array<any>) {
   if (!connects || !connects.length) {
     return [];
   }
   return connects.map(connect => ({
-    source: { id: connect.from, },
-    target: { id: connect.to, },
+    source: getConnect(connect.from),
+    target: getConnect(connect.to),
   }));
 }
 

@@ -35,7 +35,6 @@ export default function nodeDecorator(_collect: CollectFunction = (any: any) => 
 
       constructor(props, context) {
         super(props, context);
-        console.log('>> node Provider', props);
 
         this.store = this.context.store;
         this.handlerConnector = createConnector({ store: this.store, collect, props });

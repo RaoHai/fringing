@@ -7,6 +7,7 @@ export function updateConfig(config) {
 export const INSERT_NODE = 'INSERT_NODE';
 export const UPDATE_NODE_POSITION = 'UPDATE_NODE_POSITION';
 export const UPDATE_NODE = 'UPDATE_NODE';
+export const ADD_NODE_REF = 'ADD_NODE_REF';
 
 export const UPDATE_ACTIVE_NODE = 'UPDATE_ACTIVE_NODE';
 export const CLEAR_ACTIVE_NODE = 'CLEAR_ACTIVE_NODE';
