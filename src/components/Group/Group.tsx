@@ -1,9 +1,15 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
+import { Map } from 'immutable';
 
-class Group extends React.Component<any, any> {
+export interface GroupProps {
+  nodes: Map;
+}
+
+class Group extends React.Component<GroupProps, any> {
   render() {
-    return <div className="fringing-group">{this.props.children}</div>
+    console.log('...', this.props.nodes);
+    return <div className="fringing-group" >{this.props.children}</div>;
   }
 }
 

@@ -20,7 +20,6 @@ export default function createSourceConnector({ store , collect, props }) {
   const { getNodeData } = collectResult;
   const nodeData = getNodeData(props);
 
-  console.log('>>createSourceConnector', store, props);
   store.dispatch({
     type: INSERT_NODE,
     payload: {

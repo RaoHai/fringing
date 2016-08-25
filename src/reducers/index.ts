@@ -1,5 +1,5 @@
 import * as Redux from 'redux';
-import { Map } from 'immutable';
+import { Map, Set } from 'immutable';
 const { combineReducers } = Redux;
 import {
   SET_CONFIG,
@@ -13,8 +13,22 @@ import {
   ADD_CONNECTION,
 
   REGISTER_CANVAS_CONTAINER,
+
+  ADD_NODE_TO_GROUP,
 } from '../actions/index';
 
+
+function groups(state = Map([]), { type, payload = {}}) {
+  const { groupId, node } = payload;
+  switch(type) {
+    case ADD_NODE_TO_GROUP:
+      const group = state.get(groupId) || new Set([]);
+      group.add(node.id);
+      return state.set(groupId, group);
+    default:
+      return state;
+  }
+}
 
 function nodes(state = Map([]), {type, payload = {}}) {
   const { id, x, y, element, data, height, width } = payload;
@@ -111,6 +125,7 @@ function eventProxy(state = {domContainer : null, canvasContainer: null}, action
 
 export default combineReducers({
   nodes,
+  groups,
   connections,
   configs,
   activeNode,

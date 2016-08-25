@@ -18,17 +18,18 @@ function Group(props) {
   return <div> Group: {props.children}</div>
 }
 
-const WrappedGroup = createGroup()(Group);
+const WrappedGroup = createGroup({
+  id: 'group_1',
+  position: {x: 100, y: 100}
+})(Group);
 
 const nodes = NODES.map((nodeData, idx) => <WrappedNode key={idx} data={nodeData} />);
 // @Provider(...)
 class App extends React.Component {
   render() {
-    return <div>
-      <WrappedGroup>
+    return <WrappedGroup>
         {nodes}
       </WrappedGroup>
-    </div>
   }
 }
 

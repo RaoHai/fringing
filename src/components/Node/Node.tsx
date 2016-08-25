@@ -48,6 +48,7 @@ export interface NodeProps {
   isDragging: boolean;
   connectDragSource: Function;
 }
+
 @DragSource(ItemTypes.NODE, nodeSource, (connect, monitor) => ({
   connectDragSource: connect.dragSource(),
   isDragging: monitor.isDragging()
@@ -84,10 +85,11 @@ class Node extends React.Component<NodeProps, any> {
 
   componentDidMount() {
     // this.updatePosition();
+    const currentNode = this.getCurrentNode();
     this.props.dispatch({
       type: ADD_NODE_REF,
       payload: {
-        id:  this.getCurrentNode().id,
+        id:  currentNode.id,
         element: this.refs.element,
         width: this.refs.element.clientWidth,
         height: this.refs.element.clientHeight,
@@ -174,14 +176,14 @@ class Node extends React.Component<NodeProps, any> {
     });
   }
   render() {
-    const { isDragging, connectDragSource, hooks, activeNode, targetNode } = this.props;
+    const { isDragging, connectDragSource, hooks, activeNode, targetNode, style } = this.props;
     const { getNode } = hooks;
     const data = getNode();
-    const style = {
+    const nodeStyle = Object.assign({}, style, {
       opacity: isDragging ? .6 : 1,
       left: data.x,
       top: data.y,
-    };
+    });
     const cls = classnames({
       ['node-wrapper']: true,
       ['active']: (activeNode && data.id === activeNode.id) || (targetNode && data.id === targetNode.id),
@@ -189,7 +191,7 @@ class Node extends React.Component<NodeProps, any> {
 
     return (
         <div className={cls}
-             style={style}
+             style={nodeStyle}
              onMouseEnter={this.mouseEnter}
              onMouseLeave={this.mouseLeave}
              onMouseDown={this.mouseDown}

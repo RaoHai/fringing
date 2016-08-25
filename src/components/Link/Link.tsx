@@ -5,20 +5,6 @@ import { getPath, getControllerPosition } from '../../functions';
 
 import { Group, Path, Arrow } from 'react-konva';
 
-function box(x1, y1, x2, y2) {
-  var minX = Math.min(x1, x2);
-  var maxX = Math.max(x1, x2);
-  var minY = Math.min(y1, y2);
-  var maxY = Math.max(y1, y2);
-
-  return {
-    minX: minX,
-    minY: minY,
-    maxX: maxX,
-    maxY: maxY
-  };
-}
-
 export default class Link extends React.Component<any, any> {
   constructor(props) {
     super(props);
@@ -46,11 +32,13 @@ export default class Link extends React.Component<any, any> {
     const start = getControllerPosition(source);
     const end =  getControllerPosition(target);
     // const path = getPath(start, end);
-    const mid = (start.y + start.y) / 2;
+    const mid = (start.x + end.x) / 2;
 
+    // const points = getPoints(start, end);
+    const points = getPath(source, target);
     return <Group>
       <Arrow
-        points={[start.x, start.y, end.x, end.y]}
+        points={points}
         key={pathId}
         stroke="#d9d9d9"
         fill="#d9d9d9"
