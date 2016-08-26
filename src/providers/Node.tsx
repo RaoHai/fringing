@@ -4,7 +4,7 @@ import { createConnector } from '../functions/index';
 import Node from '../components/Node/Node';
 import { connect } from 'react-redux';
 
-import { ADD_NODE_TO_GROUP } from '../actions';
+import { ADD_NODE_TO_GROUP } from '../actions/index';
 export type CollectFunction = (collectFunction: any) => void;
 
 export default function nodeDecorator(_collect: CollectFunction = (any: any) => {} ) {
