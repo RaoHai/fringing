@@ -10,6 +10,8 @@ import createConnector from './createConnector';
 import getControllerPosition from './getControllerPosition';
 
 import triggerEvent from './triggerEvent';
+import Connection from './Connection';
+import Node from './Node';
 
 export {
   parseData,
@@ -21,4 +23,6 @@ export {
   getControllerPosition,
   createConnector,
   triggerEvent,
+  Connection,
+  Node,
 }

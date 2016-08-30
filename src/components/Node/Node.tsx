@@ -68,13 +68,8 @@ class Node extends React.Component<NodeProps, any> {
   }
 
   connectNode(source, target) {
-    console.log('>> connectNode', source, target);
     const { dispatch } = this.props;
-    dispatch({
-      type: ADD_CONNECTION,
-      source,
-      target,
-    });
+    this.props.onConnect(source, target);
     dispatch({
       type: CLEAR_TARGET_NODE,
     });

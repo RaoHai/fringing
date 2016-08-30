@@ -1,5 +1,5 @@
 import { createContainer, createNode, createConnects } from 'rc-fringing';
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
 import 'rc-fringing/assets/index.less';
@@ -21,7 +21,9 @@ const WrappedNode = createNode(collect => ({
   getNodeData: (props) => props.data,
 }))(Node);
 
-const nodes = NODES.map((nodeData, idx) => <WrappedNode key={idx} data={nodeData} />);
+const nodes = NODES.map((nodeData, idx) => <WrappedNode onConnect={(a, b) => {
+  console.log('on', a, b);
+}} key={idx} data={nodeData} />);
 // @Provider(...)
 class App extends React.Component {
   render() {
@@ -33,12 +35,42 @@ const SimpleApp = createContainer({
   width: 800,
   height: 600,
   onNodeChange: (id, data) => console.log('>> onNodeChange', id, data),
-  connects: [
-    { from: { id: 1, point: 'r' }, to: { id: 2, point: 'l'}},
-    { from: { id: 3, point: 'r' }, to: { id: 4, point: 'r'}},
-    { from: { id: 3, point: 'l' }, to: { id: 4, point: 'l'}},
-  ],
 })(App);
 
 
-ReactDOM.render(<SimpleApp />, document.getElementById('__react-content'));
+class Wrapper extends Component {
+  constructor(...arg) {
+    super(...arg);
+    this.state = {
+      connections: [{ from: { id: 1, point: 'r' }, to: { id: 2, point: 'l' } }],
+    }
+  }
+  handleClick() {
+    this.setState({
+      connections: [
+        { from: { id: 1, point: 'r' }, to: { id: 2, point: 'l'}},
+        { from: { id: 3, point: 'r' }, to: { id: 4, point: 'r'}},
+        { from: { id: 3, point: 'l' }, to: { id: 4, point: 'l'}},
+      ],
+    });
+  }
+  handleConnectionsChange(before, after) {
+    this.setState({
+      connections: after,
+    });
+  }
+  render() {
+    return (<div>
+      <button onClick={this::this.handleClick}>change connections</button>
+      <SimpleApp
+        connections={this.state.connections}
+        onConnectionsChange={this.handleConnectionsChange.bind(this)}
+      />
+    </div>);
+  }
+}
+
+
+ReactDOM.render(<div>
+  <Wrapper />
+</div>, document.getElementById('__react-content'));

@@ -97,23 +97,6 @@ function eventListeners(state = {}, actions) {
   }
 }
 
-function connections(state = [], actions) {
-    switch (actions.type) {
-      case ADD_CONNECTION:
-        // 如果 A 和 B 之间已存在连线, 则不做任何处理
-        if (state.find( item => item.source.id === actions.source.id) && state.find( item => item.target.id === actions.target.id) ) {
-          return state;
-        }
-        state.push({
-          source: actions.source,
-          target: actions.target
-        });
-        return state.slice();
-      default:
-        return state;
-    }
-}
-
 function eventProxy(state = {domContainer : null, canvasContainer: null}, actions) {
   switch (actions.type) {
     case REGISTER_CANVAS_CONTAINER:
@@ -126,7 +109,6 @@ function eventProxy(state = {domContainer : null, canvasContainer: null}, action
 export default combineReducers({
   nodes,
   groups,
-  connections,
   configs,
   activeNode,
   targetNode,

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import hoistStatics from 'hoist-non-react-statics';
-import { createConnector } from '../functions/index';
-import Node from '../components/Node/Node';
+import { createConnector, Connection, Node } from '../functions/index';
+import NodeComponent from '../components/Node/Node';
 import { connect } from 'react-redux';
 
 import { ADD_NODE_TO_GROUP } from '../actions';
@@ -32,6 +32,8 @@ export default function nodeDecorator(_collect: CollectFunction = (any: any) => 
       private context: any;
       static contextTypes = {
         store: React.PropTypes.any,
+        connections: React.PropTypes.array,
+        onConnectionsChange: React.PropTypes.func,
         offset: React.PropTypes.object,
         groupId: React.PropTypes.any,
       };
@@ -54,18 +56,42 @@ export default function nodeDecorator(_collect: CollectFunction = (any: any) => 
         }
       }
 
+      handleConnect(source, target) {
+        if (!this.props.onConnect(source, target)) {
+          const { connections, onConnectionsChange } = this.context;
+          // ! update problems
+          const connection = new Connection({
+            from: {
+              id: source.id,
+              point: Node.valueMap[source.activeControllerId],
+            },
+            to: {
+              id: target.id,
+              point: Node.valueMap[target.activeControllerId],
+            }
+          });
+          if (!Connection.connectionExisted(connections, connection)) {
+            onConnectionsChange(
+              connections,
+              connections.concat(connection)
+            );
+          }
+        }
+      }
+
       render() {
         const { offset } = this.context;
-        return <Node
+        return <NodeComponent
           {...this.props}
           {...this.state}
+          onConnect={this.handleConnect.bind(this)}
           style={offset ? {transform: `translate3d(${-offset.x}px, ${-offset.y}px, 0)`} : {}}
         >
           <DecoratedComponent
             {...this.props}
             {...this.state}
           />
-        </Node>;
+        </NodeComponent>;
       }
 
     }

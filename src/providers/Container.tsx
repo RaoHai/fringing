@@ -9,7 +9,7 @@ import CanvasContainer from '../containers/CanvasContainer';
 import DOMContainer from '../containers/DomContainer';
 import DecoratorsContainer from '../containers/DecoratorsContainer';
 
-import { normalize } from '../functions/index';
+import { normalize, Connection } from '../functions';
 
 const defaultConfig = {
   width: window.innerWidth,
@@ -29,38 +29,9 @@ export interface ProviderConfig {
   connects?: Array<any>;
 }
 
-const pointMap = {
-  't': 1,
-  'l': 3,
-  'r': 4,
-  'b': 6,
-}
-
-function getConnect(connect) {
-  if (typeof connect === 'object') {
-    return {
-      id: connect.id,
-      activeControllerId: pointMap[connect.point]
-    };
-  }
-  return {
-    id: connect
-  };
-}
-function initialConnectionsByConfig(connects: Array<any>) {
-  if (!connects || !connects.length) {
-    return [];
-  }
-  return connects.map(connect => ({
-    source: getConnect(connect.from),
-    target: getConnect(connect.to),
-  }));
-}
-
 export default function providerFunction(configs: ProviderConfig = defaultConfig) {
 
   const initialStore = {
-    connections: initialConnectionsByConfig(configs.connects),
     configs: normalize(configs),
     activeNode: null,
     targetNode: null,
@@ -75,20 +46,22 @@ export default function providerFunction(configs: ProviderConfig = defaultConfig
   return function wrapWithPrivider(WrappedComponent) {
     const connectDisplayName = `FriningProvider(${getDisplayName(WrappedComponent)})`;
 
-    const childContext = {
-      store,
-    };
-
     class FringingProviderClass extends React.Component<FringingProviderProps, any> {
       static displayName: string;
       static WrappedComponent: Element;
 
       static childContextTypes = {
         store: React.PropTypes.any,
+        onConnectionsChange: React.PropTypes.func,
+        connections: React.PropTypes.array,
       };
 
       getChildContext() {
-        return childContext;
+        return {
+          store,
+          onConnectionsChange: this.props.onConnectionsChange,
+          connections: this.props.connections.map(c => c.constructor === Connection ? c : new Connection(c)),
+        };
       }
 
       constructor(props, context) {
@@ -96,13 +69,14 @@ export default function providerFunction(configs: ProviderConfig = defaultConfig
       }
 
       render() {
+        const connections = this.props.connections.map(c => c.constructor === Connection ? c : new Connection(c));
         return (<Provider store={store}>
           <div className="fringing-provider">
             <DOMContainer>
               <WrappedComponent {...this.props} />
               <DecoratorsContainer />
             </DOMContainer>
-            <CanvasContainer />
+            <CanvasContainer connections={connections}/>
           </div>
         </Provider>);
       }

@@ -10,6 +10,7 @@ import TempLink from '../components/Link/TempLink';
 import Link from '../components/Link/Link';
 
 import { REGISTER_CANVAS_CONTAINER } from '../actions';
+import { Node } from '../functions';
 
 export interface CanvasProps {
   connections: Array<any>;
@@ -36,14 +37,14 @@ class CanvasContainer extends React.Component<CanvasProps, any> {
       width: node.width,
       height: node.height,
     }, {
-      activeControllerId: data.activeControllerId,
+      activeControllerId: Node.pointMap[data.point],
     });
   }
   renderLink = (connections) => {
     return connections
       .map( connect => ({
-        source: this.getNodeData(connect.source),
-        target: this.getNodeData(connect.target),
+        source: this.getNodeData(connect.from),
+        target: this.getNodeData(connect.to),
       }))
       .filter( connect =>  connect.source && connect.target )
       .map( (data, index) => <Link data={data} key={`link-${index}`} /> );
@@ -71,6 +72,5 @@ export default connect(props => ({
   configs: props.configs,
   activeNode: props.activeNode,
   targetNode: props.targetNode,
-  connections: props.connections,
   eventProxy: props.eventProxy,
 }))(CanvasContainer);
