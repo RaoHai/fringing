@@ -53,7 +53,7 @@ export default function providerFunction(configs: ProviderConfig = defaultConfig
       static childContextTypes = {
         store: React.PropTypes.any,
         onConnectionsChange: React.PropTypes.func,
-        onActiveNodeChange: React.PropTypes.func,
+        onActiveNodesChange: React.PropTypes.func,
         connections: React.PropTypes.array,
       };
 
@@ -61,7 +61,7 @@ export default function providerFunction(configs: ProviderConfig = defaultConfig
         return {
           store,
           onConnectionsChange: this.props.onConnectionsChange,
-          onActiveNodeChange: this.props.onActiveNodeChange,
+          onActiveNodesChange: this.props.onActiveNodesChange,
           connections: this.props.connections.map(c => c.constructor === Connection ? c : new Connection(c)),
         };
       }

@@ -34,7 +34,7 @@ export default function nodeDecorator(_collect: CollectFunction = (any: any) => 
         store: React.PropTypes.any,
         connections: React.PropTypes.array,
         onConnectionsChange: React.PropTypes.func,
-        onActiveNodeChange: React.PropTypes.func,
+        onActiveNodesChange: React.PropTypes.func,
         offset: React.PropTypes.object,
         groupId: React.PropTypes.any,
       };
@@ -81,7 +81,9 @@ export default function nodeDecorator(_collect: CollectFunction = (any: any) => 
       }
       handleActive(node) {
         if (!this.props.onActive || !this.props.onActive(node)) {
-          this.context.onActiveNodeChange(node);
+          this.context.onActiveNodesChange([
+            node
+          ]);
         }
       }
 

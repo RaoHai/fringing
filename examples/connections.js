@@ -62,7 +62,7 @@ class Wrapper extends Component {
       connections: after,
     });
   }
-  handleActiveNodeChange(data) {
+  handleActiveNodesChange(data) {
     console.log('onActiveNode change', data);
   }
   render() {
@@ -71,7 +71,7 @@ class Wrapper extends Component {
       <SimpleApp
         connections={this.state.connections}
         onConnectionsChange={this.handleConnectionsChange.bind(this)}
-        onActiveNodeChange={this.handleActiveNodeChange.bind(this)}
+        onActiveNodesChange={this.handleActiveNodesChange.bind(this)}
       />
     </div>);
   }
