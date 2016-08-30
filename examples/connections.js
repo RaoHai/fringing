@@ -21,9 +21,12 @@ const WrappedNode = createNode(collect => ({
   getNodeData: (props) => props.data,
 }))(Node);
 
-const nodes = NODES.map((nodeData, idx) => <WrappedNode onConnect={(a, b) => {
-  console.log('on', a, b);
-}} key={idx} data={nodeData} />);
+const nodes = NODES.map((nodeData, idx) => <WrappedNode
+  onConnect={(a, b) => { console.log('onConnect', a, b); }}
+  onActive={(data) => { console.log('onActive', data); }}
+  key={idx}
+  data={nodeData}
+/>);
 // @Provider(...)
 class App extends React.Component {
   render() {
@@ -59,12 +62,16 @@ class Wrapper extends Component {
       connections: after,
     });
   }
+  handleActiveNodeChange(data) {
+    console.log('onActiveNode change', data);
+  }
   render() {
     return (<div>
       <button onClick={this::this.handleClick}>change connections</button>
       <SimpleApp
         connections={this.state.connections}
         onConnectionsChange={this.handleConnectionsChange.bind(this)}
+        onActiveNodeChange={this.handleActiveNodeChange.bind(this)}
       />
     </div>);
   }

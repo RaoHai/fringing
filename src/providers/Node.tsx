@@ -34,6 +34,7 @@ export default function nodeDecorator(_collect: CollectFunction = (any: any) => 
         store: React.PropTypes.any,
         connections: React.PropTypes.array,
         onConnectionsChange: React.PropTypes.func,
+        onActiveNodeChange: React.PropTypes.func,
         offset: React.PropTypes.object,
         groupId: React.PropTypes.any,
       };
@@ -57,7 +58,7 @@ export default function nodeDecorator(_collect: CollectFunction = (any: any) => 
       }
 
       handleConnect(source, target) {
-        if (!this.props.onConnect(source, target)) {
+        if (!this.props.onConnect || !this.props.onConnect(source, target)) {
           const { connections, onConnectionsChange } = this.context;
           // ! update problems
           const connection = new Connection({
@@ -78,6 +79,11 @@ export default function nodeDecorator(_collect: CollectFunction = (any: any) => 
           }
         }
       }
+      handleActive(node) {
+        if (!this.props.onActive || !this.props.onActive(node)) {
+          this.context.onActiveNodeChange(node);
+        }
+      }
 
       render() {
         const { offset } = this.context;
@@ -85,6 +91,7 @@ export default function nodeDecorator(_collect: CollectFunction = (any: any) => 
           {...this.props}
           {...this.state}
           onConnect={this.handleConnect.bind(this)}
+          onActive={this.handleActive.bind(this)}
           style={offset ? {transform: `translate3d(${-offset.x}px, ${-offset.y}px, 0)`} : {}}
         >
           <DecoratedComponent

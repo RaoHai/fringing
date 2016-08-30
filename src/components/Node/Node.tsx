@@ -65,6 +65,7 @@ class Node extends React.Component<NodeProps, any> {
       type: UPDATE_ACTIVE_NODE,
       data,
     });
+    this.props.onActive(data);
   }
 
   connectNode(source, target) {
@@ -138,6 +139,7 @@ class Node extends React.Component<NodeProps, any> {
       type: UPDATE_ACTIVE_NODE,
       data,
     });
+    this.props.onActive(data);
   }
   mouseDown = (ev) => {
     const data = this.getCurrentNode();
