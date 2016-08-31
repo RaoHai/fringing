@@ -81,6 +81,6 @@ export default function groupDecorator(groupConfig: GroupConfig = defaultGroupCo
     GroupContainer.DecoratedComponent = DecoratedComponent;
     GroupContainer.displayName = `Group(${displayName})`;
 
-    return hoistStatics(connect(props => props )(GroupContainer), DecoratedComponent);
+    return hoistStatics(connect(props => props)(GroupContainer), DecoratedComponent);
   }
 }

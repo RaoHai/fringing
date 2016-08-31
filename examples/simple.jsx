@@ -30,5 +30,19 @@ const SimpleApp = createContainer({
   onNodeChange: (id, data) => console.log('>> onNodeChange', id, data),
 })(App);
 
+const Wrapper = React.createClass({
+  getInitialState() {
+    return {
+      connections: [],
+    };
+  },
+  
+  render() {
+    return <SimpleApp
+      connections={this.state.connections}
+      onConnectionsChange={(before, after) => this.setState({ connections: after })}
+    />;
+  }
+});
 
-ReactDOM.render(<SimpleApp />, document.getElementById('__react-content'));
+ReactDOM.render(<Wrapper />, document.getElementById('__react-content'));

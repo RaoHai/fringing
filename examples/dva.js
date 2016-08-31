@@ -1,7 +1,7 @@
 import React from 'react';
 import dva, { connect } from 'dva';
 import { Router, Route } from 'dva/router';
-import { Container, NodeProvider } from 'rc-fringing';
+import { createContainer, createNode } from 'rc-fringing';
 
 import 'rc-fringing/assets/index.less';
 
@@ -9,8 +9,16 @@ const app = dva();
 
 // 2. Model
 app.model({
-  namespace: 'nodes',
-  state: [{ id : 1, x: 100, y: 200 }, { id : 2, x: 200, y: 100}],
+  namespace: 'app',
+  state: {
+    nodes: [{id: 1, x: 100, y: 200}, {id: 2, x: 200, y: 100}],
+    connections: []
+  },
+  reducers: {
+    updateConnections(state, { payload }) {
+      return Object.assign({}, state, { connections: payload.connections});
+    }
+  }
 });
 
 
@@ -18,27 +26,44 @@ function Node(props) {
   return <div> Node [{props.data.id}] </div>
 }
 
-const WrappedNode = NodeProvider(collect => ({
+const WrappedNode = createNode(collect => ({
   getNodeData: (props) => props.data,
 }))(Node);
 
 // @Provider(...)
 class App extends React.Component {
   render() {
-    const nodes = this.props.nodes.map((nodeData, idx) => <WrappedNode key={idx} data={nodeData} />);
-    return <div>{nodes}</div>
+    const nodesList = this.props.nodes.map((nodeData, idx) => <WrappedNode key={idx} data={nodeData} />);
+    return <div>{nodesList}</div>
   }
 }
 
-let Canvas = Container({
+let Canvas = createContainer({
   width: 800,
   height: 600,
   onNodeChange: (id, data) => console.log('>> onNodeChange', id, data),
 })(App);
 
-const DvaApp = connect(({ nodes }) => ({
-  nodes
-}))(Canvas);
+function Wrapper(props) {
+  function onConnectionsChange(before, after) {
+    props.dispatch({
+      type: 'updateConnections',
+      payload: {
+        connections: after,
+      }
+    });
+  }
+  return <Canvas
+    {...props}
+    onConnectionsChange={onConnectionsChange}
+  />
+}
+
+
+const DvaApp = connect(({ app }) => ({
+  nodes: app.nodes,
+  connections: app.connections,
+}))(Wrapper);
 
 app.router(({ history }) =>
   <Router history={history}>

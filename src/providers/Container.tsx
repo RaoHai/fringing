@@ -23,12 +23,16 @@ function getDisplayName(WrappedComponent) {
 
 export interface FringingProviderProps {
   children: any;
+  onConnectionsChange?: Function;
+  onActiveNodesChange?: Function;
+  connections?: Array<any>;
 }
 
 export interface ProviderConfig {
   connects?: Array<any>;
 }
 
+function noop () {};
 export default function providerFunction(configs: ProviderConfig = defaultConfig) {
 
   const initialStore = {
@@ -56,6 +60,11 @@ export default function providerFunction(configs: ProviderConfig = defaultConfig
         onActiveNodesChange: React.PropTypes.func,
         connections: React.PropTypes.array,
       };
+      static defaultProps = {
+        connections: [],
+        onActiveNodesChange: noop,
+        onConnectionsChange: noop,
+      };
 
       getChildContext() {
         return {
@@ -68,6 +77,9 @@ export default function providerFunction(configs: ProviderConfig = defaultConfig
 
       constructor(props, context) {
         super(props, context);
+        if (props.onConnectionsChange === noop) {
+          console.warn('You must provide `onConnectionsChange` function to control `connection` props.');
+        }
       }
 
       render() {
