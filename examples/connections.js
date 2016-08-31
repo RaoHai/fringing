@@ -5,10 +5,12 @@ import ReactDOM from 'react-dom';
 import 'rc-fringing/assets/index.less';
 
 const NODES = [
-  { id : 1,x: 100, y: 0},
-  { id : 2, x: 200, y: 100},
-  {id: 3, x: 300, y: 0},
-  {id: 4, x: 300, y: 200},
+  { id : 1,x: 50, y: 0},
+  { id : 2, x: 150, y: 100},
+  {id: 3, x: 300, y: 50},
+  {id: 4, x: 350, y: 200},
+  {id: 5, x: 450, y: 0},
+  {id: 6, x: 550, y: 200}
 ];
 
 function Node(props) {
@@ -45,15 +47,24 @@ class Wrapper extends Component {
   constructor(...arg) {
     super(...arg);
     this.state = {
-      connections: [{ from: { id: 1, point: 'r' }, to: { id: 2, point: 'l' } }],
+      connections: [
+        { from: { id: 4, point: 't' }, to: { id: 3, point: 't'}}, // 反向
+        { from: { id: 5, point: 'b' }, to: { id: 6, point: 'l'}}, // 垂直
+        { from: { id: 5, point: 'l' }, to: { id: 4, point: 'b'}}, // 垂直
+        { from: { id: 5, point: 'r' }, to: { id: 4, point: 'l'}},
+        { from: { id: 5, point: 'l' }, to: { id: 6, point: 'b'}},
+      ],
     }
   }
   handleClick() {
     this.setState({
       connections: [
-        { from: { id: 1, point: 'r' }, to: { id: 2, point: 'l'}},
-        { from: { id: 3, point: 'r' }, to: { id: 4, point: 'r'}},
-        { from: { id: 3, point: 'l' }, to: { id: 4, point: 'l'}},
+        { from: { id: 1, point: 'r' }, to: { id: 2, point: 'l'}}, // 同向
+        { from: { id: 1, point: 'l' }, to: { id: 2, point: 'r'}}, // 同向,弯折
+        { from: { id: 4, point: 't'}, to: { id: 3, point: 'b'}}, // 同向，竖直
+        { from: { id: 4, point: 'r' }, to: { id: 3, point: 'r'}}, // 反向
+        { from: { id: 3, point: 'l' }, to: { id: 4, point: 'l'}}, // 反向
+        { from: { id: 3, point: 'b' }, to: { id: 4, point: 'b'}}, // 反向
       ],
     });
   }
