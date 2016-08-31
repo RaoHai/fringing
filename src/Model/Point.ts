@@ -1,5 +1,4 @@
-import * as v2d from 'vector2d';
-const { Float32Vector } = v2d;
+import V from 'victor';
 
 export interface PointConfig {
   activeControllerId: number;
@@ -25,16 +24,15 @@ const controllerPointsMap =  [
 ];
 
 const vectorMap = [
-  /* tl */ Float32Vector(-1, 1),
-  /* t  */ Float32Vector(0, 1),
-  /* tr */ Float32Vector(1, 1),
-  /* l  */ Float32Vector(-1, 0),
-  /* r  */ Float32Vector(1, 0),
-  /* bl */ Float32Vector(-1, -1),
-  /* b  */ Float32Vector(0, -1),
-  /* br */ Float32Vector(1, -1)
+  /* tl */ new V(-1, 1),
+  /* t  */ new V(0, 1),
+  /* tr */ new V(1, 1),
+  /* l  */ new V(-1, 0),
+  /* r  */ new V(1, 0),
+  /* bl */ new V(-1, -1),
+  /* b  */ new V(0, -1),
+  /* br */ new V(1, -1)
 ]
-type Float32Vector = Float32Vector;
 
 export default class Point {
   public x:number;
@@ -42,8 +40,8 @@ export default class Point {
   public width: number;
   public height: number;
   public activeControllerId: number;
-  public vector: Float32Vector;
-  public vectorRevert: Float32Vector;
+  public vector: typeof V;
+  public vectorInvert: typeof V;
   constructor(config:PointConfig) {
     this.width = config.width;
     this.height = config.height;
@@ -58,7 +56,7 @@ export default class Point {
       this.x = x;
       this.y = y;
       this.vector = vectorMap[config.activeControllerId];
-      this.vectorRevert = this.vector.clone().reverse();
+      this.vectorInvert = this.vector.clone().invert();
     }
 
   }

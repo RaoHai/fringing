@@ -64,6 +64,7 @@
     "react-konva": "^1.0.5",
     "react-redux": "^4.4.5",
     "redux": "^3.5.2",
-    "vector2d": "^2.1.0"
+    "vector2d": "^2.1.0",
+    "victor": "^1.1.0"
   }
 }
