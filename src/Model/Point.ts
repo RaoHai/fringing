@@ -2,10 +2,10 @@ import V from 'victor';
 
 export interface PointConfig {
   activeControllerId: number;
-  x: number,
-  y: number,
-  width: number,
-  height: number,
+  x: number;
+  y: number;
+  width: number;
+  height: number;
 }
 
 const pointConfig = {
@@ -40,8 +40,8 @@ export default class Point {
   public width: number;
   public height: number;
   public activeControllerId: number;
-  public vector: typeof V;
-  public vectorInvert: typeof V;
+  public vector: V;
+  public vectorInvert: V;
   constructor(config:PointConfig) {
     this.width = config.width;
     this.height = config.height;

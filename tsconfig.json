@@ -2,12 +2,23 @@
   "compilerOptions": {
     "target": "ES6",
     "experimentalDecorators": true,
-    "jsx": "react"
+    "jsx": "react",
+    "sourceMap": true,
+    "moduleResolution": "node",
+    "isolatedModules": false,
+    "emitDecoratorMetadata": true,
+    "declaration": false,
+    "noImplicitAny": false,
+    "removeComments": true,
+    "noLib": false,
+    "preserveConstEnums": true,
+    "suppressImplicitAnyIndexErrors": true
   },
   "exclude": [
     "node_modules"
   ],
   "files": [
+    "typings/index.d.ts",
     "src/definitions/index.d.ts"
   ]
 }

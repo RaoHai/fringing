@@ -1,6 +1,7 @@
 {
   "globalDependencies": {
     "classnames": "registry:dt/classnames#0.0.0+20160316155526",
+    "immutable": "registry:dt/immutable#3.8.1+20160608070634",
     "lodash": "registry:dt/lodash#3.10.0+20160720001309",
     "react": "registry:dt/react#0.14.0+20160720060442",
     "react-dnd": "registry:dt/react-dnd#2.0.2+20160725191453",

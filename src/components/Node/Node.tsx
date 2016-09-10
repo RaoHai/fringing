@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import classnames from 'classnames';
 
 import ItemTypes from '../../definitions/itemTypes';
-import ControllerPoint from './ControllderPoint';
+import ControllerPoint from './ControllerPoint';
 import BaryCentre from './BaryCentre';
 
 import {
@@ -44,9 +44,12 @@ export interface NodeProps {
   dispatch: any;
   hooks: any;
   activeNode: any;
+  onActive?: Function;
+  onConnect?: Function;
   targetNode: any;
   isDragging: boolean;
   connectDragSource: Function;
+  style?: any;
 }
 
 @DragSource(ItemTypes.NODE, nodeSource, (connect, monitor) => ({

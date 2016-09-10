@@ -1,5 +1,4 @@
-import * as lodash from 'lodash';
-import { Node } from '../definitions';
+import { Node } from '../definitions/index';
 import hierarchyVisitAfter from './hierarchyVisitAfter';
 
 function separation(left: Node, right: Node) {
@@ -10,9 +9,6 @@ function clusterX(children: Array<Node>) {
   return children.reduce((x, child) => x + child.x, 0) / children.length;
 }
 
-function clusterY(children) {
-  return 1 + _.max(children.map(child => child.y));
-}
 
 function clusterLeft(node: Node) {
     const children = node.children;
@@ -34,7 +30,7 @@ export default function parseData(root: Node) {
     if (children && children.length) {
       node.x = clusterX(children);
       node.y = node.__level__ * 1;
-      maxDeep = lodash.max([maxDeep, node.__level__ + 1]);
+      maxDeep = Math.max(maxDeep, node.__level__ + 1);
       console.log('>> maxDeep', node);
     } else {
       node.x = previousNode ? x += separation(node, previousNode) : 0;

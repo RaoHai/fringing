@@ -1,4 +1,3 @@
-import '../definitions/reactART';
 import * as React from 'react';
 import { Map } from 'immutable';
 

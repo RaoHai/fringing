@@ -4,8 +4,7 @@ export default function getNodes(data) {
   const nodeMap = {};
   const linkMap = {};
   const currentData = data;
-
-  function readNode(node, parent = null) {
+  const readNode = function (node, parent = null) {
     nodeMap[node.id] = node;
 
     if (parent) {

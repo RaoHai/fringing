@@ -1,10 +1,7 @@
-declare module hoistStatics {
-  function hoistStaticFunction() : any;
-}
-
-declare module 'hoist-non-react-statics' {
-  export = hoistStatics;
-}
+/// <reference path="./hoist-non-react-statics/index.d.ts" />
+/// <reference path="./reactArt/index.d.ts" />
+/// <reference path="./objectAssign/index.d.ts" />
+/// <reference path="./victor/index.d.ts" />
 
 export interface Node {
   __level__: number;

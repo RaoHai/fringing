@@ -1,4 +1,3 @@
-import '../../definitions/reactART';
 import * as React from 'react';
 // import { Group, Text, Shape, Path } from 'react-art';
 import { getPath, getControllerPosition } from '../../functions';

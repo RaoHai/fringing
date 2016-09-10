@@ -1,9 +1,8 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
 import { Map } from 'immutable';
 
 export interface GroupProps {
-  nodes: Map;
+  nodes: Map<string, any>;
 }
 
 class Group extends React.Component<GroupProps, any> {

@@ -1,4 +1,4 @@
-import { Node } from '../definitions';
+import { Node } from '../definitions/index';
 
 export default function hierarchyVisitAfter(node: Node, callback) {
   const nodes = [node];

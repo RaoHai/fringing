@@ -1,4 +1,4 @@
-import { INSERT_NODE } from '../actions';
+import { INSERT_NODE } from '../actions/index';
 
 class Node {
   public x: number;

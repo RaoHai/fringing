@@ -1,5 +1,3 @@
-import '../definitions/reactART';
-// dependencies
 import * as React from 'react';
 import { DropTarget, DragDropContext } from 'react-dnd';
 import { connect } from 'react-redux';

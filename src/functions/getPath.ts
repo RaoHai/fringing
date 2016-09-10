@@ -52,7 +52,7 @@ export function getTwoBrokeLine(startPosition, endPosition) {
       break;
   }
 
-  return [p0, p1, p2, p3].map(defaultProjection).reduce(reduceArray)
+  return [p0, p1, p2, p3].map(defaultProjection).reduce(reduceArray);
 }
 
 /**
@@ -97,9 +97,9 @@ function getPoints(start, end) {
   const pn = {
     x: end.x,
     y: end.y,
-  }
+  };
   const points = [p0];
-  console.log('>> vector',vector,  nagetiveCross);
+  console.log('>> vector', vector,  nagetiveCross);
   switch (vector) {
     // 当 A B 平行时,需要经过 0,2,4....次转向和平移
     case 1:
@@ -130,7 +130,6 @@ function getPoints(start, end) {
           return [p0, {y: mid, x: p0.x}, {y: mid, x: pn.x}, pn].map(defaultProjection).reduce(reduceArray);
         }
       }
-     break;
     // 当 A B 垂直时,需要经过 1,3,5....次转向和平移
     // 垂直时需要额外判断：
     // 比如 (-1,0) 和 (0, 1) 互相垂直，
@@ -158,7 +157,6 @@ function getPoints(start, end) {
       }
       points.push(pn);
       return points.map(defaultProjection).reduce(reduceArray);
-     break;
     // // 当 A B 相向时,需要经过 2,4,6....次转向和平移
     case -1:
       let attr;
@@ -179,6 +177,5 @@ function getPoints(start, end) {
 
       points.push(pn);
       return points.map(defaultProjection).reduce(reduceArray);
-     break;
   }
 }
