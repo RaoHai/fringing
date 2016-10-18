@@ -20,6 +20,9 @@ const nodeSource = {
       x: currentNode.x,
       y: currentNode.y,
     };
+  },
+  canDrag(props) {
+    return props.canDrag ? props.canDrag(props) : true;
   }
 };
 
@@ -49,6 +52,9 @@ export interface NodeProps {
   targetNode: any;
   isDragging: boolean;
   connectDragSource: Function;
+  canSelect?: Function;
+  canConnectFrom?: Function;
+  canConnectTo?: Function;
   style?: any;
 }
 
@@ -148,18 +154,21 @@ class Node extends React.Component<NodeProps, any> {
     const data = this.getCurrentNode();
     const {activeNode, targetNode} = this.props;
 
-    if (activeNode && activeNode.activeControllerId !== null
+    if (this.canConnectTo() 
+      && activeNode && activeNode.activeControllerId !== null
       && targetNode // && targetNode.activeControllerId !== null
       && targetNode.id === data.id) {
       return this.connectNode(activeNode, targetNode);
     }
     if (!activeNode || activeNode.id !== data.id) {
-      return this.activeNode(data);
+      if (!this.props.canSelect || (this.props.canSelect && this.props.canSelect(this.props))) {
+        return this.activeNode(data);
+      }
     }
   }
   mouseEnter = (ev) => {
     const { dispatch, activeNode } = this.props;
-    if (activeNode) {
+    if (activeNode && this.canConnectTo()) {
       const data = this.getCurrentNode();
       const activeControllerId = getActiveControllerId(activeNode, ev.nativeEvent);
       data.activeControllerId = activeControllerId;
@@ -174,6 +183,18 @@ class Node extends React.Component<NodeProps, any> {
     dispatch({
       type: CLEAR_TARGET_NODE,
     });
+  }
+  canConnectFrom = () => {
+    if (!this.props.canConnectFrom) {
+      return true;
+    }
+    return this.props.canConnectFrom(this.props);
+  }
+  canConnectTo = () => {
+    if (!this.props.canConnectTo) {
+      return true;
+    }
+    return this.props.canConnectTo(this.props);
   }
   render() {
     const { isDragging, connectDragSource, hooks, activeNode, targetNode, style } = this.props;
@@ -197,7 +218,7 @@ class Node extends React.Component<NodeProps, any> {
              onMouseDown={this.mouseDown}
              ref="element">
           {connectDragSource(<div className="editor-node" >{this.props.children}</div>)}
-          {React.Children.map(controllerPoints, this.renderControllerPoint)}
+          {this.canConnectFrom() ? React.Children.map(controllerPoints, this.renderControllerPoint) : null}
           <BaryCentre />
         </div>
     );

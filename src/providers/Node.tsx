@@ -21,6 +21,7 @@ export default function nodeDecorator(_collect: CollectFunction = (any: any) => 
       DecoratedComponent.displayName ||
       DecoratedComponent.name ||
       'Node';
+    const collected = collect();
 
     class NodeContainer extends React.Component<any, any> {
       static DecoratedComponent: Element;
@@ -41,7 +42,7 @@ export default function nodeDecorator(_collect: CollectFunction = (any: any) => 
 
       constructor(props, context) {
         super(props, context);
-
+    
         this.store = this.context.store;
         this.handlerConnector = createConnector({ store: this.store, collect, props });
         this.state = this.handlerConnector;
@@ -51,7 +52,7 @@ export default function nodeDecorator(_collect: CollectFunction = (any: any) => 
             type: ADD_NODE_TO_GROUP,
             payload: {
               groupId: context.groupId,
-              node: collect().getNodeData(props),
+              node: collected.getNodeData(props),
             }
           });
         }
@@ -92,6 +93,10 @@ export default function nodeDecorator(_collect: CollectFunction = (any: any) => 
         return <NodeComponent
           {...this.props}
           {...this.state}
+          canDrag={collected.canDrag}
+          canSelect={collected.canSelect}
+          canConnectFrom={collected.canConnectFrom}
+          canConnectTo={collected.canConnectTo}
           onConnect={this.handleConnect.bind(this)}
           onActive={this.handleActive.bind(this)}
           style={offset ? {transform: `translate3d(${-offset.x}px, ${-offset.y}px, 0)`} : {}}

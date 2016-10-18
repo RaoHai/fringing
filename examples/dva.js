@@ -11,7 +11,7 @@ const app = dva();
 app.model({
   namespace: 'app',
   state: {
-    nodes: [{id: 1, x: 100, y: 200}, {id: 2, x: 200, y: 100}],
+    nodes: [{id: 1, x: 100, y: 200}, {id: 2, x: 200, y: 100}, {id: 3, x: 300, y: 300}],
     connections: []
   },
   reducers: {
@@ -28,6 +28,10 @@ function Node(props) {
 
 const WrappedNode = createNode(collect => ({
   getNodeData: (props) => props.data,
+  canDrag: (props) => props.data.id !== 1,
+  canSelect: (props) => props.data.id !== 2,
+  canConnectFrom: (props) => props.data.id !== 3,
+  canConnectTo: (props) => props.data.id !== 3
 }))(Node);
 
 // @Provider(...)
