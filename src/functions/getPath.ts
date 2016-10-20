@@ -72,7 +72,6 @@ function equals(vector1, vector2) {
 export default function getPath(source, target) {
   const startPosition = new Point(source);
   const endPosition =  new Point(target);
-
   return getPoints(startPosition, endPosition);
 }
 
@@ -99,7 +98,7 @@ function getPoints(start, end) {
     y: end.y,
   };
   const points = [p0];
-  console.log('>> vector', vector,  nagetiveCross);
+  console.log('>> vector', start.vector, yVector);
   switch (vector) {
     // 当 A B 平行时,需要经过 0,2,4....次转向和平移
     case 1:
@@ -136,21 +135,40 @@ function getPoints(start, end) {
     // 但是如果
     case 0:
     //   // 如果从 x 轴连出
-      console.log('==>> vector', nagetiveCross);
+      console.log('>> nagetiveCross', nagetiveCross, connectVector);
       if (equals(start.vector, xVector) || equals(start.vector, xVectorReverse)) {
-        if (nagetiveCross < 0) {
-          points.push({x: start.x + start.vector.x * CORNER_PADDING, y: start.y + start.vector.y * CORNER_PADDING});
-          points.push({x: pn.x, y: p0.y});
+      if ((equals(start.vector, xVector) && end.x < start.x) ||
+          (equals(start.vector, xVectorReverse) && end.x >= start.x)
+        ) {
+          const mid = (p0.y + pn.y) / 2;
+          if (nagetiveCross < 0) {
+            points.push({x: start.x + start.vector.x * CORNER_PADDING, y: start.y + start.vector.y * CORNER_PADDING});
+            points.push({x: start.x + start.vector.x * CORNER_PADDING, y: mid});
+            points.push({x: pn.x, y: mid});
+          } else {
+            points.push({x: start.x + start.vector.x * CORNER_PADDING, y: start.y + start.vector.y * CORNER_PADDING});
+            points.push({x: start.x + start.vector.x * CORNER_PADDING, y: end.y - end.vector.y * CORNER_PADDING });
+            points.push({x: pn.x, y: end.y - end.vector.y * CORNER_PADDING });
+          }
         } else {
-          points.push({x: p0.x + start.vector.x * CORNER_PADDING, y: p0.y});
-          points.push({x: p0.x + start.vector.x * CORNER_PADDING, y: pn.y - end.vector.y * CORNER_PADDING });
-          points.push({x: pn.x,  y: pn.y - end.vector.y * CORNER_PADDING });
+          if (nagetiveCross < 0) {
+            points.push({x: pn.x, y: p0.y});
+          } else {
+            const getFunc = end.vector.x > 0 ? Math.max : Math.min;
+            const maxNumber = getFunc(p0.x, pn.x);
+            console.log('>> start', start);
+            points.push(Object.assign({}, p0, {x : maxNumber + (CORNER_PADDING + start.width / 2) * start.vector.x}));
+            points.push(Object.assign({}, pn, {x : maxNumber + (CORNER_PADDING + start.width / 2) * start.vector.x, y: pn.y - end.vector.y * CORNER_PADDING }));
+            points.push({x: pn.x, y: pn.y - end.vector.y * CORNER_PADDING});
+         }
         }
       } else {
+        // 如果开始向量与 y 轴同向，且结束点跟开始向量同侧
         if ((equals(start.vector, yVector) && end.y >= start.y) ||
           (equals(start.vector, yVectorReverse) && end.y < start.y)) {
-          points.push({x: start.x + start.vector.x * CORNER_PADDING, y: start.y + start.vector.y * CORNER_PADDING});
-          points.push({x: pn.x, y: p0.y});
+          points.push({x: start.x + start.vector.x * CORNER_PADDING, y: start.y - start.vector.y * CORNER_PADDING});
+          points.push({x: end.x + end.vector.x * CORNER_PADDING, y: start.y - start.vector.y * CORNER_PADDING});
+          points.push({x: end.x + end.vector.x * CORNER_PADDING, y: end.y});
         } else {
           points.push({x: p0.x, y: pn.y});
         }

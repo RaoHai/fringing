@@ -15,6 +15,8 @@ import {
   REGISTER_CANVAS_CONTAINER,
 
   ADD_NODE_TO_GROUP,
+
+  BEGIN_CONNECTION, END_CONNECTION
 } from '../actions/index';
 
 
@@ -58,7 +60,6 @@ function configs(state = {}, actions) {
 function activeNode(state = null, actions) {
   switch (actions.type) {
     case UPDATE_ACTIVE_NODE:
-      console.log('>> updateActiveNode', actions.data);
       return Object.assign({}, actions.data);
     case CLEAR_ACTIVE_NODE:
       return null;

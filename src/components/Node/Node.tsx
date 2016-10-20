@@ -1,4 +1,5 @@
 import * as React from 'react';
+import ReactDOM from 'react-dom';
 import { DragSource } from 'react-dnd';
 import { connect } from 'react-redux';
 import classnames from 'classnames';
@@ -9,7 +10,7 @@ import BaryCentre from './BaryCentre';
 
 import {
   UPDATE_ACTIVE_NODE, UPDATE_TARGET_NODE, CLEAR_TARGET_NODE, ADD_CONNECTION,
-  CLEAR_ACTIVE_NODE, ADD_NODE_REF
+  CLEAR_ACTIVE_NODE, ADD_NODE_REF, BEGIN_CONNECTION, END_CONNECTION,
 } from '../../actions';
 
 const nodeSource = {
@@ -49,6 +50,7 @@ export interface NodeProps {
   activeNode: any;
   onActive?: Function;
   onConnect?: Function;
+  connecting: any;
   targetNode: any;
   isDragging: boolean;
   connectDragSource: Function;
@@ -102,21 +104,6 @@ class Node extends React.Component<NodeProps, any> {
     });
   }
 
-  // componentDidUpdate() {
-  //   this.updatePosition();
-  // }
-  //
-  // updatePosition() {
-  //   const { hooks } = this.props;
-  //   const data = hooks.getNode();
-  //
-  //   const width = this.refs.element.clientWidth;
-  //   const height = this.refs.element.clientHeight;
-  //
-  //   this.refs.element.style.left = data.x - width / 2 + 'px';
-  //   this.refs.element.style.top = data.y - height / 2 + 'px';
-  // }
-
   renderControllerPoint = (child, index) => {
     const { activeNode, hooks } = this.props;
     const data = hooks.getNode();
@@ -147,6 +134,9 @@ class Node extends React.Component<NodeProps, any> {
     dispatch({
       type: UPDATE_ACTIVE_NODE,
       data,
+    });
+    dispatch({
+      type: BEGIN_CONNECTION,
     });
     this.props.onActive(data);
   }
@@ -197,7 +187,7 @@ class Node extends React.Component<NodeProps, any> {
     return this.props.canConnectTo(this.props);
   }
   render() {
-    const { isDragging, connectDragSource, hooks, activeNode, targetNode, style } = this.props;
+    const { isDragging, connectDragSource, hooks, activeNode, targetNode, style, connecting } = this.props;
     const { getNode } = hooks;
     const data = getNode();
     const nodeStyle = Object.assign({}, style, {
@@ -207,7 +197,7 @@ class Node extends React.Component<NodeProps, any> {
     });
     const cls = classnames({
       ['node-wrapper']: true,
-      ['active']: (activeNode && data.id === activeNode.id) || (targetNode && data.id === targetNode.id),
+      ['active']: (activeNode && data.id === activeNode.id) || (activeNode && activeNode.activeControllerId && targetNode && data.id === targetNode.id),
     });
 
     return (
