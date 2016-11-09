@@ -1,0 +1,135 @@
+.fringing-provider {
+  position: relative;
+}
+.fringing-dom-container {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+}
+.active .controller-point {
+  display: inline-block;
+}
+.controller-point {
+  display: none;
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border: 1px solid black;
+}
+.controller-point.active {
+  background-color: #2db7f5;
+}
+.controller-point.tl {
+  top: 0;
+  left: 0;
+  display: none;
+}
+.controller-point.t {
+  top: 0;
+  left: 50%;
+  margin-left: -2.5px;
+}
+.controller-point.tr {
+  right: 0;
+  top: 0;
+  display: none;
+}
+.controller-point.l {
+  left: 0;
+  top: 50%;
+  margin-top: -3.5px;
+}
+.controller-point.r {
+  right: 0;
+  top: 50%;
+  margin-top: -3.5px;
+}
+.controller-point.bl {
+  left: 0;
+  bottom: 0;
+  display: none;
+}
+.controller-point.b {
+  left: 50%;
+  bottom: 0;
+  margin-left: -2.5px;
+}
+.controller-point.br {
+  right: 0;
+  bottom: 0;
+  display: none;
+}
+.controller-point.tl,
+.controller-point.br {
+  cursor: nwse-resize;
+}
+.controller-pointt,
+.controller-pointb {
+  cursor: ns-resize;
+}
+.controller-point.tr,
+.controller-point.bl {
+  cursor: nesw-resize;
+}
+.controller-point.l,
+.controller-point.r {
+  cursor: ew-resize;
+}
+.active .bary-center {
+  display: inline-block;
+}
+.bary-center {
+  display: none;
+  width: 5px;
+  height: 5px;
+  border: 1px solid #2db7f5;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-top: -2.5px;
+  margin-left: -2.5px;
+  border-radius: 5px;
+  background-color: white;
+  box-shadow: 0 0 2px 2px rgba(45, 183, 245, 0.5);
+}
+.group-wrapper {
+  position: absolute;
+}
+.flow {
+  position: relative;
+}
+.node-wrapper {
+  position: absolute;
+  padding: 2.5px;
+}
+.node-placeholder {
+  position: absolute;
+  width: 100%;
+  height: 12px;
+}
+.node-placeholder.active {
+  background-color: #00cc66;
+}
+.node-placeholder.previous {
+  bottom: 105%;
+}
+.node-placeholder.next {
+  top: 100%;
+}
+.editor-node {
+  padding: 8px 10px;
+  border: 1px solid #d9d9d9;
+  cursor: pointer;
+  display: inline-block;
+  border-radius: 4px;
+  text-align: center;
+  color: #666;
+  font-size: 12px;
+  line-height: 32px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  background-color: white;
+}
+
+/*# sourceMappingURL=common.css.map*/

@@ -1,0 +1,1341 @@
+{
+  "id": 1,
+  "name": "云客服实例",
+  "children": [
+    {
+      "allTagMap": {
+        "platform_cat_status": [
+          "已发布"
+        ],
+        "category_status": [
+          "已发布"
+        ]
+      },
+      "children": [
+        {
+          "allTagMap": {
+            "platform_cat_status": [
+              "已发布"
+            ],
+            "category_status": [
+              "已发布"
+            ]
+          },
+          "children": [
+            {
+              "allTagMap": {
+                "platform_cat_status": [
+                  "已发布"
+                ],
+                "category_status": [
+                  "已发布"
+                ]
+              },
+              "children": [
+                {
+                  "allTagMap": {
+                    "platform_cat_status": [
+                      "已发布"
+                    ],
+                    "category_status": [
+                      "已发布"
+                    ]
+                  },
+                  "children": [],
+                  "creator": "koubeiceshi@qq.com",
+                  "description": "",
+                  "father_id": 29153,
+                  "id": "29158",
+                  "namePath": "云客服知识库-测试-二级目录-测试2-测试1",
+                  "text": "测试1",
+                  "type": "CAT"
+                },
+                {
+                  "allTagMap": {
+                    "platform_cat_status": [
+                      "已发布"
+                    ],
+                    "category_status": [
+                      "已发布"
+                    ]
+                  },
+                  "children": [],
+                  "creator": "zhuoluo.wzl@alibaba-inc.com",
+                  "description": "",
+                  "father_id": 29153,
+                  "id": "29329",
+                  "namePath": "云客服知识库-测试-二级目录-测试2-测试4级类目",
+                  "text": "测试4级类目",
+                  "type": "CAT"
+                }
+              ],
+              "creator": "koubeiceshi@qq.com",
+              "description": "",
+              "father_id": 29150,
+              "id": "29153",
+              "namePath": "云客服知识库-测试-二级目录-测试2",
+              "text": "测试2",
+              "type": "CAT"
+            },
+            {
+              "allTagMap": {
+                "platform_cat_status": [
+                  "已发布"
+                ],
+                "category_status": [
+                  "已发布"
+                ]
+              },
+              "children": [
+                {
+                  "allTagMap": {
+                    "platform_cat_status": [
+                      "已发布"
+                    ],
+                    "category_status": [
+                      "已发布"
+                    ]
+                  },
+                  "children": [],
+                  "creator": "jinhui.sjh@alipay.com",
+                  "description": "1",
+                  "father_id": 29154,
+                  "id": "29482",
+                  "namePath": "云客服知识库-测试-二级目录-测试3-2",
+                  "text": "2",
+                  "type": "CAT"
+                },
+                {
+                  "allTagMap": {
+                    "platform_cat_status": [
+                      "已发布"
+                    ],
+                    "category_status": [
+                      "已发布"
+                    ]
+                  },
+                  "children": [],
+                  "creator": "ymtest2@0111.me",
+                  "description": "",
+                  "father_id": 29154,
+                  "id": "29940",
+                  "namePath": "云客服知识库-测试-二级目录-测试3-12<img/src=1>34",
+                  "text": "12<img/src=1>34",
+                  "type": "CAT"
+                }
+              ],
+              "creator": "koubeiceshi@qq.com",
+              "description": "",
+              "father_id": 29150,
+              "id": "29154",
+              "namePath": "云客服知识库-测试-二级目录-测试3",
+              "text": "测试3",
+              "type": "CAT"
+            }
+          ],
+          "creator": "zhuoluo.wzl@alibaba-inc.com",
+          "description": "",
+          "father_id": 2,
+          "id": "29150",
+          "namePath": "云客服知识库-测试-二级目录",
+          "text": "二级目录",
+          "type": "CAT"
+        },
+        {
+          "allTagMap": {
+            "platform_cat_status": [
+              "已发布"
+            ],
+            "category_status": [
+              "已发布"
+            ]
+          },
+          "children": [],
+          "creator": "zhuoluo.wzl@alibaba-inc.com",
+          "description": "",
+          "father_id": 2,
+          "id": "29157",
+          "namePath": "云客服知识库-测试-新增二级目录",
+          "text": "新增二级目录",
+          "type": "CAT"
+        }
+      ],
+      "creator": "zhuoluo.wzl@alibaba-inc.com",
+      "description": "",
+      "father_id": 1,
+      "id": "2",
+      "namePath": "云客服知识库-测试",
+      "text": "测试",
+      "type": "CAT"
+    },
+    {
+      "allTagMap": {
+        "platform_cat_status": [
+          "已发布"
+        ],
+        "category_status": [
+          "已发布"
+        ]
+      },
+      "children": [
+        {
+          "allTagMap": {
+            "platform_cat_status": [
+              "已发布"
+            ],
+            "category_status": [
+              "已发布"
+            ]
+          },
+          "children": [
+            {
+              "allTagMap": {
+                "platform_cat_status": [
+                  "已发布"
+                ],
+                "category_status": [
+                  "已发布"
+                ]
+              },
+              "children": [],
+              "creator": "guruo.sw@alipay.com",
+              "description": "",
+              "father_id": 29101,
+              "id": "29102",
+              "namePath": "云客服知识库-账户资产-余额宝-余额宝介绍",
+              "text": "余额宝介绍",
+              "type": "CAT"
+            },
+            {
+              "allTagMap": {
+                "platform_cat_status": [
+                  "已发布"
+                ],
+                "category_status": [
+                  "已发布"
+                ]
+              },
+              "children": [],
+              "creator": "guruo.sw@alipay.com",
+              "description": "",
+              "father_id": 29101,
+              "id": "29103",
+              "namePath": "云客服知识库-账户资产-余额宝-余额宝转入",
+              "text": "余额宝转入",
+              "type": "CAT"
+            },
+            {
+              "allTagMap": {
+                "platform_cat_status": [
+                  "已发布"
+                ],
+                "category_status": [
+                  "已发布"
+                ]
+              },
+              "children": [],
+              "creator": "1451049502@qq.com",
+              "description": "",
+              "father_id": 29101,
+              "id": "29152",
+              "namePath": "云客服知识库-账户资产-余额宝-余额宝转出",
+              "text": "余额宝转出",
+              "type": "CAT"
+            }
+          ],
+          "creator": "guruo.sw@alipay.com",
+          "description": "",
+          "father_id": 29100,
+          "id": "29101",
+          "namePath": "云客服知识库-账户资产-余额宝",
+          "text": "余额宝",
+          "type": "CAT"
+        }
+      ],
+      "creator": "guruo.sw@alipay.com",
+      "description": "",
+      "father_id": 1,
+      "id": "29100",
+      "namePath": "云客服知识库-账户资产",
+      "text": "账户资产",
+      "type": "CAT"
+    },
+    {
+      "allTagMap": {
+        "platform_cat_status": [
+          "已发布"
+        ],
+        "category_status": [
+          "已发布"
+        ]
+      },
+      "children": [
+        {
+          "allTagMap": {
+            "platform_cat_status": [
+              "已发布"
+            ],
+            "category_status": [
+              "已发布"
+            ]
+          },
+          "children": [
+            {
+              "allTagMap": {
+                "platform_cat_status": [
+                  "已发布"
+                ],
+                "category_status": [
+                  "已发布"
+                ]
+              },
+              "children": [],
+              "creator": "guruo.sw@alipay.com",
+              "description": "",
+              "father_id": 29105,
+              "id": "29106",
+              "namePath": "云客服知识库-付款方式-快捷支付（含卡通）-快捷支付介绍",
+              "text": "快捷支付介绍",
+              "type": "CAT"
+            }
+          ],
+          "creator": "guruo.sw@alipay.com",
+          "description": "",
+          "father_id": 29104,
+          "id": "29105",
+          "namePath": "云客服知识库-付款方式-快捷支付（含卡通）",
+          "text": "快捷支付（含卡通）",
+          "type": "CAT"
+        }
+      ],
+      "creator": "guruo.sw@alipay.com",
+      "description": "",
+      "father_id": 1,
+      "id": "29104",
+      "namePath": "云客服知识库-付款方式",
+      "text": "付款方式",
+      "type": "CAT"
+    },
+    {
+      "allTagMap": {
+        "platform_cat_status": [
+          "已发布"
+        ],
+        "category_status": [
+          "已发布"
+        ]
+      },
+      "children": [],
+      "creator": "guruo.sw@alipay.com",
+      "description": "",
+      "father_id": 1,
+      "id": "29107",
+      "namePath": "云客服知识库-支付宝App",
+      "text": "支付宝App",
+      "type": "CAT"
+    },
+    {
+      "allTagMap": {
+        "platform_cat_status": [
+          "已发布"
+        ],
+        "category_status": [
+          "已发布"
+        ]
+      },
+      "children": [
+        {
+          "allTagMap": {
+            "platform_cat_status": [
+              "已发布"
+            ],
+            "category_status": [
+              "已发布"
+            ]
+          },
+          "children": [],
+          "creator": "guruo.sw@alipay.com",
+          "description": "",
+          "father_id": 29108,
+          "id": "29109",
+          "namePath": "云客服知识库-蚂蚁花呗-花呗",
+          "text": "花呗",
+          "type": "CAT"
+        }
+      ],
+      "creator": "guruo.sw@alipay.com",
+      "description": "",
+      "father_id": 1,
+      "id": "29108",
+      "namePath": "云客服知识库-蚂蚁花呗",
+      "text": "蚂蚁花呗",
+      "type": "CAT"
+    },
+    {
+      "allTagMap": {
+        "platform_cat_status": [
+          "已发布"
+        ],
+        "category_status": [
+          "已发布"
+        ]
+      },
+      "children": [
+        {
+          "allTagMap": {
+            "platform_cat_status": [
+              "已发布"
+            ],
+            "category_status": [
+              "已发布"
+            ]
+          },
+          "children": [],
+          "creator": "player-77@163.com",
+          "description": "",
+          "father_id": 29113,
+          "id": "29114",
+          "namePath": "云客服知识库-OpenSearch-索引重建",
+          "text": "索引重建",
+          "type": "CAT"
+        }
+      ],
+      "creator": "player-77@163.com",
+      "description": "",
+      "father_id": 1,
+      "id": "29113",
+      "namePath": "云客服知识库-OpenSearch",
+      "text": "OpenSearch",
+      "type": "CAT"
+    },
+    {
+      "allTagMap": {
+        "platform_cat_status": [
+          "已发布"
+        ],
+        "category_status": [
+          "已发布"
+        ]
+      },
+      "children": [
+        {
+          "allTagMap": {
+            "platform_cat_status": [
+              "已发布"
+            ],
+            "category_status": [
+              "已发布"
+            ]
+          },
+          "children": [
+            {
+              "allTagMap": {
+                "platform_cat_status": [
+                  "已发布"
+                ],
+                "category_status": [
+                  "已发布"
+                ]
+              },
+              "children": [
+                {
+                  "allTagMap": {
+                    "platform_cat_status": [
+                      "已发布"
+                    ],
+                    "category_status": [
+                      "已发布"
+                    ]
+                  },
+                  "children": [],
+                  "creator": "koubeiceshi@qq.com",
+                  "description": "",
+                  "father_id": 29128,
+                  "id": "29147",
+                  "namePath": "云客服知识库-口碑-外卖-入驻-自助入驻",
+                  "text": "自助入驻",
+                  "type": "CAT"
+                },
+                {
+                  "allTagMap": {
+                    "platform_cat_status": [
+                      "已发布"
+                    ],
+                    "category_status": [
+                      "已发布"
+                    ]
+                  },
+                  "children": [],
+                  "creator": "koubeiceshi@qq.com",
+                  "description": "",
+                  "father_id": 29128,
+                  "id": "29148",
+                  "namePath": "云客服知识库-口碑-外卖-入驻-表单填写",
+                  "text": "表单填写",
+                  "type": "CAT"
+                },
+                {
+                  "allTagMap": {
+                    "platform_cat_status": [
+                      "已发布"
+                    ],
+                    "category_status": [
+                      "已发布"
+                    ]
+                  },
+                  "children": [],
+                  "creator": "koubeiceshi@qq.com",
+                  "description": "",
+                  "father_id": 29128,
+                  "id": "29149",
+                  "namePath": "云客服知识库-口碑-外卖-入驻-服务商上门",
+                  "text": "服务商上门",
+                  "type": "CAT"
+                }
+              ],
+              "creator": "koubeiceshi@qq.com",
+              "description": "",
+              "father_id": 29123,
+              "id": "29128",
+              "namePath": "云客服知识库-口碑-外卖-入驻",
+              "text": "入驻",
+              "type": "CAT"
+            },
+            {
+              "allTagMap": {
+                "platform_cat_status": [
+                  "已发布"
+                ],
+                "category_status": [
+                  "已发布"
+                ]
+              },
+              "children": [],
+              "creator": "koubeiceshi@qq.com",
+              "description": "",
+              "father_id": 29123,
+              "id": "29133",
+              "namePath": "云客服知识库-口碑-外卖-审核",
+              "text": "审核",
+              "type": "CAT"
+            },
+            {
+              "allTagMap": {
+                "platform_cat_status": [
+                  "已发布"
+                ],
+                "category_status": [
+                  "已发布"
+                ]
+              },
+              "children": [],
+              "creator": "koubeiceshi@qq.com",
+              "description": "",
+              "father_id": 29123,
+              "id": "29134",
+              "namePath": "云客服知识库-口碑-外卖-交易",
+              "text": "交易",
+              "type": "CAT"
+            },
+            {
+              "allTagMap": {
+                "platform_cat_status": [
+                  "已发布"
+                ],
+                "category_status": [
+                  "已发布"
+                ]
+              },
+              "children": [],
+              "creator": "koubeiceshi@qq.com",
+              "description": "",
+              "father_id": 29123,
+              "id": "29135",
+              "namePath": "云客服知识库-口碑-外卖-账务",
+              "text": "账务",
+              "type": "CAT"
+            },
+            {
+              "allTagMap": {
+                "platform_cat_status": [
+                  "已发布"
+                ],
+                "category_status": [
+                  "已发布"
+                ]
+              },
+              "children": [],
+              "creator": "koubeiceshi@qq.com",
+              "description": "",
+              "father_id": 29123,
+              "id": "29136",
+              "namePath": "云客服知识库-口碑-外卖-催单",
+              "text": "催单",
+              "type": "CAT"
+            },
+            {
+              "allTagMap": {
+                "platform_cat_status": [
+                  "已发布"
+                ],
+                "category_status": [
+                  "已发布"
+                ]
+              },
+              "children": [],
+              "creator": "koubeiceshi@qq.com",
+              "description": "",
+              "father_id": 29123,
+              "id": "29137",
+              "namePath": "云客服知识库-口碑-外卖-操作管理",
+              "text": "操作管理",
+              "type": "CAT"
+            },
+            {
+              "allTagMap": {
+                "platform_cat_status": [
+                  "已发布"
+                ],
+                "category_status": [
+                  "已发布"
+                ]
+              },
+              "children": [],
+              "creator": "koubeiceshi@qq.com",
+              "description": "",
+              "father_id": 29123,
+              "id": "29138",
+              "namePath": "云客服知识库-口碑-外卖-商家处罚",
+              "text": "商家处罚",
+              "type": "CAT"
+            },
+            {
+              "allTagMap": {
+                "platform_cat_status": [
+                  "已发布"
+                ],
+                "category_status": [
+                  "已发布"
+                ]
+              },
+              "children": [],
+              "creator": "koubeiceshi@qq.com",
+              "description": "",
+              "father_id": 29123,
+              "id": "29139",
+              "namePath": "云客服知识库-口碑-外卖-常规活动",
+              "text": "常规活动",
+              "type": "CAT"
+            }
+          ],
+          "creator": "koubeiceshi@qq.com",
+          "description": "",
+          "father_id": 29122,
+          "id": "29123",
+          "namePath": "云客服知识库-口碑-外卖",
+          "text": "外卖",
+          "type": "CAT"
+        },
+        {
+          "allTagMap": {
+            "platform_cat_status": [
+              "已发布"
+            ],
+            "category_status": [
+              "已发布"
+            ]
+          },
+          "children": [
+            {
+              "allTagMap": {
+                "platform_cat_status": [
+                  "已发布"
+                ],
+                "category_status": [
+                  "已发布"
+                ]
+              },
+              "children": [],
+              "creator": "koubeiceshi@qq.com",
+              "description": "",
+              "father_id": 29124,
+              "id": "29129",
+              "namePath": "云客服知识库-口碑-到店-审核",
+              "text": "审核",
+              "type": "CAT"
+            },
+            {
+              "allTagMap": {
+                "platform_cat_status": [
+                  "已发布"
+                ],
+                "category_status": [
+                  "已发布"
+                ]
+              },
+              "children": [],
+              "creator": "koubeiceshi@qq.com",
+              "description": "",
+              "father_id": 29124,
+              "id": "29140",
+              "namePath": "云客服知识库-口碑-到店-入驻",
+              "text": "入驻",
+              "type": "CAT"
+            },
+            {
+              "allTagMap": {
+                "platform_cat_status": [
+                  "已发布"
+                ],
+                "category_status": [
+                  "已发布"
+                ]
+              },
+              "children": [],
+              "creator": "koubeiceshi@qq.com",
+              "description": "",
+              "father_id": 29124,
+              "id": "29141",
+              "namePath": "云客服知识库-口碑-到店-交易",
+              "text": "交易",
+              "type": "CAT"
+            },
+            {
+              "allTagMap": {
+                "platform_cat_status": [
+                  "已发布"
+                ],
+                "category_status": [
+                  "已发布"
+                ]
+              },
+              "children": [],
+              "creator": "koubeiceshi@qq.com",
+              "description": "",
+              "father_id": 29124,
+              "id": "29142",
+              "namePath": "云客服知识库-口碑-到店-商家处罚",
+              "text": "商家处罚",
+              "type": "CAT"
+            }
+          ],
+          "creator": "koubeiceshi@qq.com",
+          "description": "",
+          "father_id": 29122,
+          "id": "29124",
+          "namePath": "云客服知识库-口碑-到店",
+          "text": "到店",
+          "type": "CAT"
+        },
+        {
+          "allTagMap": {
+            "platform_cat_status": [
+              "已发布"
+            ],
+            "category_status": [
+              "已发布"
+            ]
+          },
+          "children": [
+            {
+              "allTagMap": {
+                "platform_cat_status": [
+                  "已发布"
+                ],
+                "category_status": [
+                  "已发布"
+                ]
+              },
+              "children": [
+                {
+                  "allTagMap": {
+                    "platform_cat_status": [
+                      "已发布"
+                    ],
+                    "category_status": [
+                      "已发布"
+                    ]
+                  },
+                  "children": [],
+                  "creator": "koubeiceshi@qq.com",
+                  "description": "",
+                  "father_id": 29130,
+                  "id": "29143",
+                  "namePath": "云客服知识库-口碑-营销活动-支付宝日-餐饮",
+                  "text": "餐饮",
+                  "type": "CAT"
+                },
+                {
+                  "allTagMap": {
+                    "platform_cat_status": [
+                      "已发布"
+                    ],
+                    "category_status": [
+                      "已发布"
+                    ]
+                  },
+                  "children": [],
+                  "creator": "koubeiceshi@qq.com",
+                  "description": "",
+                  "father_id": 29130,
+                  "id": "29144",
+                  "namePath": "云客服知识库-口碑-营销活动-支付宝日-商超",
+                  "text": "商超",
+                  "type": "CAT"
+                },
+                {
+                  "allTagMap": {
+                    "platform_cat_status": [
+                      "已发布"
+                    ],
+                    "category_status": [
+                      "已发布"
+                    ]
+                  },
+                  "children": [],
+                  "creator": "koubeiceshi@qq.com",
+                  "description": "",
+                  "father_id": 29130,
+                  "id": "29145",
+                  "namePath": "云客服知识库-口碑-营销活动-支付宝日-售卖机",
+                  "text": "售卖机",
+                  "type": "CAT"
+                },
+                {
+                  "allTagMap": {
+                    "platform_cat_status": [
+                      "已发布"
+                    ],
+                    "category_status": [
+                      "已发布"
+                    ]
+                  },
+                  "children": [],
+                  "creator": "koubeiceshi@qq.com",
+                  "description": "",
+                  "father_id": 29130,
+                  "id": "29146",
+                  "namePath": "云客服知识库-口碑-营销活动-支付宝日-机场",
+                  "text": "机场",
+                  "type": "CAT"
+                }
+              ],
+              "creator": "koubeiceshi@qq.com",
+              "description": "",
+              "father_id": 29125,
+              "id": "29130",
+              "namePath": "云客服知识库-口碑-营销活动-支付宝日",
+              "text": "支付宝日",
+              "type": "CAT"
+            }
+          ],
+          "creator": "koubeiceshi@qq.com",
+          "description": "",
+          "father_id": 29122,
+          "id": "29125",
+          "namePath": "云客服知识库-口碑-营销活动",
+          "text": "营销活动",
+          "type": "CAT"
+        },
+        {
+          "allTagMap": {
+            "platform_cat_status": [
+              "已发布"
+            ],
+            "category_status": [
+              "已发布"
+            ]
+          },
+          "children": [
+            {
+              "allTagMap": {
+                "platform_cat_status": [
+                  "已发布"
+                ],
+                "category_status": [
+                  "已发布"
+                ]
+              },
+              "children": [],
+              "creator": "koubeiceshi@qq.com",
+              "description": "",
+              "father_id": 29126,
+              "id": "29131",
+              "namePath": "云客服知识库-口碑-投诉建议-投诉商家",
+              "text": "投诉商家",
+              "type": "CAT"
+            }
+          ],
+          "creator": "koubeiceshi@qq.com",
+          "description": "",
+          "father_id": 29122,
+          "id": "29126",
+          "namePath": "云客服知识库-口碑-投诉建议",
+          "text": "投诉建议",
+          "type": "CAT"
+        },
+        {
+          "allTagMap": {
+            "platform_cat_status": [
+              "已发布"
+            ],
+            "category_status": [
+              "已发布"
+            ]
+          },
+          "children": [
+            {
+              "allTagMap": {
+                "platform_cat_status": [
+                  "已发布"
+                ],
+                "category_status": [
+                  "已发布"
+                ]
+              },
+              "children": [],
+              "creator": "koubeiceshi@qq.com",
+              "description": "",
+              "father_id": 29127,
+              "id": "29132",
+              "namePath": "云客服知识库-口碑-其他-系统故障",
+              "text": "系统故障",
+              "type": "CAT"
+            }
+          ],
+          "creator": "koubeiceshi@qq.com",
+          "description": "",
+          "father_id": 29122,
+          "id": "29127",
+          "namePath": "云客服知识库-口碑-其他",
+          "text": "其他",
+          "type": "CAT"
+        }
+      ],
+      "creator": "koubeiceshi@qq.com",
+      "description": "",
+      "father_id": 1,
+      "id": "29122",
+      "namePath": "云客服知识库-口碑",
+      "text": "口碑",
+      "type": "CAT"
+    },
+    {
+      "allTagMap": {
+        "platform_cat_status": [
+          "已发布"
+        ],
+        "category_status": [
+          "已发布"
+        ]
+      },
+      "children": [
+        {
+          "allTagMap": {
+            "platform_cat_status": [
+              "已发布"
+            ],
+            "category_status": [
+              "已发布"
+            ]
+          },
+          "children": [],
+          "creator": "ruiying.jry@alipay.com",
+          "description": "",
+          "father_id": 29324,
+          "id": "29325",
+          "namePath": "云客服知识库-喵街-产品推广",
+          "text": "产品推广",
+          "type": "CAT"
+        },
+        {
+          "allTagMap": {
+            "platform_cat_status": [
+              "已发布"
+            ],
+            "category_status": [
+              "已发布"
+            ]
+          },
+          "children": [],
+          "creator": "ruiying.jry@alipay.com",
+          "description": "",
+          "father_id": 29324,
+          "id": "29326",
+          "namePath": "云客服知识库-喵街-账户管理",
+          "text": "账户管理",
+          "type": "CAT"
+        },
+        {
+          "allTagMap": {
+            "platform_cat_status": [
+              "已发布"
+            ],
+            "category_status": [
+              "已发布"
+            ]
+          },
+          "children": [],
+          "creator": "ruiying.jry@alipay.com",
+          "description": "",
+          "father_id": 29324,
+          "id": "29327",
+          "namePath": "云客服知识库-喵街-基础服务",
+          "text": "基础服务",
+          "type": "CAT"
+        },
+        {
+          "allTagMap": {
+            "platform_cat_status": [
+              "已发布"
+            ],
+            "category_status": [
+              "已发布"
+            ]
+          },
+          "children": [],
+          "creator": "ruiying.jry@alipay.com",
+          "description": "",
+          "father_id": 29324,
+          "id": "29328",
+          "namePath": "云客服知识库-喵街-权益及优惠",
+          "text": "权益及优惠",
+          "type": "CAT"
+        }
+      ],
+      "creator": "ruiying.jry@alipay.com",
+      "description": "",
+      "father_id": 1,
+      "id": "29324",
+      "namePath": "云客服知识库-喵街",
+      "text": "喵街",
+      "type": "CAT"
+    },
+    {
+      "allTagMap": {
+        "platform_cat_status": [
+          "已发布"
+        ],
+        "category_status": [
+          "已发布"
+        ]
+      },
+      "children": [],
+      "creator": "ruiying.jry@alipay.com",
+      "description": "",
+      "father_id": 1,
+      "id": "29419",
+      "namePath": "云客服知识库-恒生",
+      "text": "恒生",
+      "type": "CAT"
+    },
+    {
+      "allTagMap": {
+        "platform_cat_status": [
+          "已发布"
+        ],
+        "category_status": [
+          "已发布"
+        ]
+      },
+      "children": [],
+      "creator": "ruiying.jry@alipay.com",
+      "description": "",
+      "father_id": 1,
+      "id": "29514",
+      "namePath": "云客服知识库-中登",
+      "text": "中登",
+      "type": "CAT"
+    },
+    {
+      "allTagMap": {
+        "platform_cat_status": [
+          "已发布"
+        ],
+        "category_status": [
+          "已发布"
+        ]
+      },
+      "children": [
+        {
+          "allTagMap": {
+            "platform_cat_status": [
+              "已发布"
+            ],
+            "category_status": [
+              "已发布"
+            ]
+          },
+          "children": [],
+          "creator": "ruiying.jry@alipay.com",
+          "description": "",
+          "father_id": 29615,
+          "id": "29616",
+          "namePath": "云客服知识库-投资者业务-查询",
+          "text": "查询",
+          "type": "CAT"
+        },
+        {
+          "allTagMap": {
+            "platform_cat_status": [
+              "已发布"
+            ],
+            "category_status": [
+              "已发布"
+            ]
+          },
+          "children": [],
+          "creator": "ruiying.jry@alipay.com",
+          "description": "",
+          "father_id": 29615,
+          "id": "29617",
+          "namePath": "云客服知识库-投资者业务-质押",
+          "text": "质押",
+          "type": "CAT"
+        },
+        {
+          "allTagMap": {
+            "platform_cat_status": [
+              "已发布"
+            ],
+            "category_status": [
+              "已发布"
+            ]
+          },
+          "children": [],
+          "creator": "ruiying.jry@alipay.com",
+          "description": "",
+          "father_id": 29615,
+          "id": "29618",
+          "namePath": "云客服知识库-投资者业务-非交易过户",
+          "text": "非交易过户",
+          "type": "CAT"
+        }
+      ],
+      "creator": "ruiying.jry@alipay.com",
+      "description": "",
+      "father_id": 1,
+      "id": "29615",
+      "namePath": "云客服知识库-投资者业务",
+      "text": "投资者业务",
+      "type": "CAT"
+    },
+    {
+      "allTagMap": {
+        "platform_cat_status": [
+          "已发布"
+        ],
+        "category_status": [
+          "已发布"
+        ]
+      },
+      "children": [
+        {
+          "allTagMap": {
+            "platform_cat_status": [
+              "已发布"
+            ],
+            "category_status": [
+              "已发布"
+            ]
+          },
+          "children": [],
+          "creator": "ruiying.jry@alipay.com",
+          "description": "",
+          "father_id": 29619,
+          "id": "29620",
+          "namePath": "云客服知识库-发行人业务-UKEY申请",
+          "text": "UKEY申请",
+          "type": "CAT"
+        },
+        {
+          "allTagMap": {
+            "platform_cat_status": [
+              "已发布"
+            ],
+            "category_status": [
+              "已发布"
+            ]
+          },
+          "children": [],
+          "creator": "ruiying.jry@alipay.com",
+          "description": "",
+          "father_id": 29619,
+          "id": "29624",
+          "namePath": "云客服知识库-发行人业务-初始登记",
+          "text": "初始登记",
+          "type": "CAT"
+        },
+        {
+          "allTagMap": {
+            "platform_cat_status": [
+              "已发布"
+            ],
+            "category_status": [
+              "已发布"
+            ]
+          },
+          "children": [],
+          "creator": "ruiying.jry@alipay.com",
+          "description": "",
+          "father_id": 29619,
+          "id": "29630",
+          "namePath": "云客服知识库-发行人业务-新增股份登记",
+          "text": "新增股份登记",
+          "type": "CAT"
+        },
+        {
+          "allTagMap": {
+            "platform_cat_status": [
+              "已发布"
+            ],
+            "category_status": [
+              "已发布"
+            ]
+          },
+          "children": [],
+          "creator": "ruiying.jry@alipay.com",
+          "description": "",
+          "father_id": 29619,
+          "id": "29636",
+          "namePath": "云客服知识库-发行人业务-权益分派",
+          "text": "权益分派",
+          "type": "CAT"
+        },
+        {
+          "allTagMap": {
+            "platform_cat_status": [
+              "已发布"
+            ],
+            "category_status": [
+              "已发布"
+            ]
+          },
+          "children": [],
+          "creator": "ruiying.jry@alipay.com",
+          "description": "",
+          "father_id": 29619,
+          "id": "29645",
+          "namePath": "云客服知识库-发行人业务-解除限售登记",
+          "text": "解除限售登记",
+          "type": "CAT"
+        },
+        {
+          "allTagMap": {
+            "platform_cat_status": [
+              "已发布"
+            ],
+            "category_status": [
+              "已发布"
+            ]
+          },
+          "children": [],
+          "creator": "ruiying.jry@alipay.com",
+          "description": "",
+          "father_id": 29619,
+          "id": "29647",
+          "namePath": "云客服知识库-发行人业务-限售登记",
+          "text": "限售登记",
+          "type": "CAT"
+        },
+        {
+          "allTagMap": {
+            "platform_cat_status": [
+              "已发布"
+            ],
+            "category_status": [
+              "已发布"
+            ]
+          },
+          "children": [],
+          "creator": "ruiying.jry@alipay.com",
+          "description": "",
+          "father_id": 29619,
+          "id": "29648",
+          "namePath": "云客服知识库-发行人业务-数据查询业务",
+          "text": "数据查询业务",
+          "type": "CAT"
+        },
+        {
+          "allTagMap": {
+            "platform_cat_status": [
+              "已发布"
+            ],
+            "category_status": [
+              "已发布"
+            ]
+          },
+          "children": [],
+          "creator": "ruiying.jry@alipay.com",
+          "description": "",
+          "father_id": 29619,
+          "id": "29649",
+          "namePath": "云客服知识库-发行人业务-网站系统异常",
+          "text": "网站系统异常",
+          "type": "CAT"
+        },
+        {
+          "allTagMap": {
+            "platform_cat_status": [
+              "已发布"
+            ],
+            "category_status": [
+              "已发布"
+            ]
+          },
+          "children": [],
+          "creator": "ruiying.jry@alipay.com",
+          "description": "",
+          "father_id": 29619,
+          "id": "29650",
+          "namePath": "云客服知识库-发行人业务-其他问题",
+          "text": "其他问题",
+          "type": "CAT"
+        },
+        {
+          "allTagMap": {
+            "platform_cat_status": [
+              "已发布"
+            ],
+            "category_status": [
+              "已发布"
+            ]
+          },
+          "children": [],
+          "creator": "ruiying.jry@alipay.com",
+          "description": "",
+          "father_id": 29619,
+          "id": "29651",
+          "namePath": "云客服知识库-发行人业务-联系方式",
+          "text": "联系方式",
+          "type": "CAT"
+        },
+        {
+          "allTagMap": {
+            "platform_cat_status": [
+              "已发布"
+            ],
+            "category_status": [
+              "已发布"
+            ]
+          },
+          "children": [],
+          "creator": "ruiying.jry@alipay.com",
+          "description": "",
+          "father_id": 29619,
+          "id": "29652",
+          "namePath": "云客服知识库-发行人业务-专业知识",
+          "text": "专业知识",
+          "type": "CAT"
+        }
+      ],
+      "creator": "ruiying.jry@alipay.com",
+      "description": "",
+      "father_id": 1,
+      "id": "29619",
+      "namePath": "云客服知识库-发行人业务",
+      "text": "发行人业务",
+      "type": "CAT"
+    }
+  ]
+}
