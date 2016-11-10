@@ -158,7 +158,7 @@ class Node extends React.Component<NodeProps, any> {
   }
   mouseEnter = (ev) => {
     const { dispatch, activeNode } = this.props;
-    if (activeNode && this.canConnectTo()) {
+    if (activeNode && activeNode.activeControllerId && this.canConnectTo()) {
       const data = this.getCurrentNode();
       const activeControllerId = getActiveControllerId(activeNode, ev.nativeEvent);
       data.activeControllerId = activeControllerId;
@@ -170,9 +170,11 @@ class Node extends React.Component<NodeProps, any> {
   }
   mouseLeave = (ev) => {
     const { dispatch } = this.props;
-    dispatch({
-      type: CLEAR_TARGET_NODE,
-    });
+    if (this.props.targetNode) {
+      dispatch({
+        type: CLEAR_TARGET_NODE,
+      });
+    }
   }
   canConnectFrom = () => {
     if (!this.props.canConnectFrom) {

@@ -84,8 +84,9 @@ export default function providerFunction(configs: ProviderConfig = defaultConfig
 
       render() {
         const connections = this.props.connections.map(c => c.constructor === Connection ? c : new Connection(c));
+        const { style, className } = this.props;
         return (<Provider store={store}>
-          <div className="fringing-provider">
+          <div className="fringing-provider" style={style} className={className}>
             <DOMContainer>
               <WrappedComponent {...this.props} />
               <DecoratorsContainer />

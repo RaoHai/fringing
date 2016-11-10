@@ -50,8 +50,9 @@ let Canvas = createContainer({
 
 function Wrapper(props) {
   function onConnectionsChange(before, after) {
+    console.log('onConnectionsChange', before, after);
     props.dispatch({
-      type: 'updateConnections',
+      type: 'app/updateConnections',
       payload: {
         connections: after,
       }
@@ -59,6 +60,7 @@ function Wrapper(props) {
   }
   return <Canvas
     {...props}
+    className="canvas-class"
     onConnectionsChange={onConnectionsChange}
   />
 }

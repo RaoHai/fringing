@@ -59,6 +59,7 @@ export default function nodeDecorator(_collect: CollectFunction = (any: any) => 
       }
 
       handleConnect(source, target) {
+        console.log('>> handleConnect', source, target);
         if (!this.props.onConnect || !this.props.onConnect(source, target)) {
           const { connections, onConnectionsChange } = this.context;
           // ! update problems
@@ -86,6 +87,9 @@ export default function nodeDecorator(_collect: CollectFunction = (any: any) => 
             node
           ]);
         }
+      }
+      componentWillUpdate(nextProps, nextState) {
+        console.log('>> componentWillUpdate', nextProps, nextState);
       }
 
       render() {
