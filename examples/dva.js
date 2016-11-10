@@ -518,6 +518,7 @@ webpackJsonp([1],[
 	    });
 	  }
 	  return _react2.default.createElement(Canvas, _extends({}, props, {
+	    className: 'canvas-class',
 	    onConnectionsChange: onConnectionsChange
 	  }));
 	}
@@ -9543,7 +9544,7 @@ webpackJsonp([1],[
 /* 565 */
 [675, 566],
 /* 566 */
-142,
+143,
 /* 567 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -11595,9 +11596,9 @@ webpackJsonp([1],[
 
 /***/ },
 /* 593 */
-125,
+126,
 /* 594 */
-176,
+177,
 /* 595 */
 /***/ function(module, exports) {
 
@@ -11691,15 +11692,15 @@ webpackJsonp([1],[
 /* 597 */
 [677, 598, 599, 600],
 /* 598 */
-168,
-/* 599 */
 169,
-/* 600 */
+/* 599 */
 170,
+/* 600 */
+171,
 /* 601 */
 [678, 592, 602],
 /* 602 */
-186,
+187,
 /* 603 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -11737,7 +11738,7 @@ webpackJsonp([1],[
 
 /***/ },
 /* 604 */
-124,
+125,
 /* 605 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -12073,7 +12074,7 @@ webpackJsonp([1],[
 /* 613 */
 [680, 614, 615, 604, 617, 619, 620],
 /* 614 */
-247,
+248,
 /* 615 */
 [681, 616, 571],
 /* 616 */
@@ -12103,9 +12104,9 @@ webpackJsonp([1],[
 /* 617 */
 [682, 565, 618],
 /* 618 */
-251,
+252,
 /* 619 */
-244,
+245,
 /* 620 */
 [683, 621, 622, 623],
 /* 621 */
@@ -12175,7 +12176,7 @@ webpackJsonp([1],[
 
 /***/ },
 /* 622 */
-173,
+174,
 /* 623 */
 [684, 566],
 /* 624 */
@@ -12215,7 +12216,7 @@ webpackJsonp([1],[
 
 /***/ },
 /* 625 */
-256,
+257,
 /* 626 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -12492,7 +12493,7 @@ webpackJsonp([1],[
 
 /***/ },
 /* 636 */
-144,
+145,
 /* 637 */
 [676, 631, 565],
 /* 638 */
