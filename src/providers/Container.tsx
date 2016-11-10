@@ -1,7 +1,7 @@
 import * as React from 'react';
 import hoistStatics from 'hoist-non-react-statics';
 import { Provider } from 'react-redux';
-
+import classnames from 'classnames';
 import { createStore, applyMiddleware } from 'redux';
 import  friningApp from '../reducers/index';
 
@@ -85,8 +85,12 @@ export default function providerFunction(configs: ProviderConfig = defaultConfig
       render() {
         const connections = this.props.connections.map(c => c.constructor === Connection ? c : new Connection(c));
         const { style, className } = this.props;
+        const providerClass = classnames({
+          [className]: true,
+          ['fringing-provider']: true,
+        });
         return (<Provider store={store}>
-          <div className="fringing-provider" style={style} className={className}>
+          <div style={style} className={providerClass}>
             <DOMContainer>
               <WrappedComponent {...this.props} />
               <DecoratorsContainer />
