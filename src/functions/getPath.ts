@@ -69,9 +69,12 @@ function equals(vector1, vector2) {
   return vector1.distance(vector2) === 0;
 }
 
-export default function getPath(source, target) {
+export default function getPath(source, target, connectFunction) {
   const startPosition = new Point(source);
   const endPosition =  new Point(target);
+  if (connectFunction) {
+    return connectFunction(startPosition, endPosition);
+  }
   return getPoints(startPosition, endPosition);
 }
 

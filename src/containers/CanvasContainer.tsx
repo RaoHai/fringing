@@ -46,7 +46,7 @@ class CanvasContainer extends React.Component<CanvasProps, any> {
         target: this.getNodeData(connect.to),
       }))
       .filter( connect =>  connect.source && connect.target )
-      .map( (data, index) => <Link data={data} key={`link-${index}`} /> );
+      .map( (data, index) => <Link data={data} key={`link-${index}`} connectFunction={this.props.connectFunction}/> );
   }
   componentDidMount() {
     this.props.dispatch({

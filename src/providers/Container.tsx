@@ -95,7 +95,7 @@ export default function providerFunction(configs: ProviderConfig = defaultConfig
               <WrappedComponent {...this.props} />
               <DecoratorsContainer />
             </DOMContainer>
-            <CanvasContainer connections={connections}/>
+            <CanvasContainer connections={connections} connectFunction={configs.connectFunction} />
           </div>
         </Provider>);
       }

@@ -24,17 +24,11 @@ export default class Link extends React.Component<any, any> {
     });
   }
   render() {
-    const { data } = this.props;
+    const { data, connectFunction } = this.props;
     const { source, target } = data;
     const pathId = `link-path-${source.id}-${target.id}`;
 
-    const start = getControllerPosition(source);
-    const end =  getControllerPosition(target);
-    // const path = getPath(start, end);
-    const mid = (start.x + end.x) / 2;
-
-    // const points = getPoints(start, end);
-    const points = getPath(source, target);
+    const points = getPath(source, target, connectFunction);
     return <Group>
       <Arrow
         points={points}
