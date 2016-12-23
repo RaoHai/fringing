@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>connections.js - example - rc-fringing@0.3.3</title>
+  <title>connections.js - example - rc-fringing@0.3.4</title>
   <meta name="viewport"
         content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
   <meta charset="utf-8"/>
@@ -263,7 +263,7 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
 <body>
   <div class="container">
     <div class="header">
-      <h1>rc-fringing@0.3.3</h1>
+      <h1>rc-fringing@0.3.4</h1>
 
       <p>flow ui component for react</p>
     </div>
@@ -276,8 +276,8 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
 <span class="hljs-keyword">import</span> <span class="hljs-string">'rc-fringing/assets/index.css'</span>;
 
 <span class="hljs-keyword">const</span> NODES = [
-  { id : <span class="hljs-number">1</span>,x: <span class="hljs-number">50</span>, y: <span class="hljs-number">0</span>},
-  { id : <span class="hljs-number">2</span>, x: <span class="hljs-number">150</span>, y: <span class="hljs-number">100</span>},
+  {id : <span class="hljs-number">1</span>,x: <span class="hljs-number">50</span>, y: <span class="hljs-number">0</span>},
+  {id : <span class="hljs-number">2</span>, x: <span class="hljs-number">150</span>, y: <span class="hljs-number">100</span>},
   {id: <span class="hljs-number">3</span>, x: <span class="hljs-number">300</span>, y: <span class="hljs-number">50</span>},
   {id: <span class="hljs-number">4</span>, x: <span class="hljs-number">350</span>, y: <span class="hljs-number">200</span>},
   {id: <span class="hljs-number">5</span>, x: <span class="hljs-number">450</span>, y: <span class="hljs-number">100</span>},
@@ -311,6 +311,7 @@ const SimpleApp = createContainer({
   width: 800,
   height: 600,
   onNodeChange: (id, data) =&gt; console.log('&gt;&gt; onNodeChange', id, data),
+  connectFunction: (start, end) =&gt; [start.x, start.y, end.x, end.y],
 })(App);
 
 

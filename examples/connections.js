@@ -17,7 +17,7 @@ webpackJsonp([0],[
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _reactDom = __webpack_require__(280);
+	var _reactDom = __webpack_require__(38);
 	
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 	
@@ -94,6 +94,9 @@ webpackJsonp([0],[
 	  height: 600,
 	  onNodeChange: function onNodeChange(id, data) {
 	    return console.log('>> onNodeChange', id, data);
+	  },
+	  connectFunction: function connectFunction(start, end) {
+	    return [start.x, start.y, end.x, end.y];
 	  }
 	})(App);
 	
