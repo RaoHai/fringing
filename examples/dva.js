@@ -50,7 +50,6 @@ let Canvas = createContainer({
 
 function Wrapper(props) {
   function onConnectionsChange(before, after) {
-    console.log('onConnectionsChange', before, after);
     props.dispatch({
       type: 'app/updateConnections',
       payload: {

@@ -1,8 +1,8 @@
 import * as React from 'react';
 // import { Group, Text, Shape, Path } from 'react-art';
-import { getPath, getControllerPosition } from '../../functions';
+import { getPath } from '../../functions';
 
-import { Group, Path, Arrow } from 'react-konva';
+import { Group, Path, Arrow, Circle } from 'react-konva';
 
 export default class Link extends React.Component<any, any> {
   constructor(props) {
@@ -23,12 +23,15 @@ export default class Link extends React.Component<any, any> {
       hover: false,
     });
   }
+  mouseDown = (ev) => {
+    ev.evt.preventDefault();
+    this.props.toggeActive();
+  }
   render() {
-    const { data, connectFunction } = this.props;
+    const { data, connectFunction, isActive, autoMargin } = this.props;
     const { source, target } = data;
     const pathId = `link-path-${source.id}-${target.id}`;
-
-    const points = getPath(source, target, connectFunction);
+    const points = getPath(source, target, connectFunction, autoMargin);
     return <Group>
       <Arrow
         points={points}
@@ -37,9 +40,10 @@ export default class Link extends React.Component<any, any> {
         fill="#d9d9d9"
         pointerLength="5"
         pointerWidth="5"
-        strokeWidth={this.state.hover ? 4 : 2}
+        strokeWidth={this.state.hover || isActive ? 4 : 2}
         onMouseOver={this.mouseMove}
         onMouseOut={this.mouseOut}
+        onMouseDown={this.mouseDown}
       />
 
     </Group>

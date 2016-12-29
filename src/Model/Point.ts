@@ -41,23 +41,32 @@ export default class Point {
   public height: number;
   public activeControllerId: number;
   public vector: V;
+  public radius: number;
   public vectorInvert: V;
   constructor(config:PointConfig) {
     this.width = config.width;
     this.height = config.height;
     this.activeControllerId = config.activeControllerId;
-
+    this.radius = Math.sqrt(
+      Math.pow(config.width / 2, 2) + Math.pow(config.height / 2, 2)
+    );
+    console.log('>> radius', this.radius);
     if (!config.activeControllerId) {
       this.x = config.x + config.width / 2;
       this.y = config.y + config.height / 2;
     } else {
       const positionFunction = controllerPointsMap[config.activeControllerId];
-      const {x, y} = positionFunction(config);
+      const { x, y } = positionFunction(config);
       this.x = x;
       this.y = y;
       this.vector = vectorMap[config.activeControllerId];
       this.vectorInvert = this.vector.clone().invert();
     }
+  }
 
+  public setPosition(x:number, y:number) {
+    this.x = x;
+    this.y = y;
+    return this;
   }
 }

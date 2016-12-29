@@ -1,11 +1,18 @@
+const getId = (() => {
+  let i = 0;
+  return () => ++i;
+})();
+
 export default class Connection {
   static connectionExisted(connections, connection) {
     return connections.find(item => item.from.id === connection.from.id && item.to.id === connection.to.id);
   }
   private from;
   private to;
+  private id;
 
   constructor(connect) {
+    this.id = getId();
     if (Array.isArray(connect)) {
       this.from = {
         id: connect[0],

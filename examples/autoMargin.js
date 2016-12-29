@@ -40,6 +40,8 @@ const SimpleApp = createContainer({
   width: 800,
   height: 600,
   onNodeChange: (id, data) => console.log('>> onNodeChange', id, data),
+  connectFunction: (start, end) => [start.x, start.y, end.x, end.y],
+  autoMargin: true,
 })(App);
 
 
@@ -48,25 +50,13 @@ class Wrapper extends Component {
     super(...arg);
     this.state = {
       connections: [
-        { from: { id: 4, point: 't' }, to: { id: 3, point: 't'}}, // 反向
-        { from: { id: 5, point: 'b' }, to: { id: 6, point: 'l'}}, // 垂直
-        { from: { id: 5, point: 'l' }, to: { id: 4, point: 'b'}}, // 垂直
-        { from: { id: 5, point: 'r' }, to: { id: 4, point: 'l'}},
-        { from: { id: 5, point: 'l' }, to: { id: 6, point: 'b'}},
+        { from: { id: 1}, to: { id: 3 }}, // 垂直
+        { from: { id: 2}, to: { id: 4 }}, // 垂直
+        { from: { id: 4}, to: { id: 3 }}, // 反向
+        { from: { id: 5}, to: { id: 6 }}, // 垂直
+        { from: { id: 5}, to: { id: 4 }}, // 垂直
       ],
     }
-  }
-  handleClick() {
-    this.setState({
-      connections: [
-        { from: { id: 1, point: 'r' }, to: { id: 2, point: 'l'}}, // 同向
-        { from: { id: 1, point: 'l' }, to: { id: 2, point: 'r'}}, // 同向,弯折
-        { from: { id: 4, point: 't'}, to: { id: 3, point: 'b'}}, // 同向，竖直
-        { from: { id: 4, point: 'r' }, to: { id: 3, point: 'r'}}, // 反向
-        { from: { id: 3, point: 'l' }, to: { id: 4, point: 'l'}}, // 反向
-        { from: { id: 3, point: 'b' }, to: { id: 4, point: 'b'}}, // 反向
-      ],
-    });
   }
   handleConnectionsChange(before, after) {
     this.setState({
@@ -78,7 +68,6 @@ class Wrapper extends Component {
   }
   render() {
     return (<div>
-      <button onClick={::this.handleClick}>change connections</button>
       <SimpleApp
         connections={this.state.connections}
         onConnectionsChange={this.handleConnectionsChange.bind(this)}

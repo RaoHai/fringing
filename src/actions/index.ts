@@ -24,3 +24,8 @@ export const ADD_NODE_TO_GROUP = 'ADD_NODE_TO_GROUP';
 
 export const BEGIN_CONNECTION = 'BEGIN_CONNECTION';
 export const END_CONNECTION = 'END_CONNECTION';
+
+// active link
+
+export const SET_ACTIVE_LINK = 'SET_ACTIVE_LINK';
+export const CLEAR_ACTIVE_LINK = 'CLEAR_ACTIVE_LINK';

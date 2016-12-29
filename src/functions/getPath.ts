@@ -1,4 +1,3 @@
-import getControllerPosition from './getControllerPosition';
 import Point from '../Model/Point';
 import V from 'victor';
 
@@ -69,9 +68,21 @@ function equals(vector1, vector2) {
   return vector1.distance(vector2) === 0;
 }
 
-export default function getPath(source, target, connectFunction) {
-  const startPosition = new Point(source);
-  const endPosition =  new Point(target);
+function shrink(source, target): Point {
+  const r = source.radius;
+  const Δx = target.x - source.x;
+  const Δy = target.y - source.y;
+  const θ = Math.atan2(Δx, Δy);
+  return source.setPosition(Math.sin(θ) * r + source.x, Math.cos(θ) * r + source.y);
+}
+
+export default function getPath(source, target, connectFunction, autoMargin) {
+  let startPosition = new Point(source);
+  let endPosition =  new Point(target);
+  if (autoMargin) {
+    startPosition = shrink(startPosition, endPosition);
+    endPosition = shrink(endPosition, startPosition);
+  }
   if (connectFunction) {
     return connectFunction(startPosition, endPosition);
   }

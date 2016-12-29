@@ -8,7 +8,7 @@ import ItemTypes from '../definitions/itemTypes';
 //functions
 import { triggerEvent } from '../functions';
 // actions
-import {CLEAR_ACTIVE_NODE, CLEAR_TARGET_NODE, UPDATE_NODE_POSITION} from '../actions';
+import { CLEAR_ACTIVE_NODE, CLEAR_TARGET_NODE, UPDATE_NODE_POSITION, CLEAR_ACTIVE_LINK } from '../actions';
 
 
 export interface DomContainerProps{
@@ -62,6 +62,7 @@ class DomContainer extends React.Component<DomContainerProps, any> {
       if (ev.target === this.refs.eventHelper) {
         this.clearActiveNode();
         this.clearTargetNode();
+        this.clearActiveLink();
       }
     });
 
@@ -113,6 +114,11 @@ class DomContainer extends React.Component<DomContainerProps, any> {
     dispatch({
       type: CLEAR_TARGET_NODE,
     });
+  }
+  clearActiveLink = () => {
+    this.props.dispatch({
+      type: CLEAR_ACTIVE_LINK,
+    })
   }
 
   moveNode(id, x, y) {

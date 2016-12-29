@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 import hoistStatics from 'hoist-non-react-statics';
 import { Provider } from 'react-redux';
 import classnames from 'classnames';
@@ -15,6 +16,7 @@ const defaultConfig = {
   width: window.innerWidth,
   height: window.innerHeight,
   nodes: [],
+  autoMargin: false,
 };
 
 function getDisplayName(WrappedComponent) {
@@ -30,6 +32,8 @@ export interface FringingProviderProps {
 
 export interface ProviderConfig {
   connects?: Array<any>;
+  connectFunction?: Function;
+  autoMargin?: Boolean;
 }
 
 function noop () {};
@@ -53,6 +57,8 @@ export default function providerFunction(configs: ProviderConfig = defaultConfig
     class FringingProviderClass extends React.Component<FringingProviderProps, any> {
       static displayName: string;
       static WrappedComponent: Element;
+
+      refs: any;
 
       static childContextTypes = {
         store: React.PropTypes.any,
@@ -81,6 +87,13 @@ export default function providerFunction(configs: ProviderConfig = defaultConfig
           console.warn('You must provide `onConnectionsChange` function to control `connection` props.');
         }
       }
+      componentDidMount() {
+        const container = ReactDOM.findDOMNode(this.refs.container);
+        container.oncontextmenu = function(e){
+          return false;
+        }
+
+      }
 
       render() {
         const connections = this.props.connections.map(c => c.constructor === Connection ? c : new Connection(c));
@@ -90,12 +103,16 @@ export default function providerFunction(configs: ProviderConfig = defaultConfig
           ['fringing-provider']: true,
         });
         return (<Provider store={store}>
-          <div style={style} className={providerClass}>
+          <div style={style} className={providerClass} ref="container">
             <DOMContainer>
               <WrappedComponent {...this.props} />
               <DecoratorsContainer />
             </DOMContainer>
-            <CanvasContainer connections={connections} connectFunction={configs.connectFunction} />
+            <CanvasContainer
+              connections={connections}
+              connectFunction={configs.connectFunction}
+              autoMargin={configs.autoMargin}
+            />
           </div>
         </Provider>);
       }

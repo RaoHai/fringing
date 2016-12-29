@@ -16,7 +16,9 @@ import {
 
   ADD_NODE_TO_GROUP,
 
-  BEGIN_CONNECTION, END_CONNECTION
+  BEGIN_CONNECTION, END_CONNECTION,
+
+  SET_ACTIVE_LINK, CLEAR_ACTIVE_LINK,
 } from '../actions/index';
 
 
@@ -107,12 +109,24 @@ function eventProxy(state = {domContainer : null, canvasContainer: null}, action
   }
 }
 
+function activeLink( state = null, actions) {
+  switch (actions.type) {
+    case SET_ACTIVE_LINK:
+      return actions.id;
+    case CLEAR_ACTIVE_LINK:
+      return null;
+    default:
+      return state;
+  }
+}
+
 export default combineReducers({
   nodes,
   groups,
   configs,
   activeNode,
   targetNode,
+  activeLink,
   eventListeners,
   eventProxy,
 });
