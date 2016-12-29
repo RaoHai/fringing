@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>group.js - example - rc-fringing@0.4.0</title>
+  <title>autoMargin.js - example - rc-fringing@0.4.0</title>
   <meta name="viewport"
         content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
   <meta charset="utf-8"/>
@@ -269,38 +269,41 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
     </div>
     <div class="example" id="__react-content"></div>
 
-    <div class="highlight"><pre><code language="js"><span class="hljs-keyword">import</span> { createContainer, createNode, createConnects, createGroup } <span class="hljs-keyword">from</span> <span class="hljs-string">'rc-fringing'</span>;
-<span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+    <div class="highlight"><pre><code language="js"><span class="hljs-keyword">import</span> { createContainer, createNode, createConnects } <span class="hljs-keyword">from</span> <span class="hljs-string">'rc-fringing'</span>;
+<span class="hljs-keyword">import</span> React, { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
 <span class="hljs-keyword">import</span> ReactDOM <span class="hljs-keyword">from</span> <span class="hljs-string">'react-dom'</span>;
 
 <span class="hljs-keyword">import</span> <span class="hljs-string">'rc-fringing/assets/index.css'</span>;
 
-<span class="hljs-keyword">const</span> NODES = [{ id : <span class="hljs-number">1</span>,x: <span class="hljs-number">100</span>, y: <span class="hljs-number">200</span>}, { id : <span class="hljs-number">2</span>, x: <span class="hljs-number">200</span>, y: <span class="hljs-number">100</span>}];
+<span class="hljs-keyword">const</span> NODES = [
+  {id : <span class="hljs-number">1</span>,x: <span class="hljs-number">50</span>, y: <span class="hljs-number">0</span>},
+  {id : <span class="hljs-number">2</span>, x: <span class="hljs-number">150</span>, y: <span class="hljs-number">100</span>},
+  {id: <span class="hljs-number">3</span>, x: <span class="hljs-number">300</span>, y: <span class="hljs-number">50</span>},
+  {id: <span class="hljs-number">4</span>, x: <span class="hljs-number">350</span>, y: <span class="hljs-number">200</span>},
+  {id: <span class="hljs-number">5</span>, x: <span class="hljs-number">450</span>, y: <span class="hljs-number">100</span>},
+  {id: <span class="hljs-number">6</span>, x: <span class="hljs-number">550</span>, y: <span class="hljs-number">200</span>}
+];
 
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Node</span>(<span class="hljs-params">props</span>) </span>{
   <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span> Node [{props.data.id}] <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
 }
 
+console.log('&gt;&gt; NodeProvider', createNode);
+
 const WrappedNode = createNode(collect =&gt; ({
   getNodeData: (props) =&gt; props.data,
 }))(Node);
 
-function Group(props) {
-  return <span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span> Group: {props.children}<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-}
-
-const WrappedGroup = createGroup({
-  id: 'group_1',
-  position: {x: 100, y: 100}
-})(Group);
-
-const nodes = NODES.map((nodeData, idx) =&gt; <span class="hljs-tag">&lt;<span class="hljs-title">WrappedNode</span> <span class="hljs-attribute">key</span>=<span class="hljs-value">{idx}</span> <span class="hljs-attribute">data</span>=<span class="hljs-value">{nodeData}</span> /&gt;</span>)</span>;
+const nodes = NODES.map((nodeData, idx) =&gt; <span class="hljs-tag">&lt;<span class="hljs-title">WrappedNode</span>
+  <span class="hljs-attribute">onConnect</span>=<span class="hljs-value">{(a,</span> <span class="hljs-attribute">b</span>) =&gt;</span> { console.log('onConnect', a, b); }}
+  onActive={(data) =&gt; { console.log('onActive', data); }}
+  key={idx}
+  data={nodeData}
+/&gt;)</span>;
 <span class="hljs-comment">// @Provider(...)</span>
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">App</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
   render() {
-    <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">WrappedGroup</span>&gt;</span>
-        {nodes}
-      <span class="hljs-tag">&lt;/<span class="hljs-title">WrappedGroup</span>&gt;</span>
+    <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>{nodes}<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
   }
 }
 
@@ -308,12 +311,47 @@ const SimpleApp = createContainer({
   width: 800,
   height: 600,
   onNodeChange: (id, data) =&gt; console.log('&gt;&gt; onNodeChange', id, data),
-  connects: [{ from: 1, to: 2}],
-  groups: [[1, 2], [2, 3]]
+  connectFunction: (start, end) =&gt; [start.x, start.y, end.x, end.y],
+  autoMargin: true,
 })(App);
 
 
-ReactDOM.render(<span class="hljs-tag">&lt;<span class="hljs-title">SimpleApp</span> /&gt;</span>, document.getElementById('__react-content'));
+class Wrapper extends Component {
+  constructor(...arg) {
+    super(...arg);
+    this.state = {
+      connections: [
+        { from: { id: 1}, to: { id: 3 }}, // 垂直
+        { from: { id: 2}, to: { id: 4 }}, // 垂直
+        { from: { id: 4}, to: { id: 3 }}, // 反向
+        { from: { id: 5}, to: { id: 6 }}, // 垂直
+        { from: { id: 5}, to: { id: 4 }}, // 垂直
+      ],
+    }
+  }
+  handleConnectionsChange(before, after) {
+    this.setState({
+      connections: after,
+    });
+  }
+  handleActiveNodesChange(data) {
+    console.log('onActiveNode change', data);
+  }
+  render() {
+    return (<span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">SimpleApp</span>
+        <span class="hljs-attribute">connections</span>=<span class="hljs-value">{this.state.connections}</span>
+        <span class="hljs-attribute">onConnectionsChange</span>=<span class="hljs-value">{this.handleConnectionsChange.bind(this)}</span>
+        <span class="hljs-attribute">onActiveNodesChange</span>=<span class="hljs-value">{this.handleActiveNodesChange.bind(this)}</span>
+      /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>)</span>;
+  }
+}
+
+
+ReactDOM.render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">Wrapper</span> /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>, document.getElementById('__react-content'));
 </span></code></pre></div>
   </div>
   <a href="https://github.com/react-component/flow">
@@ -324,7 +362,7 @@ ReactDOM.render(<span class="hljs-tag">&lt;<span class="hljs-title">SimpleApp</s
   </a>
   <script>FastClick.attach(document.body);</script>
   <script src="common.js?nowrap"></script>
-  <script src="group.js?nowrap"></script>
+  <script src="autoMargin.js?nowrap"></script>
 </body>
 
 </html>

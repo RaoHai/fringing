@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>connections.js - example - rc-fringing@0.3.4</title>
+  <title>connections.js - example - rc-fringing@0.4.0</title>
   <meta name="viewport"
         content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
   <meta charset="utf-8"/>
@@ -263,7 +263,7 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
 <body>
   <div class="container">
     <div class="header">
-      <h1>rc-fringing@0.3.4</h1>
+      <h1>rc-fringing@0.4.0</h1>
 
       <p>flow ui component for react</p>
     </div>
@@ -311,7 +311,6 @@ const SimpleApp = createContainer({
   width: 800,
   height: 600,
   onNodeChange: (id, data) =&gt; console.log('&gt;&gt; onNodeChange', id, data),
-  connectFunction: (start, end) =&gt; [start.x, start.y, end.x, end.y],
 })(App);
 
 
@@ -350,7 +349,7 @@ class Wrapper extends Component {
   }
   render() {
     return (<span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">onClick</span>=<span class="hljs-value">{this::this.handleClick}</span>&gt;</span>change connections<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">onClick</span>=<span class="hljs-value">{::this.handleClick}</span>&gt;</span>change connections<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
       <span class="hljs-tag">&lt;<span class="hljs-title">SimpleApp</span>
         <span class="hljs-attribute">connections</span>=<span class="hljs-value">{this.state.connections}</span>
         <span class="hljs-attribute">onConnectionsChange</span>=<span class="hljs-value">{this.handleConnectionsChange.bind(this)}</span>

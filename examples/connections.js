@@ -1,12 +1,14 @@
-webpackJsonp([0],[
-/* 0 */
+webpackJsonp([1],{
+
+/***/ 0:
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(1);
+	module.exports = __webpack_require__(399);
 
 
 /***/ },
-/* 1 */
+
+/***/ 399:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -17,11 +19,11 @@ webpackJsonp([0],[
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _reactDom = __webpack_require__(38);
+	var _reactDom = __webpack_require__(36);
 	
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 	
-	__webpack_require__(389);
+	__webpack_require__(398);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -94,9 +96,6 @@ webpackJsonp([0],[
 	  height: 600,
 	  onNodeChange: function onNodeChange(id, data) {
 	    return console.log('>> onNodeChange', id, data);
-	  },
-	  connectFunction: function connectFunction(start, end) {
-	    return [start.x, start.y, end.x, end.y];
 	  }
 	})(App);
 	
@@ -169,5 +168,6 @@ webpackJsonp([0],[
 	), document.getElementById('__react-content'));
 
 /***/ }
-]);
+
+});
 //# sourceMappingURL=connections.js.map

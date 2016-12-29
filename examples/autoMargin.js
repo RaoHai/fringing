@@ -1,14 +1,12 @@
-webpackJsonp([3],{
-
-/***/ 0:
+webpackJsonp([0],[
+/* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(608);
+	module.exports = __webpack_require__(1);
 
 
 /***/ },
-
-/***/ 608:
+/* 1 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -35,7 +33,7 @@ webpackJsonp([3],{
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
 	
-	var NODES = [{ id: 1, x: 100, y: 200 }, { id: 2, x: 200, y: 100 }];
+	var NODES = [{ id: 1, x: 50, y: 0 }, { id: 2, x: 150, y: 100 }, { id: 3, x: 300, y: 50 }, { id: 4, x: 350, y: 200 }, { id: 5, x: 450, y: 100 }, { id: 6, x: 550, y: 200 }];
 	
 	function Node(props) {
 	  return _react2.default.createElement(
@@ -47,6 +45,8 @@ webpackJsonp([3],{
 	  );
 	}
 	
+	console.log('>> NodeProvider', _rcFringing.createNode);
+	
 	var WrappedNode = (0, _rcFringing.createNode)(function (collect) {
 	  return {
 	    getNodeData: function getNodeData(props) {
@@ -55,22 +55,17 @@ webpackJsonp([3],{
 	  };
 	})(Node);
 	
-	function Group(props) {
-	  return _react2.default.createElement(
-	    'div',
-	    null,
-	    ' Group: ',
-	    props.children
-	  );
-	}
-	
-	var WrappedGroup = (0, _rcFringing.createGroup)({
-	  id: 'group_1',
-	  position: { x: 100, y: 100 }
-	})(Group);
-	
 	var nodes = NODES.map(function (nodeData, idx) {
-	  return _react2.default.createElement(WrappedNode, { key: idx, data: nodeData });
+	  return _react2.default.createElement(WrappedNode, {
+	    onConnect: function onConnect(a, b) {
+	      console.log('onConnect', a, b);
+	    },
+	    onActive: function onActive(data) {
+	      console.log('onActive', data);
+	    },
+	    key: idx,
+	    data: nodeData
+	  });
 	});
 	// @Provider(...)
 	
@@ -85,7 +80,7 @@ webpackJsonp([3],{
 	
 	  App.prototype.render = function render() {
 	    return _react2.default.createElement(
-	      WrappedGroup,
+	      'div',
 	      null,
 	      nodes
 	    );
@@ -100,13 +95,65 @@ webpackJsonp([3],{
 	  onNodeChange: function onNodeChange(id, data) {
 	    return console.log('>> onNodeChange', id, data);
 	  },
-	  connects: [{ from: 1, to: 2 }],
-	  groups: [[1, 2], [2, 3]]
+	  connectFunction: function connectFunction(start, end) {
+	    return [start.x, start.y, end.x, end.y];
+	  },
+	  autoMargin: true
 	})(App);
 	
-	_reactDom2.default.render(_react2.default.createElement(SimpleApp, null), document.getElementById('__react-content'));
+	var Wrapper = function (_Component) {
+	  _inherits(Wrapper, _Component);
+	
+	  function Wrapper() {
+	    _classCallCheck(this, Wrapper);
+	
+	    for (var _len = arguments.length, arg = Array(_len), _key = 0; _key < _len; _key++) {
+	      arg[_key] = arguments[_key];
+	    }
+	
+	    var _this2 = _possibleConstructorReturn(this, _Component.call.apply(_Component, [this].concat(arg)));
+	
+	    _this2.state = {
+	      connections: [{ from: { id: 1 }, to: { id: 3 } }, // 垂直
+	      { from: { id: 2 }, to: { id: 4 } }, // 垂直
+	      { from: { id: 4 }, to: { id: 3 } }, // 反向
+	      { from: { id: 5 }, to: { id: 6 } }, // 垂直
+	      { from: { id: 5 }, to: { id: 4 } }]
+	    };
+	    return _this2;
+	  }
+	
+	  Wrapper.prototype.handleConnectionsChange = function handleConnectionsChange(before, after) {
+	    this.setState({
+	      connections: after
+	    });
+	  };
+	
+	  Wrapper.prototype.handleActiveNodesChange = function handleActiveNodesChange(data) {
+	    console.log('onActiveNode change', data);
+	  };
+	
+	  Wrapper.prototype.render = function render() {
+	    return _react2.default.createElement(
+	      'div',
+	      null,
+	      _react2.default.createElement(SimpleApp, {
+	        connections: this.state.connections,
+	        onConnectionsChange: this.handleConnectionsChange.bind(this),
+	        onActiveNodesChange: this.handleActiveNodesChange.bind(this)
+	      })
+	    );
+	  };
+	
+	  return Wrapper;
+	}(_react.Component);
+	
+	_reactDom2.default.render(_react2.default.createElement(
+	  'div',
+	  null,
+	  _react2.default.createElement(Wrapper, null)
+	), document.getElementById('__react-content'));
 
 /***/ }
-
-});
-//# sourceMappingURL=group.js.map
+]);
+//# sourceMappingURL=autoMargin.js.map
