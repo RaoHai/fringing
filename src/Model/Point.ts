@@ -50,7 +50,7 @@ export default class Point {
     this.radius = Math.sqrt(
       Math.pow(config.width / 2, 2) + Math.pow(config.height / 2, 2)
     );
-    console.log('>> radius', this.radius);
+    // console.log('>> radius', this.radius);
     if (!config.activeControllerId) {
       this.x = config.x + config.width / 2;
       this.y = config.y + config.height / 2;

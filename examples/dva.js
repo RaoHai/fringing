@@ -61,6 +61,7 @@ function Wrapper(props) {
     {...props}
     className="canvas-class"
     onConnectionsChange={onConnectionsChange}
+    canDeleteLink={false}
   />
 }
 

@@ -7,7 +7,6 @@ export interface GroupProps {
 
 class Group extends React.Component<GroupProps, any> {
   render() {
-    console.log('...', this.props.nodes);
     return <div className="fringing-group" >{this.props.children}</div>;
   }
 }

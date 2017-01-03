@@ -84,7 +84,6 @@ function targetNode(state = null, actions) {
 function eventListeners(state = {}, actions) {
   switch (actions.type) {
     case 'ADD_EVENT_LISTENER':
-      console.log('actions', actions);
       const newState = Object.assign({}, state);
       const listeners = state[actions.eventName] || [];
       listeners.push({

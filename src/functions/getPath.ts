@@ -112,7 +112,7 @@ function getPoints(start, end) {
     y: end.y,
   };
   const points = [p0];
-  console.log('>> vector', start.vector, yVector);
+  // console.log('>> vector', start.vector, yVector);
   switch (vector) {
     // 当 A B 平行时,需要经过 0,2,4....次转向和平移
     case 1:
@@ -149,7 +149,7 @@ function getPoints(start, end) {
     // 但是如果
     case 0:
     //   // 如果从 x 轴连出
-      console.log('>> nagetiveCross', nagetiveCross, connectVector);
+      // console.log('>> nagetiveCross', nagetiveCross, connectVector);
       if (equals(start.vector, xVector) || equals(start.vector, xVectorReverse)) {
       if ((equals(start.vector, xVector) && end.x < start.x) ||
           (equals(start.vector, xVectorReverse) && end.x >= start.x)
@@ -170,7 +170,7 @@ function getPoints(start, end) {
           } else {
             const getFunc = end.vector.x > 0 ? Math.max : Math.min;
             const maxNumber = getFunc(p0.x, pn.x);
-            console.log('>> start', start);
+            // console.log('>> start', start);
             points.push(Object.assign({}, p0, {x : maxNumber + (CORNER_PADDING + start.width / 2) * start.vector.x}));
             points.push(Object.assign({}, pn, {x : maxNumber + (CORNER_PADDING + start.width / 2) * start.vector.x, y: pn.y - end.vector.y * CORNER_PADDING }));
             points.push({x: pn.x, y: pn.y - end.vector.y * CORNER_PADDING});

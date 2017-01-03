@@ -17,7 +17,6 @@ function Node(props) {
   return <div> Node [{props.data.id}] </div>
 }
 
-console.log('>> NodeProvider', createNode);
 
 const WrappedNode = createNode(collect => ({
   getNodeData: (props) => props.data,

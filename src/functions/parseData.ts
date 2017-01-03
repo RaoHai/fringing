@@ -31,7 +31,7 @@ export default function parseData(root: Node) {
       node.x = clusterX(children);
       node.y = node.__level__ * 1;
       maxDeep = Math.max(maxDeep, node.__level__ + 1);
-      console.log('>> maxDeep', node);
+      // console.log('>> maxDeep', node);
     } else {
       node.x = previousNode ? x += separation(node, previousNode) : 0;
       node.y = node.__level__ * 1;

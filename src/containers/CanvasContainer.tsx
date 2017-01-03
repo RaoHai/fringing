@@ -22,6 +22,7 @@ export interface CanvasProps {
   dispatch: any;
   connectFunction?: Function;
   autoMargin: Boolean;
+  canDeleteLink?: Boolean;
 }
 
 class CanvasContainer extends React.Component<CanvasProps, any> {
@@ -78,7 +79,8 @@ class CanvasContainer extends React.Component<CanvasProps, any> {
 
     document.addEventListener('keydown', ev => {
       const { connections } = this.props;
-      if ((ev.keyCode === 46 || ev.keyCode === 8) && this.props.activeLink) {
+      if ((ev.keyCode === 46 || ev.keyCode === 8)
+        && this.props.activeLink && this.props.canDeleteLink) {
         this.context.onConnectionsChange(connections, connections.filter(connect => connect.id !== this.props.activeLink));
       }
     });

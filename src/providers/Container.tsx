@@ -28,6 +28,9 @@ export interface FringingProviderProps {
   onConnectionsChange?: Function;
   onActiveNodesChange?: Function;
   connections?: Array<any>;
+  canDeleteLink?: Boolean;
+  className?: string;
+  style?: any;
 }
 
 export interface ProviderConfig {
@@ -70,6 +73,7 @@ export default function providerFunction(configs: ProviderConfig = defaultConfig
         connections: [],
         onActiveNodesChange: noop,
         onConnectionsChange: noop,
+        canDeleteLink: true,
       };
 
       getChildContext() {
@@ -112,6 +116,7 @@ export default function providerFunction(configs: ProviderConfig = defaultConfig
               connections={connections}
               connectFunction={configs.connectFunction}
               autoMargin={configs.autoMargin}
+              canDeleteLink={this.props.canDeleteLink}
             />
           </div>
         </Provider>);
