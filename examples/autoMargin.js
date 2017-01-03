@@ -45,8 +45,6 @@ webpackJsonp([0],[
 	  );
 	}
 	
-	console.log('>> NodeProvider', _rcFringing.createNode);
-	
 	var WrappedNode = (0, _rcFringing.createNode)(function (collect) {
 	  return {
 	    getNodeData: function getNodeData(props) {

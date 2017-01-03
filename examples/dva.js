@@ -528,7 +528,8 @@ webpackJsonp([2],[
 	  }
 	  return _react2.default.createElement(Canvas, _extends({}, props, {
 	    className: 'canvas-class',
-	    onConnectionsChange: onConnectionsChange
+	    onConnectionsChange: onConnectionsChange,
+	    canDeleteLink: false
 	  }));
 	}
 	

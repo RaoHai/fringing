@@ -336,7 +336,7 @@
 	                    className = _props.className;
 	
 	                var providerClass = (0, _classnames3.default)((_classnames = {}, _defineProperty(_classnames, className, true), _defineProperty(_classnames, 'fringing-provider', true), _classnames));
-	                return React.createElement(_reactRedux.Provider, { store: store }, React.createElement("div", { style: style, className: providerClass, ref: "container" }, React.createElement(_DomContainer2.default, null, React.createElement(WrappedComponent, __assign({}, this.props)), React.createElement(_DecoratorsContainer2.default, null)), React.createElement(_CanvasContainer2.default, { connections: connections, connectFunction: configs.connectFunction, autoMargin: configs.autoMargin })));
+	                return React.createElement(_reactRedux.Provider, { store: store }, React.createElement("div", { style: style, className: providerClass, ref: "container" }, React.createElement(_DomContainer2.default, null, React.createElement(WrappedComponent, __assign({}, this.props)), React.createElement(_DecoratorsContainer2.default, null)), React.createElement(_CanvasContainer2.default, { connections: connections, connectFunction: configs.connectFunction, autoMargin: configs.autoMargin, canDeleteLink: this.props.canDeleteLink })));
 	            };
 	
 	            return FringingProviderClass;
@@ -351,7 +351,8 @@
 	        FringingProviderClass.defaultProps = {
 	            connections: [],
 	            onActiveNodesChange: noop,
-	            onConnectionsChange: noop
+	            onConnectionsChange: noop,
+	            canDeleteLink: true
 	        };
 	        FringingProviderClass.displayName = connectDisplayName;
 	        FringingProviderClass.WrappedComponent = WrappedComponent;
@@ -23200,7 +23201,6 @@
 	
 	    switch (actions.type) {
 	        case 'ADD_EVENT_LISTENER':
-	            console.log('actions', actions);
 	            var newState = Object.assign({}, state);
 	            var listeners = state[actions.eventName] || [];
 	            listeners.push({
@@ -28365,7 +28365,7 @@
 	        document.addEventListener('keydown', function (ev) {
 	            var connections = _this2.props.connections;
 	
-	            if ((ev.keyCode === 46 || ev.keyCode === 8) && _this2.props.activeLink) {
+	            if ((ev.keyCode === 46 || ev.keyCode === 8) && _this2.props.activeLink && _this2.props.canDeleteLink) {
 	                _this2.context.onConnectionsChange(connections, connections.filter(function (connect) {
 	                    return connect.id !== _this2.props.activeLink;
 	                }));
@@ -45424,7 +45424,6 @@
 	            node.x = clusterX(children);
 	            node.y = node.__level__ * 1;
 	            maxDeep = Math.max(maxDeep, node.__level__ + 1);
-	            console.log('>> maxDeep', node);
 	        } else {
 	            node.x = previousNode ? x += separation(node, previousNode) : 0;
 	            node.y = node.__level__ * 1;
@@ -45652,7 +45651,6 @@
 	        y: end.y
 	    };
 	    var points = [p0];
-	    console.log('>> vector', start.vector, yVector);
 	    switch (vector) {
 	        case 1:
 	            if (equals(start.vector, xVector) || equals(start.vector, xVectorReverse)) {
@@ -45683,7 +45681,6 @@
 	                }
 	            }
 	        case 0:
-	            console.log('>> nagetiveCross', nagetiveCross, connectVector);
 	            if (equals(start.vector, xVector) || equals(start.vector, xVectorReverse)) {
 	                if (equals(start.vector, xVector) && end.x < start.x || equals(start.vector, xVectorReverse) && end.x >= start.x) {
 	                    var _mid4 = (p0.y + pn.y) / 2;
@@ -45702,7 +45699,6 @@
 	                    } else {
 	                        var _getFunc = end.vector.x > 0 ? Math.max : Math.min;
 	                        var _maxNumber = _getFunc(p0.x, pn.x);
-	                        console.log('>> start', start);
 	                        points.push(Object.assign({}, p0, { x: _maxNumber + (CORNER_PADDING + start.width / 2) * start.vector.x }));
 	                        points.push(Object.assign({}, pn, { x: _maxNumber + (CORNER_PADDING + start.width / 2) * start.vector.x, y: pn.y - end.vector.y * CORNER_PADDING }));
 	                        points.push({ x: pn.x, y: pn.y - end.vector.y * CORNER_PADDING });
@@ -45786,7 +45782,6 @@
 	        this.height = config.height;
 	        this.activeControllerId = config.activeControllerId;
 	        this.radius = Math.sqrt(Math.pow(config.width / 2, 2) + Math.pow(config.height / 2, 2));
-	        console.log('>> radius', this.radius);
 	        if (!config.activeControllerId) {
 	            this.x = config.x + config.width / 2;
 	            this.y = config.y + config.height / 2;
@@ -55393,7 +55388,6 @@
 	            }
 	
 	            NodeContainer.prototype.handleConnect = function handleConnect(source, target) {
-	                console.log('>> handleConnect', source, target);
 	                if (!this.props.onConnect || !this.props.onConnect(source, target)) {
 	                    var _context = this.context,
 	                        connections = _context.connections,
@@ -55419,10 +55413,6 @@
 	                if (!this.props.onActive || !this.props.onActive(node)) {
 	                    this.context.onActiveNodesChange([node]);
 	                }
-	            };
-	
-	            NodeContainer.prototype.componentWillUpdate = function componentWillUpdate(nextProps, nextState) {
-	                console.log('>> componentWillUpdate', nextProps, nextState);
 	            };
 	
 	            NodeContainer.prototype.render = function render() {
@@ -55923,7 +55913,7 @@
 /* 397 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 	
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
@@ -55953,7 +55943,6 @@
 	    }
 	
 	    Group.prototype.render = function render() {
-	        console.log('...', this.props.nodes);
 	        return React.createElement("div", { className: "fringing-group" }, this.props.children);
 	    };
 	
