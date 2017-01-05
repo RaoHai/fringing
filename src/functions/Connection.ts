@@ -1,7 +1,3 @@
-const getId = (() => {
-  let i = 0;
-  return () => ++i;
-})();
 
 export default class Connection {
   static connectionExisted(connections, connection) {
@@ -12,7 +8,6 @@ export default class Connection {
   private id;
 
   constructor(connect) {
-    this.id = getId();
     if (Array.isArray(connect)) {
       this.from = {
         id: connect[0],
@@ -27,5 +22,7 @@ export default class Connection {
     } else {
       console.error('constructor Connection failed');
     }
+
+    this.id = `${this.from.id}[${this.from.point}]-${this.to.id}[${this.to.point}]`;
   }
 }
