@@ -47288,13 +47288,6 @@
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
-	var getId = function () {
-	    var i = 0;
-	    return function () {
-	        return ++i;
-	    };
-	}();
-	
 	var Connection = function () {
 	    Connection.connectionExisted = function connectionExisted(connections, connection) {
 	        return connections.find(function (item) {
@@ -47305,7 +47298,6 @@
 	    function Connection(connect) {
 	        _classCallCheck(this, Connection);
 	
-	        this.id = getId();
 	        if (Array.isArray(connect)) {
 	            this.from = {
 	                id: connect[0]
@@ -47322,6 +47314,7 @@
 	        } else {
 	            console.error('constructor Connection failed');
 	        }
+	        this.id = this.from.id + '[' + this.from.point + ']-' + this.to.id + '[' + this.to.point + ']';
 	    }
 	
 	    return Connection;
