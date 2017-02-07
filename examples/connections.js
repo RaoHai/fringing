@@ -1,8 +1,10 @@
 import { createContainer, createNode, createConnects } from 'rc-fringing';
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import Menu , { Item} from 'rc-menu';
 
 import 'rc-fringing/assets/index.less';
+import 'rc-menu/assets/index.css';
 
 const NODES = [
   {id : 1,x: 50, y: 0},
@@ -40,6 +42,9 @@ const SimpleApp = createContainer({
   width: 800,
   height: 600,
   onNodeChange: (id, data) => console.log('>> onNodeChange', id, data),
+  onContextMenu: (ev, type, data) => <Menu style={{ backgroundColor: 'white', zIndex: 1009, width: 200 }}>
+    <Item> 右键菜单 </Item>
+  </Menu>,
 })(App);
 
 

@@ -38,6 +38,7 @@ export default function nodeDecorator(_collect: CollectFunction = (any: any) => 
         onActiveNodesChange: React.PropTypes.func,
         offset: React.PropTypes.object,
         groupId: React.PropTypes.any,
+        onContextMenu: React.PropTypes.func,
       };
 
       constructor(props, context) {
@@ -90,7 +91,7 @@ export default function nodeDecorator(_collect: CollectFunction = (any: any) => 
       }
 
       render() {
-        const { offset } = this.context;
+        const { offset, onContextMenu } = this.context;
         return <NodeComponent
           {...this.props}
           {...this.state}
@@ -100,6 +101,7 @@ export default function nodeDecorator(_collect: CollectFunction = (any: any) => 
           canConnectTo={collected.canConnectTo}
           onConnect={this.handleConnect.bind(this)}
           onActive={this.handleActive.bind(this)}
+          onContextMenu={onContextMenu}
           style={offset ? {transform: `translate3d(${-offset.x}px, ${-offset.y}px, 0)`} : {}}
         >
           <DecoratedComponent

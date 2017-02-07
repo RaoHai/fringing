@@ -4,6 +4,7 @@ import hoistStatics from 'hoist-non-react-statics';
 import { Provider } from 'react-redux';
 import classnames from 'classnames';
 import { createStore, applyMiddleware } from 'redux';
+
 import  friningApp from '../reducers/index';
 
 import CanvasContainer from '../containers/CanvasContainer';
@@ -36,6 +37,7 @@ export interface FringingProviderProps {
 export interface ProviderConfig {
   connects?: Array<any>;
   connectFunction?: Function;
+  onContextMenu?: (e: React.MouseEvent, type: string, data: any) => React.ReactElement<any>;
   autoMargin?: Boolean;
 }
 
@@ -68,6 +70,7 @@ export default function providerFunction(configs: ProviderConfig = defaultConfig
         onConnectionsChange: React.PropTypes.func,
         onActiveNodesChange: React.PropTypes.func,
         connections: React.PropTypes.array,
+        onContextMenu: React.PropTypes.func,
       };
       static defaultProps = {
         connections: [],
@@ -82,6 +85,7 @@ export default function providerFunction(configs: ProviderConfig = defaultConfig
           onConnectionsChange: this.props.onConnectionsChange,
           onActiveNodesChange: this.props.onActiveNodesChange,
           connections: this.props.connections.map(c => c.constructor === Connection ? c : new Connection(c)),
+          onContextMenu: this.onContextMenu,
         };
       }
 
@@ -90,24 +94,53 @@ export default function providerFunction(configs: ProviderConfig = defaultConfig
         if (props.onConnectionsChange === noop) {
           console.warn('You must provide `onConnectionsChange` function to control `connection` props.');
         }
+        this.state = {
+          contextMenu: null,
+        };
       }
-      componentDidMount() {
-        const container = ReactDOM.findDOMNode(this.refs.container);
-        container.oncontextmenu = function(e){
-          return false;
+
+      onContextMenu = (e: React.MouseEvent, type: string, data) => {
+        type menuProps = { style: any; };
+        let contextMenu: React.ReactElement<menuProps>;
+        if (window.hoverLink) {
+          contextMenu = configs.onContextMenu(e, 'link', window.hoverLink);
+        } else {
+          contextMenu = configs.onContextMenu(e, type, data);
         }
 
+        if (contextMenu && React.isValidElement(contextMenu)) {
+          this.setState({
+            contextMenu: React.cloneElement(contextMenu, {
+              style: {
+                ...contextMenu.props.style,
+                position: 'fixed',
+                left: e.nativeEvent.x,
+                top: e.nativeEvent.y,
+              }
+            }),
+          });
+        }
+        e.preventDefault();
+        e.stopPropagation();
+        return false;
       }
 
       render() {
         const connections = this.props.connections.map(c => c.constructor === Connection ? c : new Connection(c));
         const { style, className } = this.props;
+        const { contextMenu } = this.state;
         const providerClass = classnames({
           [className]: true,
           ['fringing-provider']: true,
         });
         return (<Provider store={store}>
-          <div style={style} className={providerClass} ref="container">
+          <div
+            style={style}
+            className={providerClass}
+            ref="container"
+            onContextMenu={(ev) => this.onContextMenu(ev, 'canvas', configs)}
+            onMouseDown={(ev) => this.setState({ contextMenu: null })}
+          >
             <DOMContainer>
               <WrappedComponent {...this.props} />
               <DecoratorsContainer />
@@ -118,6 +151,9 @@ export default function providerFunction(configs: ProviderConfig = defaultConfig
               autoMargin={configs.autoMargin}
               canDeleteLink={this.props.canDeleteLink}
             />
+            <div className="contextMenuPlaceholder">
+              {contextMenu ? contextMenu : null}
+            </div>
           </div>
         </Provider>);
       }

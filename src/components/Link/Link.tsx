@@ -13,6 +13,7 @@ export default class Link extends React.Component<any, any> {
   }
   mouseMove = (ev) => {
     document.body.style.cursor = 'pointer';
+    window.hoverLink = this.props.data;
     this.setState({
       hover: true,
     });
@@ -25,7 +26,7 @@ export default class Link extends React.Component<any, any> {
   }
   mouseDown = (ev) => {
     ev.evt.preventDefault();
-    this.props.toggeActive();
+    this.props.toggleActive();
   }
   render() {
     const { data, connectFunction, isActive, autoMargin } = this.props;
@@ -45,7 +46,6 @@ export default class Link extends React.Component<any, any> {
         onMouseOut={this.mouseOut}
         onMouseDown={this.mouseDown}
       />
-
     </Group>
   }
 }

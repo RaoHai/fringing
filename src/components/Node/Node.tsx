@@ -28,7 +28,6 @@ const nodeSource = {
 };
 
 
-
 function getActiveControllerId(source, target) {
   if (target.x > source.x) {
     return 3;
@@ -57,6 +56,7 @@ export interface NodeProps {
   canSelect?: Function;
   canConnectFrom?: Function;
   canConnectTo?: Function;
+  onContextMenu?: Function;
   style?: any;
 }
 
@@ -144,7 +144,7 @@ class Node extends React.Component<NodeProps, any> {
     const data = this.getCurrentNode();
     const {activeNode, targetNode} = this.props;
 
-    if (this.canConnectTo() 
+    if (this.canConnectTo()
       && activeNode && activeNode.activeControllerId !== null
       && targetNode // && targetNode.activeControllerId !== null
       && targetNode.id === data.id) {
@@ -175,6 +175,12 @@ class Node extends React.Component<NodeProps, any> {
         type: CLEAR_TARGET_NODE,
       });
     }
+  }
+  onContextMenu = (ev) => {
+    this.props.onContextMenu(ev, 'node', this.getCurrentNode());
+    ev.preventDefault();
+    ev.stopPropagation();
+    return false;
   }
   canConnectFrom = () => {
     if (!this.props.canConnectFrom) {
@@ -208,6 +214,7 @@ class Node extends React.Component<NodeProps, any> {
              onMouseEnter={this.mouseEnter}
              onMouseLeave={this.mouseLeave}
              onMouseDown={this.mouseDown}
+             onContextMenu={this.onContextMenu}
              ref="element">
           {connectDragSource(<div className="editor-node" >{this.props.children}</div>)}
           {this.canConnectFrom() ? React.Children.map(controllerPoints, this.renderControllerPoint) : null}

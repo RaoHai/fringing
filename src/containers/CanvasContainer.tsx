@@ -64,7 +64,7 @@ class CanvasContainer extends React.Component<CanvasProps, any> {
           data={data}
           key={`link-${index}`}
           connectFunction={this.props.connectFunction}
-          toggeActive={() => this.props.dispatch({
+          toggleActive={() => this.props.dispatch({
             type: SET_ACTIVE_LINK,
             id: data.id,
           })}
