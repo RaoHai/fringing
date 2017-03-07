@@ -416,7 +416,7 @@ webpackJsonp([1],[
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _reactDom = __webpack_require__(290);
+	var _reactDom = __webpack_require__(36);
 	
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 	
@@ -503,7 +503,11 @@ webpackJsonp([1],[
 	  onContextMenu: function onContextMenu(ev, type, data) {
 	    return _react2.default.createElement(
 	      _rcMenu2.default,
-	      { style: { backgroundColor: 'white', zIndex: 1009, width: 200 } },
+	      {
+	        onClick: function onClick() {
+	          return console.log('menu onclick');
+	        },
+	        style: { backgroundColor: 'white', zIndex: 1009, width: 200 } },
 	      _react2.default.createElement(
 	        _rcMenu.Item,
 	        null,
@@ -1433,7 +1437,7 @@ webpackJsonp([1],[
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _reactDom = __webpack_require__(290);
+	var _reactDom = __webpack_require__(36);
 	
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 	
@@ -1445,7 +1449,7 @@ webpackJsonp([1],[
 	
 	var _createChainedFunction2 = _interopRequireDefault(_createChainedFunction);
 	
-	var _classnames = __webpack_require__(66);
+	var _classnames = __webpack_require__(212);
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
@@ -3102,7 +3106,7 @@ webpackJsonp([1],[
 	
 	var _KeyCode2 = _interopRequireDefault(_KeyCode);
 	
-	var _classnames = __webpack_require__(66);
+	var _classnames = __webpack_require__(212);
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
@@ -4980,7 +4984,7 @@ webpackJsonp([1],[
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _reactDom = __webpack_require__(290);
+	var _reactDom = __webpack_require__(36);
 	
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 	
@@ -5626,7 +5630,7 @@ webpackJsonp([1],[
 	
 	var _contains2 = _interopRequireDefault(_contains);
 	
-	var _reactDom = __webpack_require__(290);
+	var _reactDom = __webpack_require__(36);
 	
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 	
@@ -5706,7 +5710,7 @@ webpackJsonp([1],[
 	
 	var _addDomEventListener2 = _interopRequireDefault(_addDomEventListener);
 	
-	var _reactDom = __webpack_require__(290);
+	var _reactDom = __webpack_require__(36);
 	
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 	
@@ -6149,7 +6153,7 @@ webpackJsonp([1],[
 	
 	var _KeyCode2 = _interopRequireDefault(_KeyCode);
 	
-	var _classnames = __webpack_require__(66);
+	var _classnames = __webpack_require__(212);
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	

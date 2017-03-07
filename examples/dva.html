@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>dva.js - example - rc-fringing@0.5.1</title>
+  <title>dva.js - example - rc-fringing@0.5.2</title>
   <meta name="viewport"
         content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
   <meta charset="utf-8"/>
@@ -263,7 +263,7 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
 <body>
   <div class="container">
     <div class="header">
-      <h1>rc-fringing@0.5.1</h1>
+      <h1>rc-fringing@0.5.2</h1>
 
       <p>flow ui component for react</p>
     </div>
@@ -288,6 +288,14 @@ app.model({
   reducers: {
     updateConnections(state, { payload }) {
       <span class="hljs-keyword">return</span> <span class="hljs-built_in">Object</span>.assign({}, state, { connections: payload.connections});
+    },
+    updateNode(state, { payload }) {
+      <span class="hljs-keyword">const</span> { x, y } = payload.data;
+      <span class="hljs-keyword">const</span> nodes = state.nodes.map(node =&gt; 
+        node.id === payload.id ? ({...node, x, y }) : node );
+      <span class="hljs-keyword">return</span> <span class="hljs-built_in">Object</span>.assign({}, state, {
+        nodes,
+      });
     }
   }
 });
@@ -328,10 +336,20 @@ function Wrapper(props) {
       }
     });
   }
+  function onNodeChange(id, data) {
+    props.dispatch({
+      type: 'app/updateNode',
+      payload: {
+        id,
+        data,
+      },
+    });
+  }
   return <span class="hljs-tag">&lt;<span class="hljs-title">Canvas</span>
     {<span class="hljs-attribute">...props</span>}
     <span class="hljs-attribute">className</span>=<span class="hljs-value">"canvas-class"</span>
     <span class="hljs-attribute">onConnectionsChange</span>=<span class="hljs-value">{onConnectionsChange}</span>
+    <span class="hljs-attribute">onNodeChange</span>=<span class="hljs-value">{onNodeChange}</span>
     <span class="hljs-attribute">canDeleteLink</span>=<span class="hljs-value">{false}</span>
   /&gt;</span>
 }

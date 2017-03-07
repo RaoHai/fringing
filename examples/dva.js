@@ -1878,6 +1878,19 @@ webpackJsonp([2],[
 	      var payload = _ref.payload;
 	
 	      return Object.assign({}, state, { connections: payload.connections });
+	    },
+	    updateNode: function updateNode(state, _ref2) {
+	      var payload = _ref2.payload;
+	      var _payload$data = payload.data,
+	          x = _payload$data.x,
+	          y = _payload$data.y;
+	
+	      var nodes = state.nodes.map(function (node) {
+	        return node.id === payload.id ? _extends({}, node, { x: x, y: y }) : node;
+	      });
+	      return Object.assign({}, state, {
+	        nodes: nodes
+	      });
 	    }
 	  }
 	});
@@ -1954,23 +1967,33 @@ webpackJsonp([2],[
 	      }
 	    });
 	  }
+	  function onNodeChange(id, data) {
+	    props.dispatch({
+	      type: 'app/updateNode',
+	      payload: {
+	        id: id,
+	        data: data
+	      }
+	    });
+	  }
 	  return _react2.default.createElement(Canvas, _extends({}, props, {
 	    className: 'canvas-class',
 	    onConnectionsChange: onConnectionsChange,
+	    onNodeChange: onNodeChange,
 	    canDeleteLink: false
 	  }));
 	}
 	
-	var DvaApp = (0, _dva.connect)(function (_ref2) {
-	  var app = _ref2.app;
+	var DvaApp = (0, _dva.connect)(function (_ref3) {
+	  var app = _ref3.app;
 	  return {
 	    nodes: app.nodes,
 	    connections: app.connections
 	  };
 	})(Wrapper);
 	
-	app.router(function (_ref3) {
-	  var history = _ref3.history;
+	app.router(function (_ref4) {
+	  var history = _ref4.history;
 	  return _react2.default.createElement(
 	    _router.Router,
 	    { history: history },
@@ -1990,7 +2013,7 @@ webpackJsonp([2],[
 	});
 	
 	exports.default = __webpack_require__(511);
-	exports.connect = __webpack_require__(37).connect;
+	exports.connect = __webpack_require__(183).connect;
 
 
 /***/ },
@@ -2066,7 +2089,7 @@ webpackJsonp([2],[
 	
 	var _warning2 = _interopRequireDefault(_warning);
 	
-	var _invariant = __webpack_require__(65);
+	var _invariant = __webpack_require__(211);
 	
 	var _invariant2 = _interopRequireDefault(_invariant);
 	
@@ -2639,7 +2662,7 @@ webpackJsonp([2],[
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
-	var _invariant = __webpack_require__(65);
+	var _invariant = __webpack_require__(211);
 	
 	var _invariant2 = _interopRequireDefault(_invariant);
 	
@@ -4170,9 +4193,9 @@ webpackJsonp([2],[
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _reactRedux = __webpack_require__(37);
+	var _reactRedux = __webpack_require__(183);
 	
-	var _redux = __webpack_require__(44);
+	var _redux = __webpack_require__(190);
 	
 	var _middleware = __webpack_require__(561);
 	
@@ -4186,7 +4209,7 @@ webpackJsonp([2],[
 	
 	var _isPlainObject2 = _interopRequireDefault(_isPlainObject);
 	
-	var _invariant = __webpack_require__(65);
+	var _invariant = __webpack_require__(211);
 	
 	var _invariant2 = _interopRequireDefault(_invariant);
 	
@@ -4568,7 +4591,7 @@ webpackJsonp([2],[
 	    }
 	
 	    function render(container, store, app, router) {
-	      var ReactDOM = __webpack_require__(290);
+	      var ReactDOM = __webpack_require__(36);
 	      ReactDOM.render(_react2.default.createElement(getProvider(store, app, router)), container);
 	    }
 	
@@ -8095,7 +8118,7 @@ webpackJsonp([2],[
 
 /***/ },
 /* 577 */
-73,
+219,
 /* 578 */
 /***/ function(module, exports) {
 
@@ -8270,7 +8293,7 @@ webpackJsonp([2],[
 	
 	var _isPlainObject2 = _interopRequireDefault(_isPlainObject);
 	
-	var _invariant = __webpack_require__(65);
+	var _invariant = __webpack_require__(211);
 	
 	var _invariant2 = _interopRequireDefault(_invariant);
 	
@@ -9012,7 +9035,7 @@ webpackJsonp([2],[
 	exports.getParams = getParams;
 	exports.formatPattern = formatPattern;
 	
-	var _invariant = __webpack_require__(65);
+	var _invariant = __webpack_require__(211);
 	
 	var _invariant2 = _interopRequireDefault(_invariant);
 	
@@ -9235,7 +9258,7 @@ webpackJsonp([2],[
 	
 	var _useQueries2 = _interopRequireDefault(_useQueries);
 	
-	var _invariant = __webpack_require__(65);
+	var _invariant = __webpack_require__(211);
 	
 	var _invariant2 = _interopRequireDefault(_invariant);
 	
@@ -10590,7 +10613,7 @@ webpackJsonp([2],[
 	
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 	
-	var _invariant = __webpack_require__(65);
+	var _invariant = __webpack_require__(211);
 	
 	var _invariant2 = _interopRequireDefault(_invariant);
 	
@@ -10827,7 +10850,7 @@ webpackJsonp([2],[
 	
 	var _routerWarning2 = _interopRequireDefault(_routerWarning);
 	
-	var _invariant = __webpack_require__(65);
+	var _invariant = __webpack_require__(211);
 	
 	var _invariant2 = _interopRequireDefault(_invariant);
 	
@@ -11036,7 +11059,7 @@ webpackJsonp([2],[
 	
 	exports.default = withRouter;
 	
-	var _invariant = __webpack_require__(65);
+	var _invariant = __webpack_require__(211);
 	
 	var _invariant2 = _interopRequireDefault(_invariant);
 	
@@ -11044,7 +11067,7 @@ webpackJsonp([2],[
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _hoistNonReactStatics = __webpack_require__(36);
+	var _hoistNonReactStatics = __webpack_require__(182);
 	
 	var _hoistNonReactStatics2 = _interopRequireDefault(_hoistNonReactStatics);
 	
@@ -11110,7 +11133,7 @@ webpackJsonp([2],[
 	
 	var _routerWarning2 = _interopRequireDefault(_routerWarning);
 	
-	var _invariant = __webpack_require__(65);
+	var _invariant = __webpack_require__(211);
 	
 	var _invariant2 = _interopRequireDefault(_invariant);
 	
@@ -11175,7 +11198,7 @@ webpackJsonp([2],[
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _invariant = __webpack_require__(65);
+	var _invariant = __webpack_require__(211);
 	
 	var _invariant2 = _interopRequireDefault(_invariant);
 	
@@ -11287,7 +11310,7 @@ webpackJsonp([2],[
 	
 	var _routerWarning2 = _interopRequireDefault(_routerWarning);
 	
-	var _invariant = __webpack_require__(65);
+	var _invariant = __webpack_require__(211);
 	
 	var _invariant2 = _interopRequireDefault(_invariant);
 	
@@ -11349,7 +11372,7 @@ webpackJsonp([2],[
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _invariant = __webpack_require__(65);
+	var _invariant = __webpack_require__(211);
 	
 	var _invariant2 = _interopRequireDefault(_invariant);
 	
@@ -11451,7 +11474,7 @@ webpackJsonp([2],[
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _invariant = __webpack_require__(65);
+	var _invariant = __webpack_require__(211);
 	
 	var _invariant2 = _interopRequireDefault(_invariant);
 	
@@ -11665,7 +11688,7 @@ webpackJsonp([2],[
 	
 	var _Actions = __webpack_require__(515);
 	
-	var _invariant = __webpack_require__(65);
+	var _invariant = __webpack_require__(211);
 	
 	var _invariant2 = _interopRequireDefault(_invariant);
 	
@@ -11795,7 +11818,7 @@ webpackJsonp([2],[
 	
 	var _warning2 = _interopRequireDefault(_warning);
 	
-	var _invariant = __webpack_require__(65);
+	var _invariant = __webpack_require__(211);
 	
 	var _invariant2 = _interopRequireDefault(_invariant);
 	
@@ -12035,7 +12058,7 @@ webpackJsonp([2],[
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
-	var _invariant = __webpack_require__(65);
+	var _invariant = __webpack_require__(211);
 	
 	var _invariant2 = _interopRequireDefault(_invariant);
 	
