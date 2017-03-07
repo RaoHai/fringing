@@ -17,6 +17,14 @@ app.model({
   reducers: {
     updateConnections(state, { payload }) {
       return Object.assign({}, state, { connections: payload.connections});
+    },
+    updateNode(state, { payload }) {
+      const { x, y } = payload.data;
+      const nodes = state.nodes.map(node => 
+        node.id === payload.id ? ({...node, x, y }) : node );
+      return Object.assign({}, state, {
+        nodes,
+      });
     }
   }
 });
@@ -57,10 +65,20 @@ function Wrapper(props) {
       }
     });
   }
+  function onNodeChange(id, data) {
+    props.dispatch({
+      type: 'app/updateNode',
+      payload: {
+        id,
+        data,
+      },
+    });
+  }
   return <Canvas
     {...props}
     className="canvas-class"
     onConnectionsChange={onConnectionsChange}
+    onNodeChange={onNodeChange}
     canDeleteLink={false}
   />
 }

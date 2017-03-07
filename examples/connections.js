@@ -42,7 +42,9 @@ const SimpleApp = createContainer({
   width: 800,
   height: 600,
   onNodeChange: (id, data) => console.log('>> onNodeChange', id, data),
-  onContextMenu: (ev, type, data) => <Menu style={{ backgroundColor: 'white', zIndex: 1009, width: 200 }}>
+  onContextMenu: (ev, type, data) => <Menu 
+    onClick={() => console.log('menu onclick')}
+    style={{ backgroundColor: 'white', zIndex: 1009, width: 200 }}>
     <Item> 右键菜单 </Item>
   </Menu>,
 })(App);

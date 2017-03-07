@@ -26,6 +26,7 @@ function getDisplayName(WrappedComponent) {
 
 export interface FringingProviderProps {
   children: any;
+  onNodeChange?: Function;
   onConnectionsChange?: Function;
   onActiveNodesChange?: Function;
   connections?: Array<any>;
@@ -62,6 +63,8 @@ export default function providerFunction(configs: ProviderConfig = defaultConfig
     class FringingProviderClass extends React.Component<FringingProviderProps, any> {
       static displayName: string;
       static WrappedComponent: Element;
+      
+      private _contextMenu: React.ReactInstance;
 
       refs: any;
 
@@ -99,9 +102,30 @@ export default function providerFunction(configs: ProviderConfig = defaultConfig
         };
       }
 
+      componentDidMount() {
+        document.addEventListener('mousedown', this.handleOutsideClick);
+      }
+
+      componentWillUnmount() {
+        document.removeEventListener('mousedown', this.handleOutsideClick);
+      }
+
+      handleOutsideClick = (e) => {
+        if (!this._contextMenu) return;
+        if (!ReactDOM.findDOMNode(this._contextMenu).contains(e.target)) {
+          this.destroyContextMenu();
+        }
+      } 
+
+      destroyContextMenu = () => {
+        this.setState({ contextMenu: null });
+      }
+
       onContextMenu = (e: React.MouseEvent, type: string, data) => {
-        type menuProps = { style: any; };
+        type menuProps = { style: any; onClick: (...any) => any; onSelect: (...any) => any; };
+        
         let contextMenu: React.ReactElement<menuProps>;
+        
         if (window.hoverLink) {
           contextMenu = configs.onContextMenu(e, 'link', window.hoverLink);
         } else {
@@ -111,6 +135,15 @@ export default function providerFunction(configs: ProviderConfig = defaultConfig
         if (contextMenu && React.isValidElement(contextMenu)) {
           this.setState({
             contextMenu: React.cloneElement(contextMenu, {
+              ref: (ele) => this._contextMenu = ele,
+              onClick: (...args) => {
+                contextMenu.props.onClick && contextMenu.props.onClick(...args);
+                setTimeout(this.destroyContextMenu, 1);
+              },
+              onSelect: (...args) => {
+                contextMenu.props.onSelect && contextMenu.props.onSelect(...args);
+                setTimeout(this.destroyContextMenu, 1);
+              },
               style: {
                 ...contextMenu.props.style,
                 position: 'fixed',
@@ -139,9 +172,8 @@ export default function providerFunction(configs: ProviderConfig = defaultConfig
             className={providerClass}
             ref="container"
             onContextMenu={(ev) => this.onContextMenu(ev, 'canvas', configs)}
-            onMouseDown={(ev) => this.setState({ contextMenu: null })}
           >
-            <DOMContainer>
+            <DOMContainer onNodeChange={this.props.onNodeChange}>
               <WrappedComponent {...this.props} />
               <DecoratorsContainer />
             </DOMContainer>
@@ -151,7 +183,7 @@ export default function providerFunction(configs: ProviderConfig = defaultConfig
               autoMargin={configs.autoMargin}
               canDeleteLink={this.props.canDeleteLink}
             />
-            <div className="contextMenuPlaceholder">
+            <div className="contextMenuPlaceholder" >
               {contextMenu ? contextMenu : null}
             </div>
           </div>

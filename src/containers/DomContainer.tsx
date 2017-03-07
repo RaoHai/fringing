@@ -130,6 +130,9 @@ class DomContainer extends React.Component<DomContainerProps, any> {
         y
       },
     });
+    if (this.props.onNodeChange) {
+      this.props.onNodeChange(id, { x, y });
+    }
     if (this.props.configs.onNodeChange) {
       this.props.configs.onNodeChange(id, { x, y});
     }
